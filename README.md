@@ -1,5 +1,6 @@
 # covid19
-Analysis of public data on the spread of covid-19: <https://nbviewer.jupyter.org/github/TonyM1958/covid19/blob/master/covid.ipynb>
+Analysis of public data on the spread of covid-19:
+* [jump to on-line notebook viewer](https://nbviewer.jupyter.org/github/TonyM1958/covid19/blob/master/covid.ipynb)
 
 ## Process
 The analysis takes daily data from the European Centre for Disease Control (ECDC), generally updated for the previous day around 11am each day.
