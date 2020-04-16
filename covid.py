@@ -262,7 +262,7 @@ class Region :
         print(f"  Smoothing:   {int(self.s_total_cases):,} cases and {int(self.s_total_deaths):,} deaths at end of {self.s_latest:%Y-%m-%d} using {self.smooth} adjacent values")
         print(f"  Growth:      {self.growth_days} days (Start -> Peak Cases) ")
         print(f"  Lag:         {self.lag} days (Peak Cases -> Peak Deaths) ")
-        print(f"  Spread:      {self.s_r0_peak} peak infection rate on {self.s_r0_peak_date:%Y-%m-%d} based on number of new cases compared to {self.spread} days earlier")
+        print(f"  Spread:      {self.s_r0_peak} peak infection rate on {self.s_r0_peak_date:%Y-%m-%d} based on new cases compared to {self.spread} days earlier")
         print(f"  Prediction:  {self.trend_days} day trend, L_cases = {int(self.L_cases):,}, r_cases = {round(self.r_cases,2)}, L_deaths = {int(self.L_deaths):,}, r_deaths = {round(self.r_deaths,2)}")
         print()
         if self.s_end_days < 0 :
