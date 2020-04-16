@@ -3,7 +3,7 @@ Analysis of public data on the spread of covid-19: [github viewer](covid.ipynb) 
 [nbviewer](https://nbviewer.jupyter.org/github/TonyM1958/covid19/blob/master/covid.ipynb?flush_cache=true)
 
 ## Process
-The analysis takes daily data from the [European Centre for Disease Control (ECDC)](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide), which is generally updated for the previous day around 11am UK time.
+The analysis takes daily data from the [European Centre for Disease Prevention and Control (ECDC)](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide), which is generally updated for the previous day around 11am UK time.
 
 The raw number of new cases and deaths reported each day can be vary considerably, making it difficult to detect the peak correctly. To allow for this, the analysis generates a smoothed data set that is the average reported over a sliding window. By default, the window is 9 day wides i.e. average of 4 days before, the current day and 4 days after a specific date.
 
