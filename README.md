@@ -1,5 +1,5 @@
 # covid19
-Analysis of public data on the spread of covid-19: [github viewer](covid.ipynb)
+Analysis of public data on the spread of covid-19: [github viewer](covid.ipynb) / 
 [nbviewer](https://nbviewer.jupyter.org/github/TonyM1958/covid19/blob/master/covid.ipynb?flush_cache=true)
 
 ## Process
