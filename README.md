@@ -1,6 +1,6 @@
 # covid19
 Analysis of public data on the spread of covid-19.
-* [jump to on-line notebook viewer](https://nbviewer.jupyter.org/github/TonyM1958/covid19/blob/master/covid.ipynb?flush_cache=true)
+* [jump to on-line notebook viewer](https://nbviewer.jupyter.org/github/TonyM1958/covid19/blob/master/covid.ipynb?flush_cache=false)
 
 ## Process
 The analysis takes daily data from the [European Centre for Disease Control (ECDC)](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide), which is generally updated for the previous day around 11am UK time.
