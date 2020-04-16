@@ -21,10 +21,8 @@ From this data, a number of metrics are created:
 
 The processing fits a simple logistical population model to the data, based on the formula A = L / (1 + exp(-rt)). This produces an S-curve when the cumulative number of cases / deaths is viewed and a bell distribution when the number of new cases / deaths is viewed. This model is used to extrapolate from the data to predict the expected progress of the infection, total number of cases and deaths reported by the 'end date'.
 
-Peak dates should be used with care. The analysis has a default minimum growth period of 38 days and a lag of 4 days that will be applied (if not over-ridden) where the peak is found in the latest smoothed data. Where this exceeds the minimum growth period, the latest smoothed data is assumed to represent the peak but this can mean that the peak will move forward each day if the number of cases or deaths then continues to increase over time. The report shows the effective growth and lag days within the smoothed data.
-
 ## Charts
-The analysis plots the number of new cases / new deaths over time. This includes the following elements:
+The analysis plots the number of new cases / new deaths over time, on a logarithmic scale. This includes the following elements:
 * Raw number of new cases: the green dotted line
 * Smoothed number of new cases: the solid blue line
 * Raw number of new deaths: the dotted orange line
@@ -37,4 +35,12 @@ A number of date markers are also added:
 * Grey dotted lines: the Start, peak cases and end dates, left to right
 * Brown lines: Day Zero and peak deaths
 
-A second chart separately shows the infection rate based on the smoothed number of new cases being reported compared to 7 days earlier.
+A second chart separately shows the infection rate based on the smoothed number of new cases being reported compared to 7 days earlier. The infection rate of 1 is shown as a green horizontal line.
+
+## Observations
+The data for China is used to examine how well the modelling fits the data. It is also clear in the case of China that there was the potential for a second wave of infection, where the infection rate rises above 1 again for a short period. This highlights the potential risks associated with reducing the lock down too early.
+
+Peak dates should be used with care. The analysis has a default minimum growth period of 38 days and a lag of 4 days that will be applied (if not over-ridden) where the peak is found in the latest smoothed data. Where this exceeds the minimum growth period, the latest smoothed data is assumed to represent the peak but this can mean that the peak will move forward each day if the number of cases or deaths then continues to increase over time. The report shows the effective growth and lag days within the smoothed data.
+
+Following the peak in new cases / peak deaths, there is a tendency for the modelling to over-estimate the numbers immediately after this. However, there is also a clear tendency where the actual number of cases / deaths does not fall off as quickly as the model. These two effects broadly offset each other. As new data is added, the modelling is updated and re-fitted to the latest smoothed data.
+

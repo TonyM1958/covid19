@@ -297,7 +297,7 @@ class Region :
         print()
         return
 
-    def plot(self, days=0, ylog=1, daily=1, infection=1, totals=0, tram=None, clip=16) :
+    def plot(self, days=0, ylog=1, daily=1, infection=1, totals=0, tram=None, clip=12) :
         """
         plot the graph of a property against the day reported
         """
@@ -331,6 +331,7 @@ class Region :
             plt.figure(figsize=self.figsize)
             plt.title(f"{self.geoId}\nInfection Rate, based on number of new cases compared to {self.spread} days earlier")
             plt.plot(dates, [r.get('s_r0') for r in self.data[days:]], color='brown', linestyle='solid')
+            plt.axhline(y=1, color='green', linestyle='dashed', linewidth=2, label='1')
             if self.s_r0_peak > clip : plt.ylim([0, clip])
             else : plt.ylim([0, 4 * (int(self.s_r0_peak / 4) + 1)])
             plt.xticks([self.s_start + datetime.timedelta(d) for d in range(0, len(self.sigmoid_cases),7)], rotation=90)
