@@ -1,7 +1,7 @@
 # covid19
 Analysis of public data on the spread of covid-19
 
-### Process
+## Process
 The analysis takes daily data from the European Centre for Disease Control (ECDC), generally updated for the previous day around 11am each day.
 
 The raw number of new cases and deaths reported each day is subject to data collection problems and can be very spiked. To cater for this, the processing generates a smoothed data set that is the average numbers being reported over a sliding window. By default, the sliding window is 9 days i.e. 4 days before and 4 days after a specific date.
