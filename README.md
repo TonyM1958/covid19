@@ -1,5 +1,5 @@
 # covid19
-Analysis of public data on the spread of covid-19:
+Analysis of public data on the spread of covid-19.
 * [jump to on-line notebook viewer](https://nbviewer.jupyter.org/github/TonyM1958/covid19/blob/master/covid.ipynb)
 
 ## Process
