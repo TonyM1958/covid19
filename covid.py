@@ -287,10 +287,10 @@ class Region :
         show records for last number of days
         """
         days = -days
-        print(f"\n                         Raw ----------------  Total ----------      Smoothed -----------  Total ----------")
-        print(f"Region      Date         Cases     Deaths      Cases     Deaths      Cases     Deaths      Cases     Deaths")
+        print(f"\n                Raw ----------------  Total ----------      Smoothed -----------  Total ----------")
+        print(f"Date            Cases     Deaths      Cases     Deaths      Cases     Deaths      Cases     Deaths")
         for r in self.data[days:] :
-            print(f"{self.geoId:8} {r.get('dateRep'):%Y-%m-%d} {r.get('cases'):>10,} {r.get('deaths'):>10,}" + \
+            print(f"{r.get('dateRep'):%Y-%m-%d} {r.get('cases'):>10,} {r.get('deaths'):>10,}" + \
                   f" {r.get('cases_to_date'):>10,} {r.get('deaths_to_date'):>10,}" + \
                   f" {num(r.get('s_cases'))} {num(r.get('s_deaths'))}" + \
                   f" {num(r.get('s_cases_to_date'))} {num(r.get('s_deaths_to_date'))}")
@@ -526,12 +526,12 @@ class Region :
         if days == 0 : days = self.s_end_days
         if days < 1 : return
         if self.s_end_days < 1 : return
-        print(f"\n                         Prediction ---------  Total ----------")
-        print(f"Region      Date         Cases     Deaths      Cases     Deaths")
+        print(f"\n                Prediction ---------  Total ----------")
+        print(f"Date            Cases     Deaths      Cases     Deaths")
         for d in range(start, days) :
             i = self.s_latest_days - self.s_start_days + d
             if i >= len(self.sigmoid_cases) : break
-            print(f"{self.geoId:8} {self.s_latest + datetime.timedelta(d):%Y-%m-%d}" + \
+            print(f"{self.s_latest + datetime.timedelta(d):%Y-%m-%d}" + \
                   f" {num(self.sigmoid_cases[i])} {num(self.sigmoid_deaths[i])}" + \
                   f" {num(self.sigmoid_cases_to_date[i])} {num(self.sigmoid_deaths_to_date[i])}")
         print()
