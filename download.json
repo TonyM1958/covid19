@@ -26077,6 +26077,18 @@
       "popData2018": "18729160"
     }, 
     { 
+      "dateRep": "17/04/2020",
+      "day": "17",
+      "month": "4",
+      "year": "2020",
+      "cases": "46",
+      "deaths": "0",
+      "countriesAndTerritories": "China",
+      "geoId": "CN",
+      "countryterritoryCode": "CHN",
+      "popData2018": "1392730000"
+    }, 
+    { 
       "dateRep": "16/04/2020",
       "day": "16",
       "month": "4",
@@ -64559,6 +64571,18 @@
       "geoId": "IL",
       "countryterritoryCode": "ISR",
       "popData2018": "8883800"
+    }, 
+    { 
+      "dateRep": "17/04/2020",
+      "day": "17",
+      "month": "4",
+      "year": "2020",
+      "cases": "3786",
+      "deaths": "525",
+      "countriesAndTerritories": "Italy",
+      "geoId": "IT",
+      "countryterritoryCode": "ITA",
+      "popData2018": "60431283"
     }, 
     { 
       "dateRep": "16/04/2020",
@@ -114565,6 +114589,18 @@
       "popData2018": "10975920"
     }, 
     { 
+      "dateRep": "17/04/2020",
+      "day": "17",
+      "month": "4",
+      "year": "2020",
+      "cases": "2157",
+      "deaths": "318",
+      "countriesAndTerritories": "Spain",
+      "geoId": "ES",
+      "countryterritoryCode": "ESP",
+      "popData2018": "46723749"
+    }, 
+    { 
       "dateRep": "16/04/2020",
       "day": "16",
       "month": "4",
@@ -127403,6 +127439,18 @@
       "geoId": "AE",
       "countryterritoryCode": "ARE",
       "popData2018": "9630959"
+    }, 
+    { 
+      "dateRep": "17/04/2020",
+      "day": "17",
+      "month": "4",
+      "year": "2020",
+      "cases": "4617",
+      "deaths": "861",
+      "countriesAndTerritories": "United_Kingdom",
+      "geoId": "UK",
+      "countryterritoryCode": "GBR",
+      "popData2018": "66488991"
     }, 
     { 
       "dateRep": "16/04/2020",
