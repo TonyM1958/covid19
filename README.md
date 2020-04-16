@@ -3,7 +3,7 @@ Analysis of public data on the spread of covid-19:
 * [jump to on-line notebook viewer](https://nbviewer.jupyter.org/github/TonyM1958/covid19/blob/master/covid.ipynb)
 
 ## Process
-The analysis takes daily data from the [European Centre for Disease Control (ECDC)][(https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide), generally updated for the previous day around 11am each day.
+The analysis takes daily data from the [European Centre for Disease Control (ECDC)](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide), which is generally updated for the previous day around 11am daily.
 
 The raw number of new cases and deaths reported each day is subject to data collection problems and can be very spiked. To cater for this, the processing generates a smoothed data set that is the average numbers being reported over a sliding window. By default, the sliding window is 9 days i.e. 4 days before and 4 days after a specific date.
 
