@@ -91,7 +91,7 @@ class Region :
     """
     Holds the data about a region
     """    
-    def __init__(self, geoId='UK', smooth=9, growth_days=38, lag=4, spread=7, trend_days=0, step=0.1, r_cases=0, r_deaths=0, figwidth=12, dilation=1, debug=0) :
+    def __init__(self, geoId='UK', smooth=9, growth_days=38, lag=4, spread=7, trend_days=0, step=0.1, r_cases=0, r_deaths=0, figwidth=12, dilation=2.5, debug=0) :
         # check parameters
         self.debug = debug
         if geoId not in region_codes :
@@ -105,7 +105,7 @@ class Region :
         self.spread = spread                  # number of days a person may infect others
         self.trend_days = trend_days          # number of days to look back when predicting cases and deaths
         self.step = step                      # step change in r to use when working out best fit
-        self.dilation = dilation
+        self.dilation = dilation              # dilutes the drop off after peak
         self.figsize = (figwidth, figwidth * 9 / 16)     # size of charts
         # load dat
         self.data = load(geoId)
@@ -396,26 +396,40 @@ class Region :
         """
         lag = self.lag if offset == 1 else 0
         x = 2 * (day - self.s_start_days - lag) - self.cycle
-#        if x > 0 : x *= self.dilation
+        if x > 0 : x /= self.dilation
         return x / self.cycle
+
+    def bell_A(self, L, r, d, offset) :
+        """
+        return the value of the sigmoid function 
+        """
+        x = self.t(d, offset)
+        A = L * math.exp(r * x) / (1 + math.exp(r * x)) ** 2
+        return A
 
     def sigmoid_A(self, L, r, d, offset) :
         """
         return the value of the sigmoid function 
         """
-        return L / (1 + math.exp( -1 * r * self.t(d, offset)))
+        x = self.t(d, offset)
+        A = L / (1 + math.exp( -1 * r * x))
+        return A
 
     def sigmoid_L(self, A, r, d, offset) :
         """
         given a result, return the sigmoid parameter L
         """
-        return A * (1 + math.exp( -1 * r * self.t(d, offset)))
+        x = self.t(d, offset)
+        L = A * (1 + math.exp( -1 * r * x))
+        return L
 
     def sigmoid_r(self, L, A, d, offset) :
         """
         given a result, return the sigmoid parameter r
         """
-        return -1 * math.log(L/A - 1) / self.t(d, offset)
+        x = self.t(d, offset)
+        r = -1 * math.log(L/A - 1) / x
+        return r
 
     def rms_error(self, day1, day2, L, r, offset) :
         """
@@ -520,16 +534,31 @@ class Region :
         self.fit_deaths(day1, day2)
         self.trend = day2 - day1
         # generate data points, starting with point -1 so we can get a delta for new cases / deaths
-        cases_to_date = []
-        deaths_to_date = []
-        for d in range(-1, self.cycle) :
-            cases_to_date.append(self.sigmoid_A(self.L_cases, self.r_cases, d + self.s_start_days, 0))
-            deaths_to_date.append(self.sigmoid_A(self.L_deaths, self.r_deaths, d + self.s_start_days, 1))
-        self.sigmoid_cases_to_date = cases_to_date[1:]
-        self.sigmoid_deaths_to_date = deaths_to_date[1:]
+        cases = []
+        cases_to_date = 0
+        deaths = []
+        deaths_to_date = 0
         for d in range(0, self.cycle) :
-            self.sigmoid_cases.append(cases_to_date[d+1] - cases_to_date[d])
-            self.sigmoid_deaths.append(deaths_to_date[d+1] - deaths_to_date[d])
+            cases.append(self.bell_A(self.L_cases, self.r_cases, self.s_start_days + d, 0))
+            deaths.append(self.bell_A(self.L_deaths, self.r_deaths, self.s_start_days + d, 1))
+            if self.s_start_days + d <= self.s_latest_days :
+                cases_to_date += cases[-1]
+                deaths_to_date += deaths[-1]
+        self.sigmoid_cases = []
+        self.sigmoid_cases_to_date = []
+        self.sigmoid_deaths = []
+        self.sigmoid_deaths_to_date = []
+        cases_rescale = self.data[self.s_latest_days].get('s_cases_to_date') / cases_to_date
+        deaths_rescale = self.data[self.s_latest_days]. get('s_deaths_to_date') / deaths_to_date
+        cases_to_date = 0
+        deaths_to_date = 0
+        for d in range(0, self.cycle) :
+            self.sigmoid_cases.append(cases[d] * cases_rescale)
+            self.sigmoid_deaths.append(deaths[d] * deaths_rescale)
+            cases_to_date += self.sigmoid_cases[-1]
+            deaths_to_date += self.sigmoid_deaths[-1]
+            self.sigmoid_cases_to_date.append(cases_to_date)
+            self.sigmoid_deaths_to_date.append(deaths_to_date)
         return
 
     def prediction(self, days=0, start=0) :
