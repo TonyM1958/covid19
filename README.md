@@ -40,6 +40,6 @@ A second chart separately shows the infection rate based on the smoothed number 
 ## Observations
 Peak dates need to be used with care: the analysis assumes a minimum growth period and a lag if the peak is found at the end of the smoothed data. Where these periods have already elapsed, the latest smoothed data is assumed to be the peak but this can mean that the peak moves forward each day if the number of new cases or deaths continues to increase. The analysis reports the actual growth and lag periods derrived from the smoothed data.
 
-Following the peak in new cases / peak deaths, there is a tendency for the numbers to remain high i.e. flatten off rather than drop off that results in under estimation of the predictions. To cater for this, the sigmoid function includes an option to reduce the drop off to improve the tracking of the actual data (dilation).
+Following the peak in new cases / peak deaths, there is a tendency for the numbers to remain high i.e. flatten off rather than drop off. This results in the predictions being lower than the actual data. To cater for this, the sigmoid function includes an option to reduce the drop off of the curve to improve tracking of the data (dilation).
 
 As new data is added daily, the modelling is re-fitted and the predictions are updated.
