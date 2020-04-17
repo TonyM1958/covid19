@@ -19,7 +19,7 @@ From this, a number of metrics are created:
 * Lag: the number of days between the peak number of cases and deaths
 * Spread: the infection rate, based on comparing the number of new cases reported with the number from 7 days earlier
 
-The processing fits a simple logistical population model to the data, based on the formula A = L / (1 + exp(-rt)). This produces an S-curve when the cumulative number of cases / deaths is viewed and a bell distribution when the number of new cases / deaths is viewed. This model is used to extrapolate from the data to predict the expected progress of the infection, total number of cases and deaths reported by the 'end date'.
+The processing fits a [sigmoid curve / logistic function](https://en.wikipedia.org/wiki/Logistic_function) A = L / (1 + exp(-rt)) to the available data. This produces an S-curve for the cumulative number of cases / deaths and a bell distribution for the new cases / deaths. These curves are used to extrapolate the potential progress of the infection.
 
 ## Charts
 The analysis plots the number of new cases / new deaths over time, on a logarithmic scale. This includes the following elements:
@@ -38,8 +38,6 @@ A number of date markers are also added:
 A second chart separately shows the infection rate based on the smoothed number of new cases being reported compared to 7 days earlier. The infection rate of 1 is shown as a green horizontal line.
 
 ## Observations
-The data for China benchmarks how well the modelling works. It is also clear from the data that there was the potential for a second wave of infection, highlighting the potential risks associated with reducing the lock down too early.
+Peak dates need to be used with care: the analysis assumes a minimum growth period and a lag if the peak is found at the end of the smoothed data. Where these periods have already elapsed, the latest smoothed data is assumed to be the peak but this can mean that the peak moves forward each day if the number of new cases or deaths continues to increase. The analysis reports the actual growth and lag periods derrived from the smoothed data.
 
-Peak dates should be used with care. The analysis assumes a minimum growth period of 38 days and a lag of 4 days that will be applied (if not over-ridden) if the peak is found in the latest smoothed data. Where this happens, the latest smoothed data is assumed to represent the peak but this can mean that the peak moves forward each day if the number of new cases or deaths continues to increase. The report shows the actual growth and lag derrived from analysis of the smoothed data.
-
-Following the peak in new cases / peak deaths, there is a tendency for the modelling to over-estimate the numbers. However, there is also a clear tendency for the actual numbers not to fall off as quickly as the model. These two effects broadly offset each other. As new data is added, the modelling is updated and re-fitted against the latest smoothed data.
+Following the peak in new cases / peak deaths, it is clear there is a tendency for the modelling to over-estimate. However, it is also common for actual numbers not to fall off as quickly as the model. These two effects broadly offset each other. As new data is added daily, the modelling is re-fitted and the predictions are updated.
