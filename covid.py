@@ -549,7 +549,9 @@ class Region :
         self.sigmoid_deaths = []
         self.sigmoid_deaths_to_date = []
         cases_rescale = self.data[self.s_latest_days].get('s_cases_to_date') / cases_to_date
+        if self.debug > 0 : print(f"cases_rescale = {cases_rescale}")
         deaths_rescale = self.data[self.s_latest_days]. get('s_deaths_to_date') / deaths_to_date
+        if self.debug > 0 : print(f"deaths_rescale = {deaths_rescale}")
         cases_to_date = 0
         deaths_to_date = 0
         for d in range(0, self.cycle) :
