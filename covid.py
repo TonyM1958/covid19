@@ -91,7 +91,7 @@ class Region :
     """
     Holds the data about a region
     """    
-    def __init__(self, geoId='UK', smooth=9, growth_days=38, lag=4, spread=7, trend_days=0, step=0.1, r_cases=0, r_deaths=0, figwidth=12, dilation=2.5, debug=0) :
+    def __init__(self, geoId='UK', smooth=9, growth_days=38, lag=4, spread=7, dilation=2, r_cases=0, r_deaths=0, figwidth=12, debug=0) :
         # check parameters
         self.debug = debug
         if geoId not in region_codes :
@@ -103,8 +103,6 @@ class Region :
         self.r_cases = r_cases                # sigmoid range for cases e.g 1 + exp(-rt) for t = -1 to +1 
         self.r_deaths = r_deaths              # sigmoid range for deaths e.g 1 + exp(-rt) for t = -1 to +1
         self.spread = spread                  # number of days a person may infect others
-        self.trend_days = trend_days          # number of days to look back when predicting cases and deaths
-        self.step = step                      # step change in r to use when working out best fit
         self.dilation = dilation              # dilutes the drop off after peak
         self.figsize = (figwidth, figwidth * 9 / 16)     # size of charts
         # load dat
@@ -246,8 +244,8 @@ class Region :
             self.lag = self.s_peak_death_days - self.s_peak_case_days
         if self.debug > 0 :
             print(f"> peak deaths: {int(peak):,} on {self.s_peak_deaths:%Y-%m-%d} {self.s_peak_death_days+1} days")
-        # build predictions using sigmoid population curves
-        self.build_sigmoid()
+        # build predictions using bell population curves
+        self.build_bell()
         return
 
     def report(self) :
@@ -275,8 +273,7 @@ class Region :
         print(f"  Growth:      {self.growth_days} days (Start -> Peak Cases) ")
         if self.s_total_deaths >= 50 :
             print(f"  Lag:         {self.lag} days (Peak Cases -> Peak Deaths) ")
-            print(f"  Prediction:  Cases L = {int(self.L_cases):,} r = {round(self.r_cases,2)} (over {self.trend_days} days)")
-            print(f"               Deaths L = {int(self.L_deaths):,} r = {round(self.r_deaths,2)} (over {self.trend_days} days)")
+            print(f"  Prediction:  Cases L = {int(self.L_cases):,} r = {round(self.r_cases,2)}, Deaths L = {int(self.L_deaths):,} r = {round(self.r_deaths,2)}")
             print()
             if self.s_end_days < 0 :
                 d = self.s_end_days
@@ -287,9 +284,9 @@ class Region :
                 print(f"Outcome: {cases:,} cases, {deaths:,} deaths at end of {self.data[d].get('dateRep'):%Y-%m-%d}")
                 print(f"  {cases_rate:,} cases per million, {death_rate:,} deaths per million (population = {self.population:,})")
             else :
-                cases = int(self.sigmoid_cases_to_date[-1])
+                cases = int(self.bell_cases_to_date[-1])
                 cases_rate = int(round(cases * 1000000 / self.population, 0))
-                deaths = int(self.sigmoid_deaths_to_date[-1])
+                deaths = int(self.bell_deaths_to_date[-1])
                 death_rate = int(round(deaths * 1000000 / self.population, 0))
                 print(f"Outcome: {cases:,} cases, {deaths:,} deaths at end of {self.s_end:%Y-%m-%d}")
                 print(f"  {cases_rate:,} cases per million, {death_rate:,} deaths per million (population = {self.population:,})")
@@ -312,14 +309,14 @@ class Region :
         print()
         return
 
-    def plot(self, days=0, ylog=1, daily=1, infection=1, totals=0, clip=12) :
+    def plot(self, days=0, ylog=0, daily=1, infection=1, totals=0, clip=12) :
         """
         plot the graph of a property against the day reported
         """
         if days == 0 : days = self.s_start_days
         else : days = -days
         dates = [r.get('dateRep') for r in self.data[days:]]
-        date_range = [self.s_start + datetime.timedelta(d) for d in range(0, max(len(self.data[self.s_start_days:]), len(self.sigmoid_cases)),7)]
+        date_range = [self.s_start + datetime.timedelta(d) for d in range(0, max(len(self.data[self.s_start_days:]), len(self.bell_cases)),7)]
         # plot daily data
         if daily == 1 :
             plt.figure(figsize=self.figsize)
@@ -331,8 +328,8 @@ class Region :
             plt.axvline(self.s_start, color='grey', linestyle='dashed', linewidth=2, label='start')
             if self.s_total_deaths >= 50 : 
                 plt.axvline(self.s_day0, color='tan', linestyle='dashed', linewidth=2, label='day0')
-                plt.plot([self.s_start + datetime.timedelta(d) for d in range(0, len(self.sigmoid_cases))], self.sigmoid_cases, color='grey', linestyle='dashed')
-                plt.plot([self.s_start + datetime.timedelta(d) for d in range(0, len(self.sigmoid_deaths))], self.sigmoid_deaths, color='grey', linestyle='dashed')
+                plt.plot([self.s_start + datetime.timedelta(d) for d in range(0, len(self.bell_cases))], self.bell_cases, color='grey', linestyle='dashed')
+                plt.plot([self.s_start + datetime.timedelta(d) for d in range(0, len(self.bell_deaths))], self.bell_deaths, color='grey', linestyle='dashed')
                 plt.axvline(self.s_peak_deaths, color='tan', linestyle='dashed', linewidth=2, label='peak')
             plt.axvline(self.s_peak_cases, color='grey', linestyle='dashed', linewidth=2, label='peak')
             plt.axvline(self.s_end, color='grey', linestyle='dashed', linewidth=2, label='end')
@@ -351,7 +348,7 @@ class Region :
             if self.s_r0_peak > clip : plt.ylim([0, clip])
             else : plt.ylim([0, 4 * (int(self.s_r0_peak / 4) + 1)])
             if self.s_total_deaths >= 50 : 
-                plt.xticks([self.s_start + datetime.timedelta(d) for d in range(0, len(self.sigmoid_cases),7)], rotation=90)
+                plt.xticks([self.s_start + datetime.timedelta(d) for d in range(0, len(self.bell_cases),7)], rotation=90)
                 plt.axvline(self.latest, color='green', linestyle='dashed', linewidth=2, label='now')
                 plt.axvline(self.s_start, color='grey', linestyle='dashed', linewidth=2, label='start')
                 plt.axvline(self.s_day0, color='tan', linestyle='dashed', linewidth=2, label='day0')
@@ -375,9 +372,9 @@ class Region :
             plt.axvline(self.s_start, color='grey', linestyle='dashed', linewidth=2, label='start')
             if self.s_total_deaths >= 50 : 
                 plt.axvline(self.s_day0, color='tan', linestyle='dashed', linewidth=2, label='day0')
-                plt.plot([self.s_start + datetime.timedelta(d) for d in range(0, len(self.sigmoid_cases_to_date))], self.sigmoid_cases_to_date, color='grey', linestyle='dashed')
-                plt.plot([self.s_start + datetime.timedelta(d) for d in range(0, len(self.sigmoid_deaths_to_date))], self.sigmoid_deaths_to_date, color='grey', linestyle='dashed')
-                plt.xticks([self.s_start + datetime.timedelta(d) for d in range(0, len(self.sigmoid_cases),7)], rotation=90)
+                plt.plot([self.s_start + datetime.timedelta(d) for d in range(0, len(self.bell_cases_to_date))], self.bell_cases_to_date, color='grey', linestyle='dashed')
+                plt.plot([self.s_start + datetime.timedelta(d) for d in range(0, len(self.bell_deaths_to_date))], self.bell_deaths_to_date, color='grey', linestyle='dashed')
+                plt.xticks([self.s_start + datetime.timedelta(d) for d in range(0, len(self.bell_cases),7)], rotation=90)
                 plt.axvline(self.s_peak_deaths, color='tan', linestyle='dashed', linewidth=2, label='peak')
             plt.axvline(self.s_peak_cases, color='grey', linestyle='dashed', linewidth=2, label='peak')
             plt.axvline(self.s_end, color='grey', linestyle='dashed', linewidth=2, label='end')
@@ -392,7 +389,7 @@ class Region :
     def t (self, day, offset) :
         """
         return the scaled time in a cycle for a day. Start t = -1 to End t = +1
-        dilation is applied after the peak to extend the decay time
+        dilation, if set, is applied after t = 0 to extend the decay time
         """
         lag = self.lag if offset == 1 else 0
         x = 2 * (day - self.s_start_days - lag) - self.cycle
@@ -401,91 +398,70 @@ class Region :
 
     def bell_A(self, L, r, d, offset) :
         """
-        return the value of the sigmoid function 
+        return points in the bell shaped distribution curve that is the derritative of the sigmoid function 
         """
         x = self.t(d, offset)
-        A = L * math.exp(r * x) / (1 + math.exp(r * x)) ** 2
+        A = L * math.exp(-1 * r * x) / (1 + math.exp(-1 * r * x)) ** 2
         return A
 
-    def sigmoid_A(self, L, r, d, offset) :
+    def bell_L(self, A, r, d, offset) :
         """
-        return the value of the sigmoid function 
-        """
-        x = self.t(d, offset)
-        A = L / (1 + math.exp( -1 * r * x))
-        return A
-
-    def sigmoid_L(self, A, r, d, offset) :
-        """
-        given a result, return the sigmoid parameter L
+        given a distribution point, work out L
         """
         x = self.t(d, offset)
-        L = A * (1 + math.exp( -1 * r * x))
+        L = A * (1 + math.exp(-1 * r * x)) ** 2 / math.exp(-1 * r * x)
         return L
 
-    def sigmoid_r(self, L, A, d, offset) :
+    def abs_error(self, L, r, offset) :
         """
-        given a result, return the sigmoid parameter r
+        calculate the average absolute error between the smoothed data and bell distribution function:
         """
-        x = self.t(d, offset)
-        r = -1 * math.log(L/A - 1) / x
-        return r
-
-    def rms_error(self, day1, day2, L, r, offset) :
-        """
-        calculate root mean square error between the smoothed data and sigmoid function:
-        """
-        name = 's_cases_to_date' if offset == 0 else 's_deaths_to_date'
+        name = 's_cases' if offset == 0 else 's_deaths'
         n = 0
         result = 0
-        d = day1
-        while d <= day2 :
+        d = self.s_start_days
+        if self.s_end_days < self.s_latest_days : d2 = self.s_end_days
+        else : d2 = self.s_latest_days
+        while d <= d2 : 
             if self.data[d].get(name) is not None :
-                result += (self.data[d].get(name) - self.sigmoid_A(L, r, d, offset)) ** 2
+                result += abs(self.data[d].get(name) - self.bell_A(L, r, d, offset))
                 n += 1
             d += 1
         if n == 0 : return None
-        else : return result ** 0.5 / n
+        else : return result / n
 
-    def adjust_r(self, day1, day2, L, r, offset, tries=0) :
+    def bell_r(self, L, r, offset, tries=0) :
         """
-        adjust r for lowest rms error to smoothed data
+        try to work out the best fit value for r
         """
         cases = 'Cases' if offset == 0 else 'Deaths'
-        x = self.rms_error(day1, day2, L, r, offset)
-        if self.debug > 0 : print(f"> {cases} {tries}: L = {int(L):,}, r = {round(r, 2)}, error = {x}")
-        best_r = r
-        error = x
-        trend = -1
-        while True :
-            r += self.step
-            x = self.rms_error(day1, day2, L, r, offset)
-            if x < error :
-                if self.debug > 0 : print(f"> {cases} {tries}: L = {int(L):,}, r = {round(r, 2)}, error = {x}")
-                error = x
-                best_r = r
-                trend = 1
-            else : break
-        while trend == -1 :
-            r -= self.step
-            x = self.rms_error(day1, day2, L, r, offset)
-            if x < error :
-                if self.debug > 0 : print(f"> {cases} {tries}: L = {int(L):,}, r = {round(r, 2)}, error = {x}")
-                error = x
-                best_r = r
-            else : break
-        return best_r
+        n = 20
+        step = 2.0
+        while step > 0.01 and n > 0 :
+            n -= 1
+            x0 = self.abs_error(L, r, offset)
+            x1 = self.abs_error(L, r + step, offset)
+            x2 = self.abs_error(L, r - step, offset)
+            if x1 < x0 and x1 < x2 :
+                r += step
+            elif x2 < x0 and x2 < x1 :
+                r -= step
+            else :
+                step /= 2
+        if self.debug > 0 : print(f"> {cases} {tries}: L = {int(L):,}, r = {round(r, 2)}")
+        if r < 4.0 : return 4.0
+        if r > 8.0 : return 8.0
+        return r
 
-    def fit_cases(self, day1, day2) :
+    def fit_cases(self, day) :
         # fit L_cases and r_cases to smoothed data
         previous_L = 0.0
         previous_r = 0.0
         tries = 0
         if self.r_cases == 0 : self.r_cases = 6
-        while tries < 20 :
-            self.L_cases = self.sigmoid_L(self.data[day2].get('s_cases_to_date'), self.r_cases, day2, 0)
-            self.r_cases = self.sigmoid_r(self.L_cases, self.data[day1].get('s_cases_to_date'), day1, 0)
-            self.r_cases = self.adjust_r(day1, day2, self.L_cases, self.r_cases, 0, tries)
+        while tries < 10 :
+            self.L_cases = self.bell_L(self.data[day].get('s_cases'), self.r_cases, day, 0)
+            self.r_cases = self.bell_r(self.L_cases, self.r_cases, 0, tries)
             if int(self.L_cases) == previous_L and round(self.r_cases, 2) == previous_r : break
             previous_L = int(self.L_cases)
             previous_r = round(self.r_cases,2)
@@ -493,16 +469,15 @@ class Region :
         if tries >= 20 : print(f"** fit_cases did not converge")
         return
         
-    def fit_deaths(self, day1, day2) :
+    def fit_deaths(self, day) :
         # fit L_deaths and r_deaths to smoothed data
         previous_L = 0.0
         previous_r = 0.0
         tries = 0
-        if self.r_deaths == 0 : self.r_deaths = 8
-        while tries < 20 :
-            self.L_deaths = self.sigmoid_L(self.data[day2].get('s_deaths_to_date'), self.r_deaths, day2, 1)
-            self.r_deaths = self.sigmoid_r(self.L_deaths, self.data[day1].get('s_deaths_to_date'), day1, 1)
-            self.r_deaths = self.adjust_r(day1, day2, self.L_deaths, self.r_deaths, 1, tries)
+        if self.r_deaths == 0 : self.r_deaths = 6
+        while tries < 10 :
+            self.L_deaths = self.bell_L(self.data[day].get('s_deaths'), self.r_deaths, day, 1)
+            self.r_deaths = self.bell_r(self.L_deaths, self.r_deaths, 1, tries)
             if int(self.L_deaths) == previous_L and round(self.r_deaths, 2) == previous_r : break
             previous_L = int(self.L_deaths)
             previous_r = round(self.r_deaths, 2)
@@ -510,29 +485,27 @@ class Region :
         if tries >= 20 : print(f"** fit_deaths did not converge")
         return
 
-    def build_sigmoid(self) :
+    def build_bell(self) :
         """
         use a sigmoid population function to model the smoothed total number of cases / deaths.
         The function is y = L / (1 + exp(-rt)) where t = -1 at the start and +1 at the end. This produces
         an S curve that starts at 0 and tends to L at the end. The differential of the S curve is a bell
         curve that describes the daily changes in cases / deaths. Both curves are held from start day.
         """
-        self.sigmoid_cases = []
-        self.sigmoid_cases_to_date = []
-        self.sigmoid_deaths = []
-        self.sigmoid_deaths_to_date = []
+        self.bell_cases = []
+        self.bell_cases_to_date = []
+        self.bell_deaths = []
+        self.bell_deaths_to_date = []
         self.L_cases = None
         self.L_deaths = None
         if self.s_total_deaths < 50 :
             return
-        day2 = self.s_end_days if self.s_end_days < self.s_latest_days else self.s_latest_days
-        if self.trend_days == 0 :
-            day1 = self.s_day0_days
-            self.trend_days = day2 - day1
-        else : day1 = day2 - self.trend_days
-        self.fit_cases(day1, day2)
-        self.fit_deaths(day1, day2)
-        self.trend = day2 - day1
+        if self.s_peak_case_days < self.s_latest_days : d = self.s_peak_case_days
+        else : d = self.s_latest_days
+        self.fit_cases(d)
+        if self.s_peak_death_days < self.s_latest_days : d = self.s_peak_death_days
+        else : d = self.s_latest_days
+        self.fit_deaths(d)
         # generate data points, starting with point -1 so we can get a delta for new cases / deaths
         cases = []
         cases_to_date = 0
@@ -544,28 +517,24 @@ class Region :
             if self.s_start_days + d <= self.s_latest_days :
                 cases_to_date += cases[-1]
                 deaths_to_date += deaths[-1]
-        self.sigmoid_cases = []
-        self.sigmoid_cases_to_date = []
-        self.sigmoid_deaths = []
-        self.sigmoid_deaths_to_date = []
-        cases_rescale = self.data[self.s_latest_days].get('s_cases_to_date') / cases_to_date
+        cases_rescale = self.s_total_cases / cases_to_date
         if self.debug > 0 : print(f"cases_rescale = {cases_rescale}")
-        deaths_rescale = self.data[self.s_latest_days]. get('s_deaths_to_date') / deaths_to_date
+        deaths_rescale = self.s_total_deaths / deaths_to_date
         if self.debug > 0 : print(f"deaths_rescale = {deaths_rescale}")
         cases_to_date = 0
         deaths_to_date = 0
         for d in range(0, self.cycle) :
-            self.sigmoid_cases.append(cases[d] * cases_rescale)
-            self.sigmoid_deaths.append(deaths[d] * deaths_rescale)
-            cases_to_date += self.sigmoid_cases[-1]
-            deaths_to_date += self.sigmoid_deaths[-1]
-            self.sigmoid_cases_to_date.append(cases_to_date)
-            self.sigmoid_deaths_to_date.append(deaths_to_date)
+            self.bell_cases.append(cases[d] * cases_rescale)
+            self.bell_deaths.append(deaths[d] * deaths_rescale)
+            cases_to_date += self.bell_cases[-1]
+            deaths_to_date += self.bell_deaths[-1]
+            self.bell_cases_to_date.append(cases_to_date)
+            self.bell_deaths_to_date.append(deaths_to_date)
         return
 
     def prediction(self, days=0, start=0) :
         """
-        use the sigmoid curves to predict future cases / deaths
+        use the bell curves to predict future cases / deaths
         """
         if self.s_total_deaths < 50 : return
         if days == 0 : days = self.s_end_days
@@ -576,14 +545,14 @@ class Region :
         print(f"Date          Cases   Deaths    Cases  Deaths")
         for d in range(start, days) :
             i = self.s_latest_days - self.s_start_days + d
-            if i >= len(self.sigmoid_cases) : break
+            if i >= len(self.bell_cases) : break
             print(f"{self.s_latest + datetime.timedelta(d):%Y-%m-%d}" + \
-                  f" {num(self.sigmoid_cases[i])} {num(self.sigmoid_deaths[i])}" + \
-                  f" {num(self.sigmoid_cases_to_date[i])} {num(self.sigmoid_deaths_to_date[i])}")
+                  f" {num(self.bell_cases[i])} {num(self.bell_deaths[i])}" + \
+                  f" {num(self.bell_cases_to_date[i])} {num(self.bell_deaths_to_date[i])}")
         print()
         return
 
-    def analyse(self, days=14, predict=14, ylog=1, daily=1, infection=1, totals=0) :
+    def analyse(self, days=14, predict=14, ylog=0, daily=1, infection=1, totals=0) :
         self.report()
         self.plot(ylog=ylog, daily=daily, infection=infection, totals=totals)
         self.show(days=days)
