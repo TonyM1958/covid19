@@ -19,7 +19,7 @@ From this, a number of metrics are created:
 * Lag: the number of days between the peak number of cases and deaths
 * Spread: the infection rate, based on comparing the number of new cases reported with the number from 7 days earlier
 
-The processing fits a [sigmoid curve / logistic function](https://en.wikipedia.org/wiki/Logistic_function) A = L / (1 + exp(-rt)) to the available data. This produces an S-curve for the cumulative number of cases / deaths and a bell distribution for the new cases / deaths. These curves are used to extrapolate the potential progress of the infection.
+The processing fits a [sigmoid curve / logistic distribution](https://en.wikipedia.org/wiki/Logistic_distribution) to the data. This produces a bell distribution for the new cases / deaths and an S-curve for the cumulative number of cases / deaths. These curves are used to extrapolate the potential progress of the infection.
 
 ## Charts
 The analysis plots the number of new cases / new deaths over time, on a logarithmic scale. This includes the following elements:
@@ -38,8 +38,8 @@ A number of date markers are also added:
 A second chart separately shows the infection rate based on the smoothed number of new cases being reported compared to 7 days earlier. The infection rate of 1 is shown as a green horizontal line.
 
 ## Observations
-Peak dates need to be used with care: the analysis assumes a minimum growth period and a lag if the peak is found at the end of the smoothed data. Where these periods have already elapsed, the latest smoothed data is assumed to be the peak but this can mean that the peak moves forward each day if the number of new cases or deaths continues to increase. The analysis reports the actual growth and lag periods derrived from the smoothed data.
+Peak dates need to be used with care: the analysis assumes a minimum growth period and a lag if the peak is found at the end of the smoothed data. Where these minumum periods have elapsed, the latest smoothed data point will be assumed to be the peak. However, this can mean that the peak moves forward each day where the number of new cases or deaths continues to increase. The analysis reports the growth and lag periods observed in the smoothed data.
 
-Following the peak in new cases / peak deaths, there is a tendency for the numbers to remain high i.e. flatten off rather than drop off. This results in the predictions being lower than the actual data. To cater for this, the sigmoid function includes an option to reduce the drop off of the curve to improve tracking of the data (dilation).
+Following the peak in new cases / deaths, there is a trend for the numbers to flatten rather than drop off (could this be an effect of the lock down constraining but not stopping the infection?). The result of this is the predictions being lower than the actual data. To model this, the prediction has a 'dilation' parameter that can be adjusted to track the data. This stretches the distribution model time axis following the peak, slowing the drop off.
 
 As new data is added daily, the modelling is re-fitted and the predictions are updated.
