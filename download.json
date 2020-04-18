@@ -49391,6 +49391,17 @@
       "geoId": "GE",
       "countryterritoryCode": "GEO",
       "popData2018": "3731000"
+    },     { 
+      "dateRep": "19/04/2020",
+      "day": "19",
+      "month": "4",
+      "year": "2020",
+      "cases": "1217",
+      "deaths": "53",
+      "countriesAndTerritories": "Germany",
+      "geoId": "DE",
+      "countryterritoryCode": "DEU",
+      "popData2018": "82927922"
     }, 
     { 
       "dateRep": "18/04/2020",
@@ -66901,6 +66912,17 @@
       "popData2018": "8883800"
     }, 
     { 
+      "dateRep": "19/04/2020",
+      "day": "19",
+      "month": "4",
+      "year": "2020",
+      "cases": "3491",
+      "deaths": "482",
+      "countriesAndTerritories": "Italy",
+      "geoId": "IT",
+      "countryterritoryCode": "ITA",
+      "popData2018": "60431283"
+    },     { 
       "dateRep": "18/04/2020",
       "day": "18",
       "month": "4",
@@ -118799,6 +118821,18 @@
       "geoId": "SS",
       "countryterritoryCode": "SSD",
       "popData2018": "10975920"
+    }, 
+    { 
+      "dateRep": "19/04/2020",
+      "day": "19",
+      "month": "4",
+      "year": "2020",
+      "cases": "887",
+      "deaths": "41",
+      "countriesAndTerritories": "Spain",
+      "geoId": "ES",
+      "countryterritoryCode": "ESP",
+      "popData2018": "46723749"
     }, 
     { 
       "dateRep": "18/04/2020",

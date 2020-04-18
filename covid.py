@@ -31,7 +31,7 @@ import math
 import matplotlib.pyplot as plt
 
 json_data = None        # string containing json data downloaded from web site
-region_codes = ['UK', 'FR', 'IT', 'DE', 'ES', 'US', 'CN', 'KR', 'JP', 'NZ']
+region_codes = ['UK', 'FR', 'IT', 'DE', 'ES', 'US', 'CN', 'KR', 'JP', 'NZ', 'RU']
 
 def average(lst): 
     """
@@ -215,7 +215,10 @@ class Region :
                 self.s_peak_cases = self.data[i].get('dateRep')
                 self.s_peak_case_days = i - self.count
         # check if peak cases was found. Predict using growth days if not
-        if self.s_peak_case_days >= self.s_latest_days and self.s_peak_case_days - self.s_start_days < self.growth_days:
+        if self.s_peak_case_days is None :
+            self.s_peak_case_days = self.s_start_days + self.growth_days
+            self.s_peak_cases = self.s_start + datetime.timedelta(self.growth_days)
+        elif self.s_peak_case_days >= self.s_latest_days and self.s_peak_case_days - self.s_start_days < self.growth_days:
             self.s_peak_case_days = self.s_start_days + self.growth_days
             self.s_peak_cases = self.s_start + datetime.timedelta(self.growth_days)
         else :
@@ -236,7 +239,10 @@ class Region :
                 self.s_peak_deaths = self.data[i].get('dateRep')
                 self.s_peak_death_days = i
         # check if peak deaths was found. Predict using lag if not
-        if self.s_peak_death_days >= self.s_peak_case_days and self.s_peak_death_days >= self.s_latest_days and self.s_peak_death_days - self.s_peak_case_days < self.lag:
+        if self.s_peak_death_days is None :
+            self.s_peak_death_days = self.s_peak_case_days + self.lag
+            self.s_peak_deaths = self.s_peak_cases + datetime.timedelta(self.lag)
+        elif self.s_peak_death_days >= self.s_peak_case_days and self.s_peak_death_days >= self.s_latest_days and self.s_peak_death_days - self.s_peak_case_days < self.lag:
             self.s_peak_death_days = self.s_peak_case_days + self.lag
             self.s_peak_deaths = self.s_peak_cases + datetime.timedelta(self.lag)
         else :
@@ -267,13 +273,14 @@ class Region :
         print()
         print(f"Parameters:")
         print(f"  Totals:      {self.data[self.s_latest_days].get('cases_to_date'):,} cases and {self.data[self.s_latest_days].get('deaths_to_date'):,} deaths at end of {self.s_latest:%Y-%m-%d}")
-        print(f"  Smoothed:    {int(self.s_total_cases):,} cases and {int(self.s_total_deaths):,} deaths at end of {self.s_latest:%Y-%m-%d} ({self.smooth} adjacent points)")
+        print(f"  Smoothed:    {int(self.s_total_cases):,} cases and {int(self.s_total_deaths):,} deaths at end of {self.s_latest:%Y-%m-%d} ({self.smooth} points)")
         print(f"  Spread:      Peak infection rate {self.s_r0_peak} ({self.s_r0_peak_date:%Y-%m-%d}, compared to {self.spread} days earlier)")
         print(f"               Latest infection rate {self.s_r0_latest} ({self.s_r0_latest_date:%Y-%m-%d}, compared to {self.spread} days earlier)")
         print(f"  Growth:      {self.growth_days} days (Start -> Peak Cases) ")
         if self.s_total_deaths >= 50 :
             print(f"  Lag:         {self.lag} days (Peak Cases -> Peak Deaths) ")
-            print(f"  Prediction:  Cases L = {int(self.L_cases):,} r = {round(self.r_cases,2)}, Deaths L = {int(self.L_deaths):,} r = {round(self.r_deaths,2)}")
+            print(f"  Prediction:  Cases L = {int(self.L_cases):,} r = {round(self.r_cases,2)}, dilation = {self.dilation}")
+            print(f"               Deaths L = {int(self.L_deaths):,} r = {round(self.r_deaths,2)}, dilation = {self.dilation}")
             print()
             if self.s_end_days < 0 :
                 d = self.s_end_days
@@ -552,7 +559,7 @@ class Region :
         print()
         return
 
-    def analyse(self, days=14, predict=14, ylog=0, daily=1, infection=1, totals=0) :
+    def analyse(self, days=7, predict=14, ylog=1, daily=1, infection=1, totals=0) :
         self.report()
         self.plot(ylog=ylog, daily=daily, infection=infection, totals=totals)
         self.show(days=days)
