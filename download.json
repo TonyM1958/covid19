@@ -134401,6 +134401,18 @@
       "popData2018": "9630959"
     }, 
     { 
+      "dateRep": "20/04/2020",
+      "day": "20",
+      "month": "4",
+      "year": "2020",
+      "cases": "5850",
+      "deaths": "596",
+      "countriesAndTerritories": "United_Kingdom",
+      "geoId": "UK",
+      "countryterritoryCode": "GBR",
+      "popData2018": "66488991"
+    }, 
+    { 
       "dateRep": "19/04/2020",
       "day": "19",
       "month": "4",
