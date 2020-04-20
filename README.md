@@ -4,9 +4,9 @@ Analysis of public data on the spread of covid-19: [view results using github vi
 ## Process
 The analysis takes daily data from the [European Centre for Disease Prevention and Control (ECDC)](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide), which is generally updated for the previous day around 11am UK time.
 
-The raw number of new cases and deaths reported each day can be vary considerably, making it difficult to detect the peak correctly. To allow for this, the analysis generates a smoothed data set that is the average reported over a sliding window. By default, the window is 9 day wides i.e. average of 4 days before, the current day and 4 days after a specific date.
+The raw number of new cases and deaths reported each day can vary considerably, making it difficult to detect the peak correctly. To allow for this, the analysis generates a smoothed data set that is the average reported over a sliding window. By default, the window is 9 days wide i.e. average of 4 days before, the current day and 4 days after a specific date.
 
-Within the smoothed data, the analysis attempts to identify key dates:
+Within the smoothed data, the analysis tries to identify key dates:
 * Start date: when 50 cases have been reported
 * Peak cases: when the number of new cases being reported peaks
 * End date: added symmetrically around the peak cases, mirroring start date
