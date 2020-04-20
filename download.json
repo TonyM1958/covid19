@@ -148227,6 +148227,18 @@
       "countriesAndTerritories": "United_Arab_Emirates"
     }, 
     { 
+      "dateRep": "21/04/2020",
+      "day": "21",
+      "month": "4",
+      "year": "2020",
+      "cases": "4676",
+      "deaths": "449",
+      "geoId": "UK",
+      "continentExp": "Europe",
+      "countryterritoryCode": "GBR",
+      "popData2018": "66488991",
+      "countriesAndTerritories": "United_Kingdom"
+    },     { 
       "dateRep": "20/04/2020",
       "day": "20",
       "month": "4",
