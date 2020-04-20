@@ -89,7 +89,7 @@ class Region :
     """
     Holds the data about a region
     """    
-    def __init__(self, geoId='UK', smooth=9, growth_days=38, lag=4, spread=7, dilation=2, figwidth=12, debug=0) :
+    def __init__(self, geoId='UK', smooth=9, growth_days=38, lag=4, spread=7, dilation=2, d_cases=0, figwidth=12, debug=0) :
         # check parameters
         self.debug = debug
         if geoId not in region_codes :
@@ -99,7 +99,8 @@ class Region :
         self.growth_days = growth_days        # assumed minimum days from start to peak cases
         self.lag = lag                        # assumed minimum days between peak cases and peak deaths
         self.spread = spread                  # number of days to use when working out infection rate
-        self.dilation = dilation              # controls distribution symmetry
+        self.dilation_deaths = dilation        # controls distribution symmetry
+        self.dilation_cases = dilation if d_cases == 0 else d_cases
         self.figsize = (figwidth, figwidth * 9 / 16)     # size of charts
         # load dat
         self.data = load(geoId)
@@ -275,8 +276,8 @@ class Region :
         print(f"  Growth:      {self.growth_days} days (Start -> Peak Cases) ")
         if self.s_total_deaths >= 50 :
             print(f"  Lag:         {self.lag} days (Peak Cases -> Peak Deaths) ")
-            print(f"  Prediction:  Cases L = {int(self.L_cases):,} r = {round(self.r_cases,2)}, dilation = {self.dilation}")
-            print(f"               Deaths L = {int(self.L_deaths):,} r = {round(self.r_deaths,2)}, dilation = {self.dilation}")
+            print(f"  Prediction:  Cases L = {int(self.L_cases):,} r = {round(self.r_cases,2)}, dilation = {self.dilation_cases}")
+            print(f"               Deaths L = {int(self.L_deaths):,} r = {round(self.r_deaths,2)}, dilation = {self.dilation_deaths}")
             print()
             if self.s_end_days < 0 :
                 d = self.s_end_days
@@ -394,9 +395,14 @@ class Region :
         return the scaled time from the day in the infection cycle, between t=-1 (s_start_days) to t=+1 (s_end_days)
         dilation controls the symmetry of the distribution by manipulating time when t > 0.
         """
-        lag = self.lag if offset == 1 else 0
+        if offset == 1 :
+            lag = self.lag
+            dilation = self.dilation_deaths
+        else :
+            lag = 0
+            dilation = self.dilation_cases
         x = 2 * (day - self.s_start_days - lag) - self.cycle
-        if x > 0 and self.dilation != 1 : x /= self.dilation
+        if x > 0 and dilation != 1 : x /= dilation
         return x / self.cycle
 
     def bell_A(self, L, r, d, offset) :
