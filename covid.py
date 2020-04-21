@@ -228,7 +228,7 @@ class Region :
         self.s_end_days = self.s_start_days + self.cycle
         self.s_end = self.latest + datetime.timedelta(self.s_end_days)
         peak = 0
-        for i in range(self.s_peak_case_days - 2, self.s_end_days) :
+        for i in range(self.s_peak_case_days - int(self.smooth/2), self.s_end_days) :
             # find smoothed peak deaths day
             if self.data[i].get('s_deaths') is None : continue
             if self.data[i].get('s_deaths') > peak :
@@ -288,9 +288,9 @@ class Region :
                 print(f"Outcome: {cases:,} cases, {deaths:,} deaths at end of {self.data[d].get('dateRep'):%Y-%m-%d}")
                 print(f"  {cases_rate:,} cases per million, {death_rate:,} deaths per million (population = {self.population:,})")
             else :
-                cases = int(self.bell_cases_to_date[-1])
+                cases = int(self.sigmoid_cases[-1])
                 cases_rate = int(round(cases * 1000000 / self.population, 0))
-                deaths = int(self.bell_deaths_to_date[-1])
+                deaths = int(self.sigmoid_deaths[-1])
                 death_rate = int(round(deaths * 1000000 / self.population, 0))
                 print(f"Outcome: {cases:,} cases, {deaths:,} deaths at end of {self.s_end:%Y-%m-%d}")
                 print(f"  {cases_rate:,} cases per million, {death_rate:,} deaths per million (population = {self.population:,})")
@@ -376,8 +376,8 @@ class Region :
             plt.axvline(self.s_start, color='grey', linestyle='dashed', linewidth=2, label='start')
             if self.s_total_deaths >= 50 : 
                 plt.axvline(self.s_day0, color='tan', linestyle='dashed', linewidth=2, label='day0')
-                plt.plot([self.s_start + datetime.timedelta(d) for d in range(0, len(self.bell_cases_to_date))], self.bell_cases_to_date, color='grey', linestyle='dashed')
-                plt.plot([self.s_start + datetime.timedelta(d) for d in range(0, len(self.bell_deaths_to_date))], self.bell_deaths_to_date, color='grey', linestyle='dashed')
+                plt.plot([self.s_start + datetime.timedelta(d) for d in range(0, len(self.sigmoid_cases))], self.sigmoid_cases, color='grey', linestyle='dashed')
+                plt.plot([self.s_start + datetime.timedelta(d) for d in range(0, len(self.sigmoid_deaths))], self.sigmoid_deaths, color='grey', linestyle='dashed')
                 plt.xticks([self.s_start + datetime.timedelta(d) for d in range(0, len(self.bell_cases),7)], rotation=90)
                 plt.axvline(self.s_peak_deaths, color='tan', linestyle='dashed', linewidth=2, label='peak')
             plt.axvline(self.s_peak_cases, color='grey', linestyle='dashed', linewidth=2, label='peak')
@@ -499,9 +499,9 @@ class Region :
         A = L * exp(-rt) / (1 + exp(-rt)) ** 2
         """
         self.bell_cases = []
-        self.bell_cases_to_date = []
+        self.sigmoid_cases = []
         self.bell_deaths = []
-        self.bell_deaths_to_date = []
+        self.sigmoid_deaths = []
         self.L_cases = None             # scale factor for cases
         self.r_cases = None             # r factor for cases
         self.L_deaths = None            # scale factor for deaths
@@ -536,8 +536,8 @@ class Region :
             self.bell_deaths.append(deaths[d] * deaths_rescale)
             cases_to_date += self.bell_cases[-1]
             deaths_to_date += self.bell_deaths[-1]
-            self.bell_cases_to_date.append(cases_to_date)
-            self.bell_deaths_to_date.append(deaths_to_date)
+            self.sigmoid_cases.append(cases_to_date)
+            self.sigmoid_deaths.append(deaths_to_date)
         return
 
     def prediction(self, days=0, start=0) :
@@ -556,11 +556,11 @@ class Region :
             if i >= len(self.bell_cases) : break
             print(f"{self.s_latest + datetime.timedelta(d):%Y-%m-%d}" + \
                   f" {num(self.bell_cases[i])} {num(self.bell_deaths[i])}" + \
-                  f" {num(self.bell_cases_to_date[i])} {num(self.bell_deaths_to_date[i])}")
+                  f" {num(self.sigmoid_cases[i])} {num(self.sigmoid_deaths[i])}")
         print()
         return
 
-    def analyse(self, days=7, predict=14, ylog=1, daily=1, infection=1, totals=0) :
+    def analyse(self, days=14, predict=14, ylog=1, daily=1, infection=1, totals=0) :
         self.report()
         self.plot(ylog=ylog, daily=daily, infection=infection, totals=totals)
         self.show(days=days)

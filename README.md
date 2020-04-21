@@ -2,9 +2,9 @@
 Analysis of public data on the spread of covid-19: [view results using github viewer](covid.ipynb)
 
 ## Process
-The analysis takes daily data from the [European Centre for Disease Prevention and Control (ECDC)](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide), which is generally updated for the previous day around 11am UK time.
+The analysis takes daily data from the [European Centre for Disease Prevention and Control (ECDC)](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide), updated for the previous day around 12 noon UK time. A further update to UK data is made around 5pm when daily figures are published.
 
-The raw number of new cases and deaths reported each day can vary considerably, making it difficult to detect the peak correctly. To allow for this, the analysis generates a smoothed data set that is the average reported over a sliding window. By default, the window is 9 days wide i.e. average of 4 days before, the current day and 4 days after a specific date.
+The raw number of new cases and deaths reported each day can be erratic, making it difficult to detect the peak correctly. To allow for this, the analysis generates a smoothed data set that is the daily average for a sliding window. By default, the window is 9 days i.e. a specific days average looks across 4 days before, the current day and 4 days after.
 
 Within the smoothed data, the analysis tries to identify key dates:
 * Start date: when 50 cases have been reported
@@ -13,10 +13,10 @@ Within the smoothed data, the analysis tries to identify key dates:
 * Day zero: when 50 deaths have been reported
 * Peak deaths: when the number of new deaths being reported peaks
 
-From this, a number of metrics are created:
-* Growth: the number of days the infection is spreading i.e. the days between start and peak cases
+From this, key metrics are created:
+* Growth: the number of days the infection is spreading i.e. days between start and peak cases
 * Lag: the number of days between the peak number of cases and deaths
-* Spread: the infection rate, based on comparing the number of new cases reported with 7 days earlier
+* Spread: the infection rate, based on comparing the number of new cases with the number 7 days earlier
 
 The processing fits a [sigmoid curve / logistic distribution](https://en.wikipedia.org/wiki/Logistic_distribution) to the data. This produces a bell distribution for the new cases / deaths and an S-curve for the cumulative number of cases / deaths. These curves are used to extrapolate the potential progress of the infection.
 
@@ -42,3 +42,5 @@ Peak dates need to be used with care: the analysis assumes a minimum growth peri
 Following the peak in new cases / deaths, there is a trend for the numbers to flatten rather than drop off (could this be an effect of the lock down constraining but not stopping the infection?). This can result in the predictions being lower than the actual data. To allow for this, the prediction has a 'dilation' parameter that sets the symmetry of the distribution curve. When > 1, this stretches the distribution model time axis following the peak, slowing the drop off. Conversely, if < 1, it compresses the time axis following the peak, accelerating the drop off. Dilation is set to adjust the trajectory of the prediction where raw data has been reported but has not fed through into the smoothed data.
 
 As new data is added daily, the modelling is re-fitted and the predictions are updated.
+
+Unusually, the UK is now showing a plateau in new cases but falling deaths, with peak deaths leading peak cases (lag is -3 days). It isn't yet clear why this might be occuring. It could be a) under reporting of deaths / greater deaths outside hospitals b) expanding testing meaning that more mild cases are being found c) lower mortality rates following admission as hosiptals gain experience and adopt better treatment plans.
