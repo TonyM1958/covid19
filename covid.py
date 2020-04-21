@@ -228,7 +228,7 @@ class Region :
         self.s_end_days = self.s_start_days + self.cycle
         self.s_end = self.latest + datetime.timedelta(self.s_end_days)
         peak = 0
-        for i in range(self.s_peak_case_days - int(self.smooth/2), self.s_end_days) :
+        for i in range(self.s_peak_case_days - self.lag, self.s_end_days) :
             # find smoothed peak deaths day
             if self.data[i].get('s_deaths') is None : continue
             if self.data[i].get('s_deaths') > peak :
