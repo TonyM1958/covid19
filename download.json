@@ -153284,6 +153284,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "23/04/2020",
+      "day": "23",
+      "month": "4",
+      "year": "2020",
+      "cases": "4451",
+      "deaths": "763",
+      "countriesAndTerritories": "United_Kingdom",
+      "geoId": "UK",
+      "countryterritoryCode": "GBR",
+      "popData2018": "66488991",
+      "continentExp": "Europe"
+    }, 
+    { 
       "dateRep": "22/04/2020",
       "day": "22",
       "month": "4",
