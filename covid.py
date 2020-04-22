@@ -29,7 +29,7 @@ import math
 import matplotlib.pyplot as plt
 
 json_data = None        # string containing json data downloaded from web site
-region_codes = ['UK', 'FR', 'IT', 'DE', 'ES', 'US', 'CN', 'JP', 'NZ', 'RU', 'AU', 'BE']
+region_codes = ['UK', 'FR', 'IT', 'DE', 'ES', 'US', 'CN', 'JP', 'NZ', 'RU', 'AU', 'BE', 'IE']
 
 def average(lst): 
     """
