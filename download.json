@@ -1,6 +1,19 @@
 {
   "records": [
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "70",
+      "deaths": "1",
+      "countriesAndTerritories": "Afghanistan",
+      "geoId": "AF",
+      "countryterritoryCode": "AFG",
+      "popData2018": "37172386",
+      "continentExp": "Asia"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -1379,6 +1392,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "15",
+      "deaths": "1",
+      "countriesAndTerritories": "Albania",
+      "geoId": "AL",
+      "countryterritoryCode": "ALB",
+      "popData2018": "2866376",
+      "continentExp": "Europe"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -1988,6 +2014,19 @@
       "countryterritoryCode": "ALB",
       "popData2018": "2866376",
       "continentExp": "Europe"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "120",
+      "deaths": "8",
+      "countriesAndTerritories": "Algeria",
+      "geoId": "DZ",
+      "countryterritoryCode": "DZA",
+      "popData2018": "42228429",
+      "continentExp": "Africa"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -3433,6 +3472,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "7",
+      "deaths": "3",
+      "countriesAndTerritories": "Andorra",
+      "geoId": "AD",
+      "countryterritoryCode": "AND",
+      "popData2018": "77006",
+      "continentExp": "Europe"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -3979,6 +4031,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Angola",
+      "geoId": "AO",
+      "countryterritoryCode": "AGO",
+      "popData2018": "30809762",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -4421,6 +4486,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Anguilla",
+      "geoId": "AI",
+      "countryterritoryCode": "",
+      "popData2018": "",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -4795,6 +4873,19 @@
       "geoId": "AI",
       "countryterritoryCode": "",
       "popData2018": "",
+      "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Antigua_and_Barbuda",
+      "geoId": "AG",
+      "countryterritoryCode": "ATG",
+      "popData2018": "96286",
       "continentExp": "America"
     }, 
     { 
@@ -5263,6 +5354,19 @@
       "geoId": "AG",
       "countryterritoryCode": "ATG",
       "popData2018": "96286",
+      "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "2",
+      "countriesAndTerritories": "Argentina",
+      "geoId": "AR",
+      "countryterritoryCode": "ARG",
+      "popData2018": "44494502",
       "continentExp": "America"
     }, 
     { 
@@ -5901,6 +6005,19 @@
       "countryterritoryCode": "ARG",
       "popData2018": "44494502",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "81",
+      "deaths": "1",
+      "countriesAndTerritories": "Armenia",
+      "geoId": "AM",
+      "countryterritoryCode": "ARM",
+      "popData2018": "2951776",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -7294,6 +7411,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Aruba",
+      "geoId": "AW",
+      "countryterritoryCode": "ABW",
+      "popData2018": "105845",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -7721,6 +7851,19 @@
       "countryterritoryCode": "ABW",
       "popData2018": "105845",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "20",
+      "deaths": "4",
+      "countriesAndTerritories": "Australia",
+      "geoId": "AU",
+      "countryterritoryCode": "AUS",
+      "popData2018": "24992369",
+      "continentExp": "Oceania"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -9231,6 +9374,19 @@
       "continentExp": "Oceania"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "83",
+      "deaths": "5",
+      "countriesAndTerritories": "Austria",
+      "geoId": "AT",
+      "countryterritoryCode": "AUT",
+      "popData2018": "8847037",
+      "continentExp": "Europe"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -10739,6 +10895,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "44",
+      "deaths": "1",
+      "countriesAndTerritories": "Azerbaijan",
+      "geoId": "AZ",
+      "countryterritoryCode": "AZE",
+      "popData2018": "9942334",
+      "continentExp": "Europe"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -12156,6 +12325,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1",
+      "deaths": "0",
+      "countriesAndTerritories": "Bahamas",
+      "geoId": "BS",
+      "countryterritoryCode": "BHS",
+      "popData2018": "385640",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -12648,6 +12830,19 @@
       "countryterritoryCode": "BHS",
       "popData2018": "385640",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "301",
+      "deaths": "0",
+      "countriesAndTerritories": "Bahrain",
+      "geoId": "BH",
+      "countryterritoryCode": "BHR",
+      "popData2018": "1569439",
+      "continentExp": "Asia"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -14145,6 +14340,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "503",
+      "deaths": "4",
+      "countriesAndTerritories": "Bangladesh",
+      "geoId": "BD",
+      "countryterritoryCode": "BGD",
+      "popData2018": "161356039",
+      "continentExp": "Asia"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -14678,6 +14886,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Barbados",
+      "geoId": "BB",
+      "countryterritoryCode": "BRB",
+      "popData2018": "286641",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -15170,6 +15391,19 @@
       "countryterritoryCode": "BRB",
       "popData2018": "286641",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "751",
+      "deaths": "3",
+      "countriesAndTerritories": "Belarus",
+      "geoId": "BY",
+      "countryterritoryCode": "BLR",
+      "popData2018": "9485386",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -16573,6 +16807,19 @@
       "geoId": "BY",
       "countryterritoryCode": "BLR",
       "popData2018": "9485386",
+      "continentExp": "Europe"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1496",
+      "deaths": "189",
+      "countriesAndTerritories": "Belgium",
+      "geoId": "BE",
+      "countryterritoryCode": "BEL",
+      "popData2018": "11422068",
       "continentExp": "Europe"
     }, 
     { 
@@ -18084,6 +18331,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Belize",
+      "geoId": "BZ",
+      "countryterritoryCode": "BLZ",
+      "popData2018": "383071",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -18498,6 +18758,19 @@
       "countryterritoryCode": "BLZ",
       "popData2018": "383071",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Benin",
+      "geoId": "BJ",
+      "countryterritoryCode": "BEN",
+      "popData2018": "11485048",
+      "continentExp": "Africa"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -19007,6 +19280,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Bermuda",
+      "geoId": "BM",
+      "countryterritoryCode": "BMU",
+      "popData2018": "63968",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -19473,6 +19759,19 @@
       "countryterritoryCode": "BMU",
       "popData2018": "63968",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Bhutan",
+      "geoId": "BT",
+      "countryterritoryCode": "BTN",
+      "popData2018": "754394",
+      "continentExp": "Asia"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -20019,6 +20318,19 @@
       "countryterritoryCode": "BTN",
       "popData2018": "754394",
       "continentExp": "Asia"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "104",
+      "deaths": "1",
+      "countriesAndTerritories": "Bolivia",
+      "geoId": "BO",
+      "countryterritoryCode": "BOL",
+      "popData2018": "11353142",
+      "continentExp": "America"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -20580,6 +20892,19 @@
       "continentExp": "America"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Bonaire, Saint Eustatius and Saba",
+      "geoId": "BQ",
+      "countryterritoryCode": "",
+      "popData2018": "",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -20877,6 +21202,19 @@
       "countryterritoryCode": "",
       "popData2018": "",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "7",
+      "deaths": "1",
+      "countriesAndTerritories": "Bosnia_and_Herzegovina",
+      "geoId": "BA",
+      "countryterritoryCode": "BIH",
+      "popData2018": "3323929",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -21438,6 +21776,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Botswana",
+      "geoId": "BW",
+      "countryterritoryCode": "BWA",
+      "popData2018": "2254126",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -21748,6 +22099,19 @@
       "countryterritoryCode": "BWA",
       "popData2018": "2254126",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "3503",
+      "deaths": "357",
+      "countriesAndTerritories": "Brazil",
+      "geoId": "BR",
+      "countryterritoryCode": "BRA",
+      "popData2018": "209469333",
+      "continentExp": "America"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -23258,6 +23622,19 @@
       "continentExp": "America"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1",
+      "deaths": "0",
+      "countriesAndTerritories": "British_Virgin_Islands",
+      "geoId": "VG",
+      "countryterritoryCode": "VGB",
+      "popData2018": "29802",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -23633,6 +24010,19 @@
       "countryterritoryCode": "VGB",
       "popData2018": "29802",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Brunei_Darussalam",
+      "geoId": "BN",
+      "countryterritoryCode": "BRN",
+      "popData2018": "428962",
+      "continentExp": "Asia"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -24218,6 +24608,19 @@
       "countryterritoryCode": "BRN",
       "popData2018": "428962",
       "continentExp": "Asia"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "91",
+      "deaths": "2",
+      "countriesAndTerritories": "Bulgaria",
+      "geoId": "BG",
+      "countryterritoryCode": "BGR",
+      "popData2018": "7024216",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -24818,6 +25221,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "10",
+      "deaths": "0",
+      "countriesAndTerritories": "Burkina_Faso",
+      "geoId": "BF",
+      "countryterritoryCode": "BFA",
+      "popData2018": "19751535",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -25377,6 +25793,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1",
+      "deaths": "0",
+      "countriesAndTerritories": "Burundi",
+      "geoId": "BI",
+      "countryterritoryCode": "BDI",
+      "popData2018": "11175378",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -25687,6 +26116,19 @@
       "countryterritoryCode": "BDI",
       "popData2018": "11175378",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Cambodia",
+      "geoId": "KH",
+      "countryterritoryCode": "KHM",
+      "popData2018": "16249798",
+      "continentExp": "Asia"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -27080,6 +27522,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "2",
+      "deaths": "0",
+      "countriesAndTerritories": "Cameroon",
+      "geoId": "CM",
+      "countryterritoryCode": "CMR",
+      "popData2018": "25216237",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -27637,6 +28092,19 @@
       "countryterritoryCode": "CMR",
       "popData2018": "25216237",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1778",
+      "deaths": "156",
+      "countriesAndTerritories": "Canada",
+      "geoId": "CA",
+      "countryterritoryCode": "CAN",
+      "popData2018": "37058856",
+      "continentExp": "America"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -29147,6 +29615,19 @@
       "continentExp": "America"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "6",
+      "deaths": "0",
+      "countriesAndTerritories": "Cape_Verde",
+      "geoId": "CV",
+      "countryterritoryCode": "CPV",
+      "popData2018": "543767",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -30434,6 +30915,19 @@
       "continentExp": "Other"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Cayman_Islands",
+      "geoId": "KY",
+      "countryterritoryCode": "CYM",
+      "popData2018": "64174",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -30900,6 +31394,19 @@
       "countryterritoryCode": "CYM",
       "popData2018": "64174",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "2",
+      "deaths": "0",
+      "countriesAndTerritories": "Central_African_Republic",
+      "geoId": "CF",
+      "countryterritoryCode": "CAF",
+      "popData2018": "4666377",
+      "continentExp": "Africa"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -31422,6 +31929,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Chad",
+      "geoId": "TD",
+      "countryterritoryCode": "TCD",
+      "popData2018": "15477751",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -31888,6 +32408,19 @@
       "countryterritoryCode": "TCD",
       "popData2018": "15477751",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "494",
+      "deaths": "326",
+      "countriesAndTerritories": "Chile",
+      "geoId": "CL",
+      "countryterritoryCode": "CHL",
+      "popData2018": "18729160",
+      "continentExp": "America"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -32551,6 +33084,19 @@
       "countryterritoryCode": "CHL",
       "popData2018": "18729160",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "15",
+      "deaths": "0",
+      "countriesAndTerritories": "China",
+      "geoId": "CN",
+      "countryterritoryCode": "CHN",
+      "popData2018": "1392730000",
+      "continentExp": "Asia"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -34061,6 +34607,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "320",
+      "deaths": "10",
+      "countriesAndTerritories": "Colombia",
+      "geoId": "CO",
+      "countryterritoryCode": "COL",
+      "popData2018": "49648685",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -34646,6 +35205,19 @@
       "continentExp": "America"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "14",
+      "deaths": "0",
+      "countriesAndTerritories": "Congo",
+      "geoId": "CG",
+      "countryterritoryCode": "COG",
+      "popData2018": "5244363",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -35164,6 +35736,19 @@
       "countryterritoryCode": "COG",
       "popData2018": "5244363",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Costa_Rica",
+      "geoId": "CR",
+      "countryterritoryCode": "CRI",
+      "popData2018": "4999441",
+      "continentExp": "America"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -35790,6 +36375,19 @@
       "continentExp": "America"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "73",
+      "deaths": "0",
+      "countriesAndTerritories": "Cote_dIvoire",
+      "geoId": "CI",
+      "countryterritoryCode": "CIV",
+      "popData2018": "25069229",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -36334,6 +36932,19 @@
       "countryterritoryCode": "CIV",
       "popData2018": "25069229",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "28",
+      "deaths": "1",
+      "countriesAndTerritories": "Croatia",
+      "geoId": "HR",
+      "countryterritoryCode": "HRV",
+      "popData2018": "4089400",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -37805,6 +38416,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "50",
+      "deaths": "6",
+      "countriesAndTerritories": "Cuba",
+      "geoId": "CU",
+      "countryterritoryCode": "CUB",
+      "popData2018": "11338138",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -38338,6 +38962,19 @@
       "continentExp": "America"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "2",
+      "deaths": "0",
+      "countriesAndTerritories": "Curaçao",
+      "geoId": "CW",
+      "countryterritoryCode": "CUW",
+      "popData2018": "159849",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -38752,6 +39389,19 @@
       "countryterritoryCode": "CUW",
       "popData2018": "159849",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "9",
+      "deaths": "0",
+      "countriesAndTerritories": "Cyprus",
+      "geoId": "CY",
+      "countryterritoryCode": "CYP",
+      "popData2018": "1189265",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -39323,6 +39973,19 @@
       "geoId": "CY",
       "countryterritoryCode": "CYP",
       "popData2018": "1189265",
+      "continentExp": "Europe"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "85",
+      "deaths": "2",
+      "countriesAndTerritories": "Czechia",
+      "geoId": "CZ",
+      "countryterritoryCode": "CZE",
+      "popData2018": "10625695",
       "continentExp": "Europe"
     }, 
     { 
@@ -40834,6 +41497,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "22",
+      "deaths": "3",
+      "countriesAndTerritories": "Democratic_Republic_of_the_Congo",
+      "geoId": "CD",
+      "countryterritoryCode": "COD",
+      "popData2018": "84068091",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -41391,6 +42067,19 @@
       "countryterritoryCode": "COD",
       "popData2018": "84068091",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "137",
+      "deaths": "9",
+      "countriesAndTerritories": "Denmark",
+      "geoId": "DK",
+      "countryterritoryCode": "DNK",
+      "popData2018": "5797446",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -42901,6 +43590,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "13",
+      "deaths": "0",
+      "countriesAndTerritories": "Djibouti",
+      "geoId": "DJ",
+      "countryterritoryCode": "DJI",
+      "popData2018": "958920",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -43382,6 +44084,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Dominica",
+      "geoId": "DM",
+      "countryterritoryCode": "DMA",
+      "popData2018": "71625",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -43808,6 +44523,19 @@
       "geoId": "DM",
       "countryterritoryCode": "DMA",
       "popData2018": "71625",
+      "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "206",
+      "deaths": "2",
+      "countriesAndTerritories": "Dominican_Republic",
+      "geoId": "DO",
+      "countryterritoryCode": "DOM",
+      "popData2018": "10627165",
       "continentExp": "America"
     }, 
     { 
@@ -45199,6 +45927,19 @@
       "geoId": "DO",
       "countryterritoryCode": "DOM",
       "popData2018": "10627165",
+      "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "16",
+      "countriesAndTerritories": "Ecuador",
+      "geoId": "EC",
+      "countryterritoryCode": "ECU",
+      "popData2018": "17084357",
       "continentExp": "America"
     }, 
     { 
@@ -46643,6 +47384,19 @@
       "countryterritoryCode": "ECU",
       "popData2018": "17084357",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "433",
+      "deaths": "18",
+      "countriesAndTerritories": "Egypt",
+      "geoId": "EG",
+      "countryterritoryCode": "EGY",
+      "popData2018": "98423595",
+      "continentExp": "Africa"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -48101,6 +48855,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "11",
+      "deaths": "0",
+      "countriesAndTerritories": "El_Salvador",
+      "geoId": "SV",
+      "countryterritoryCode": "SLV",
+      "popData2018": "6420744",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -48580,6 +49347,19 @@
       "countryterritoryCode": "SLV",
       "popData2018": "6420744",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "128",
+      "deaths": "0",
+      "countriesAndTerritories": "Equatorial_Guinea",
+      "geoId": "GQ",
+      "countryterritoryCode": "GNQ",
+      "popData2018": "1308974",
+      "continentExp": "Africa"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -49115,6 +49895,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Eritrea",
+      "geoId": "ER",
+      "countryterritoryCode": "ERI",
+      "popData2018": "",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -49555,6 +50348,19 @@
       "countryterritoryCode": "ERI",
       "popData2018": "",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "13",
+      "deaths": "1",
+      "countriesAndTerritories": "Estonia",
+      "geoId": "EE",
+      "countryterritoryCode": "EST",
+      "popData2018": "1320884",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -51000,6 +51806,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "8",
+      "deaths": "0",
+      "countriesAndTerritories": "Eswatini",
+      "geoId": "SZ",
+      "countryterritoryCode": "SWZ",
+      "popData2018": "1367000",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -51530,6 +52349,19 @@
       "geoId": "SZ",
       "countryterritoryCode": "SWZ",
       "popData2018": "1367000",
+      "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1",
+      "deaths": "0",
+      "countriesAndTerritories": "Ethiopia",
+      "geoId": "ET",
+      "countryterritoryCode": "ETH",
+      "popData2018": "109224559",
       "continentExp": "Africa"
     }, 
     { 
@@ -52079,6 +52911,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Falkland_Islands_(Malvinas)",
+      "geoId": "FK",
+      "countryterritoryCode": "",
+      "popData2018": "",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -52350,6 +53195,19 @@
       "countryterritoryCode": "",
       "popData2018": "",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Faroe_Islands",
+      "geoId": "FO",
+      "countryterritoryCode": "FRO",
+      "popData2018": "48497",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -52820,6 +53678,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Fiji",
+      "geoId": "FJ",
+      "countryterritoryCode": "FJI",
+      "popData2018": "883483",
+      "continentExp": "Oceania"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -53286,6 +54157,19 @@
       "countryterritoryCode": "FJI",
       "popData2018": "883483",
       "continentExp": "Oceania"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "111",
+      "deaths": "5",
+      "countriesAndTerritories": "Finland",
+      "geoId": "FI",
+      "countryterritoryCode": "FIN",
+      "popData2018": "5518050",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -54741,6 +55625,19 @@
       "geoId": "FI",
       "countryterritoryCode": "FIN",
       "popData2018": "5518050",
+      "continentExp": "Europe"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1773",
+      "deaths": "389",
+      "countriesAndTerritories": "France",
+      "geoId": "FR",
+      "countryterritoryCode": "FRA",
+      "popData2018": "66987244",
       "continentExp": "Europe"
     }, 
     { 
@@ -56252,6 +57149,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "French_Polynesia",
+      "geoId": "PF",
+      "countryterritoryCode": "PYF",
+      "popData2018": "277679",
+      "continentExp": "Oceania"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -56731,6 +57641,19 @@
       "countryterritoryCode": "PYF",
       "popData2018": "277679",
       "continentExp": "Oceania"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "5",
+      "deaths": "1",
+      "countriesAndTerritories": "Gabon",
+      "geoId": "GA",
+      "countryterritoryCode": "GAB",
+      "popData2018": "2119275",
+      "continentExp": "Africa"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -57279,6 +58202,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Gambia",
+      "geoId": "GM",
+      "countryterritoryCode": "GMB",
+      "popData2018": "2280102",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -57771,6 +58707,19 @@
       "countryterritoryCode": "GMB",
       "popData2018": "2280102",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "19",
+      "deaths": "0",
+      "countriesAndTerritories": "Georgia",
+      "geoId": "GE",
+      "countryterritoryCode": "GEO",
+      "popData2018": "3731000",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -59239,6 +60188,19 @@
       "geoId": "GE",
       "countryterritoryCode": "GEO",
       "popData2018": "3731000",
+      "continentExp": "Europe"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "2055",
+      "deaths": "179",
+      "countriesAndTerritories": "Germany",
+      "geoId": "DE",
+      "countryterritoryCode": "DEU",
+      "popData2018": "82927922",
       "continentExp": "Europe"
     }, 
     { 
@@ -60750,6 +61712,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "125",
+      "deaths": "1",
+      "countriesAndTerritories": "Ghana",
+      "geoId": "GH",
+      "countryterritoryCode": "GHA",
+      "popData2018": "29767108",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -61296,6 +62271,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Gibraltar",
+      "geoId": "GI",
+      "countryterritoryCode": "GIB",
+      "popData2018": "33718",
+      "continentExp": "Europe"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -61761,6 +62749,19 @@
       "geoId": "GI",
       "countryterritoryCode": "GIB",
       "popData2018": "33718",
+      "continentExp": "Europe"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "27",
+      "deaths": "5",
+      "countriesAndTerritories": "Greece",
+      "geoId": "EL",
+      "countryterritoryCode": "GRC",
+      "popData2018": "10727668",
       "continentExp": "Europe"
     }, 
     { 
@@ -63246,6 +64247,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Greenland",
+      "geoId": "GL",
+      "countryterritoryCode": "GRL",
+      "popData2018": "56025",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -63714,6 +64728,19 @@
       "continentExp": "America"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Grenada",
+      "geoId": "GD",
+      "countryterritoryCode": "GRD",
+      "popData2018": "111454",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -64141,6 +65168,19 @@
       "countryterritoryCode": "GRD",
       "popData2018": "111454",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1",
+      "deaths": "0",
+      "countriesAndTerritories": "Guam",
+      "geoId": "GU",
+      "countryterritoryCode": "GUM",
+      "popData2018": "165768",
+      "continentExp": "Oceania"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -64622,6 +65662,19 @@
       "countryterritoryCode": "GUM",
       "popData2018": "165768",
       "continentExp": "Oceania"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "46",
+      "deaths": "0",
+      "countriesAndTerritories": "Guatemala",
+      "geoId": "GT",
+      "countryterritoryCode": "GTM",
+      "popData2018": "17247807",
+      "continentExp": "America"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -65157,6 +66210,19 @@
       "continentExp": "America"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "1",
+      "countriesAndTerritories": "Guernsey",
+      "geoId": "GG",
+      "countryterritoryCode": "GGY",
+      "popData2018": "63026",
+      "continentExp": "Europe"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -65623,6 +66689,19 @@
       "countryterritoryCode": "GGY",
       "popData2018": "63026",
       "continentExp": "Europe"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "92",
+      "deaths": "0",
+      "countriesAndTerritories": "Guinea",
+      "geoId": "GN",
+      "countryterritoryCode": "GIN",
+      "popData2018": "12414318",
+      "continentExp": "Africa"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -66158,6 +67237,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Guinea_Bissau",
+      "geoId": "GW",
+      "countryterritoryCode": "GNB",
+      "popData2018": "1874309",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -66533,6 +67625,19 @@
       "countryterritoryCode": "GNB",
       "popData2018": "1874309",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "3",
+      "deaths": "1",
+      "countriesAndTerritories": "Guyana",
+      "geoId": "GY",
+      "countryterritoryCode": "GUY",
+      "popData2018": "779004",
+      "continentExp": "America"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -67068,6 +68173,19 @@
       "continentExp": "America"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Haiti",
+      "geoId": "HT",
+      "countryterritoryCode": "HTI",
+      "popData2018": "11123176",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -67534,6 +68652,19 @@
       "countryterritoryCode": "HTI",
       "popData2018": "11123176",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Holy_See",
+      "geoId": "VA",
+      "countryterritoryCode": "VAT",
+      "popData2018": "1000",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -68067,6 +69198,19 @@
       "countryterritoryCode": "VAT",
       "popData2018": "1000",
       "continentExp": "Europe"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "72",
+      "deaths": "0",
+      "countriesAndTerritories": "Honduras",
+      "geoId": "HN",
+      "countryterritoryCode": "HND",
+      "popData2018": "9587522",
+      "continentExp": "America"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -68613,6 +69757,19 @@
       "countryterritoryCode": "HND",
       "popData2018": "9587522",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "60",
+      "deaths": "12",
+      "countriesAndTerritories": "Hungary",
+      "geoId": "HU",
+      "countryterritoryCode": "HUN",
+      "popData2018": "9768785",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -69262,6 +70419,19 @@
       "geoId": "HU",
       "countryterritoryCode": "HUN",
       "popData2018": "9768785",
+      "continentExp": "Europe"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Iceland",
+      "geoId": "IS",
+      "countryterritoryCode": "ISL",
+      "popData2018": "353574",
       "continentExp": "Europe"
     }, 
     { 
@@ -70773,6 +71943,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1429",
+      "deaths": "57",
+      "countriesAndTerritories": "India",
+      "geoId": "IN",
+      "countryterritoryCode": "IND",
+      "popData2018": "1352617328",
+      "continentExp": "Asia"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -72268,6 +73451,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "436",
+      "deaths": "42",
+      "countriesAndTerritories": "Indonesia",
+      "geoId": "ID",
+      "countryterritoryCode": "IDN",
+      "popData2018": "267663435",
+      "continentExp": "Asia"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -73682,6 +74878,19 @@
       "geoId": "ID",
       "countryterritoryCode": "IDN",
       "popData2018": "267663435",
+      "continentExp": "Asia"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1168",
+      "deaths": "93",
+      "countriesAndTerritories": "Iran",
+      "geoId": "IR",
+      "countryterritoryCode": "IRN",
+      "popData2018": "81800269",
       "continentExp": "Asia"
     }, 
     { 
@@ -75193,6 +76402,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "31",
+      "deaths": "3",
+      "countriesAndTerritories": "Iraq",
+      "geoId": "IQ",
+      "countryterritoryCode": "IRQ",
+      "popData2018": "38433600",
+      "continentExp": "Asia"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -76673,6 +77895,19 @@
       "countryterritoryCode": "IRQ",
       "popData2018": "38433600",
       "continentExp": "Asia"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "577",
+      "deaths": "35",
+      "countriesAndTerritories": "Ireland",
+      "geoId": "IE",
+      "countryterritoryCode": "IRL",
+      "popData2018": "4853506",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -78157,6 +79392,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1",
+      "deaths": "2",
+      "countriesAndTerritories": "Isle_of_Man",
+      "geoId": "IM",
+      "countryterritoryCode": "IMN",
+      "popData2018": "84077",
+      "continentExp": "Europe"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -78610,6 +79858,19 @@
       "countryterritoryCode": "IMN",
       "popData2018": "84077",
       "continentExp": "Europe"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "176",
+      "deaths": "1",
+      "countriesAndTerritories": "Israel",
+      "geoId": "IL",
+      "countryterritoryCode": "ISR",
+      "popData2018": "8883800",
+      "continentExp": "Asia"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -80079,6 +81340,19 @@
       "countryterritoryCode": "ISR",
       "popData2018": "8883800",
       "continentExp": "Asia"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "3021",
+      "deaths": "420",
+      "countriesAndTerritories": "Italy",
+      "geoId": "IT",
+      "countryterritoryCode": "ITA",
+      "popData2018": "60431283",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -81589,6 +82863,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "36",
+      "deaths": "1",
+      "countriesAndTerritories": "Jamaica",
+      "geoId": "JM",
+      "countryterritoryCode": "JAM",
+      "popData2018": "2934855",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -82146,6 +83433,19 @@
       "countryterritoryCode": "JAM",
       "popData2018": "2934855",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "652",
+      "deaths": "17",
+      "countriesAndTerritories": "Japan",
+      "geoId": "JP",
+      "countryterritoryCode": "JPN",
+      "popData2018": "126529100",
+      "continentExp": "Asia"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -83656,6 +84956,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "2",
+      "deaths": "0",
+      "countriesAndTerritories": "Jersey",
+      "geoId": "JE",
+      "countryterritoryCode": "JEY",
+      "popData2018": "106800",
+      "continentExp": "Europe"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -84122,6 +85435,19 @@
       "countryterritoryCode": "JEY",
       "popData2018": "106800",
       "continentExp": "Europe"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "4",
+      "deaths": "0",
+      "countriesAndTerritories": "Jordan",
+      "geoId": "JO",
+      "countryterritoryCode": "JOR",
+      "popData2018": "9956011",
+      "continentExp": "Asia"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -84683,6 +86009,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "148",
+      "deaths": "3",
+      "countriesAndTerritories": "Kazakhstan",
+      "geoId": "KZ",
+      "countryterritoryCode": "KAZ",
+      "popData2018": "18276499",
+      "continentExp": "Asia"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -85214,6 +86553,19 @@
       "countryterritoryCode": "KAZ",
       "popData2018": "18276499",
       "continentExp": "Asia"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "16",
+      "deaths": "0",
+      "countriesAndTerritories": "Kenya",
+      "geoId": "KE",
+      "countryterritoryCode": "KEN",
+      "popData2018": "51393010",
+      "continentExp": "Africa"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -85762,6 +87114,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "34",
+      "deaths": "0",
+      "countriesAndTerritories": "Kosovo",
+      "geoId": "XK",
+      "countryterritoryCode": "XKX",
+      "popData2018": "1845300",
+      "continentExp": "Europe"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -86280,6 +87645,19 @@
       "countryterritoryCode": "XKX",
       "popData2018": "1845300",
       "continentExp": "Europe"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "215",
+      "deaths": "1",
+      "countriesAndTerritories": "Kuwait",
+      "geoId": "KW",
+      "countryterritoryCode": "KWT",
+      "popData2018": "4137309",
+      "continentExp": "Asia"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -87751,6 +89129,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "9",
+      "deaths": "0",
+      "countriesAndTerritories": "Kyrgyzstan",
+      "geoId": "KG",
+      "countryterritoryCode": "KGZ",
+      "popData2018": "6315800",
+      "continentExp": "Asia"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -88232,6 +89623,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Laos",
+      "geoId": "LA",
+      "countryterritoryCode": "LAO",
+      "popData2018": "7061507",
+      "continentExp": "Asia"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -88633,6 +90037,19 @@
       "countryterritoryCode": "LAO",
       "popData2018": "7061507",
       "continentExp": "Asia"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "6",
+      "deaths": "1",
+      "countriesAndTerritories": "Latvia",
+      "geoId": "LV",
+      "countryterritoryCode": "LVA",
+      "popData2018": "1926542",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -89270,6 +90687,19 @@
       "countryterritoryCode": "LVA",
       "popData2018": "1926542",
       "continentExp": "Europe"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "8",
+      "deaths": "0",
+      "countriesAndTerritories": "Lebanon",
+      "geoId": "LB",
+      "countryterritoryCode": "LBN",
+      "popData2018": "6848925",
+      "continentExp": "Asia"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -90728,6 +92158,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "16",
+      "deaths": "0",
+      "countriesAndTerritories": "Liberia",
+      "geoId": "LR",
+      "countryterritoryCode": "LBR",
+      "popData2018": "4818977",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -91235,6 +92678,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1",
+      "deaths": "0",
+      "countriesAndTerritories": "Libya",
+      "geoId": "LY",
+      "countryterritoryCode": "LBY",
+      "popData2018": "6678567",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -91636,6 +93092,19 @@
       "countryterritoryCode": "LBY",
       "popData2018": "6678567",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Liechtenstein",
+      "geoId": "LI",
+      "countryterritoryCode": "LIE",
+      "popData2018": "37910",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -92220,6 +93689,19 @@
       "geoId": "LI",
       "countryterritoryCode": "LIE",
       "popData2018": "37910",
+      "continentExp": "Europe"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Lithuania",
+      "geoId": "LT",
+      "countryterritoryCode": "LTU",
+      "popData2018": "2789533",
       "continentExp": "Europe"
     }, 
     { 
@@ -93611,6 +95093,19 @@
       "geoId": "LT",
       "countryterritoryCode": "LTU",
       "popData2018": "2789533",
+      "continentExp": "Europe"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "30",
+      "deaths": "2",
+      "countriesAndTerritories": "Luxembourg",
+      "geoId": "LU",
+      "countryterritoryCode": "LUX",
+      "popData2018": "607728",
       "continentExp": "Europe"
     }, 
     { 
@@ -95031,6 +96526,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1",
+      "deaths": "0",
+      "countriesAndTerritories": "Madagascar",
+      "geoId": "MG",
+      "countryterritoryCode": "MDG",
+      "popData2018": "26262368",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -95486,6 +96994,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Malawi",
+      "geoId": "MW",
+      "countryterritoryCode": "MWI",
+      "popData2018": "18143315",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -95770,6 +97291,19 @@
       "countryterritoryCode": "MWI",
       "popData2018": "18143315",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "88",
+      "deaths": "1",
+      "countriesAndTerritories": "Malaysia",
+      "geoId": "MY",
+      "countryterritoryCode": "MYS",
+      "popData2018": "31528585",
+      "continentExp": "Asia"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -97267,6 +98801,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "18",
+      "deaths": "0",
+      "countriesAndTerritories": "Maldives",
+      "geoId": "MV",
+      "countryterritoryCode": "MDV",
+      "popData2018": "515696",
+      "continentExp": "Asia"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -97865,6 +99412,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "16",
+      "deaths": "0",
+      "countriesAndTerritories": "Mali",
+      "geoId": "ML",
+      "countryterritoryCode": "MLI",
+      "popData2018": "19077690",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -98253,6 +99813,19 @@
       "countryterritoryCode": "MLI",
       "popData2018": "19077690",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "2",
+      "deaths": "0",
+      "countriesAndTerritories": "Malta",
+      "geoId": "MT",
+      "countryterritoryCode": "MLT",
+      "popData2018": "483530",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -98853,6 +100426,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Mauritania",
+      "geoId": "MR",
+      "countryterritoryCode": "MRT",
+      "popData2018": "4403319",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -99386,6 +100972,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Mauritius",
+      "geoId": "MU",
+      "countryterritoryCode": "MUS",
+      "popData2018": "1265303",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -99852,6 +101451,19 @@
       "countryterritoryCode": "MUS",
       "popData2018": "1265303",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1239",
+      "deaths": "152",
+      "countriesAndTerritories": "Mexico",
+      "geoId": "MX",
+      "countryterritoryCode": "MEX",
+      "popData2018": "126190788",
+      "continentExp": "America"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -101258,6 +102870,19 @@
       "continentExp": "America"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "184",
+      "deaths": "7",
+      "countriesAndTerritories": "Moldova",
+      "geoId": "MD",
+      "countryterritoryCode": "MDA",
+      "popData2018": "3545883",
+      "continentExp": "Europe"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -101853,6 +103478,19 @@
       "geoId": "MD",
       "countryterritoryCode": "MDA",
       "popData2018": "3545883",
+      "continentExp": "Europe"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Monaco",
+      "geoId": "MC",
+      "countryterritoryCode": "MCO",
+      "popData2018": "38682",
       "continentExp": "Europe"
     }, 
     { 
@@ -103208,6 +104846,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Mongolia",
+      "geoId": "MN",
+      "countryterritoryCode": "MNG",
+      "popData2018": "3170208",
+      "continentExp": "Asia"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -103728,6 +105379,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "1",
+      "countriesAndTerritories": "Montenegro",
+      "geoId": "ME",
+      "countryterritoryCode": "MNE",
+      "popData2018": "622345",
+      "continentExp": "Europe"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -104222,6 +105886,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Montserrat",
+      "geoId": "MS",
+      "countryterritoryCode": "MSR",
+      "popData2018": "5900",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -104662,6 +106339,19 @@
       "countryterritoryCode": "MSR",
       "popData2018": "5900",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "190",
+      "deaths": "3",
+      "countriesAndTerritories": "Morocco",
+      "geoId": "MA",
+      "countryterritoryCode": "MAR",
+      "popData2018": "36029138",
+      "continentExp": "Africa"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -105262,6 +106952,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "19",
+      "deaths": "0",
+      "countriesAndTerritories": "Mozambique",
+      "geoId": "MZ",
+      "countryterritoryCode": "MOZ",
+      "popData2018": "29495962",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -105691,6 +107394,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "12",
+      "deaths": "0",
+      "countriesAndTerritories": "Myanmar",
+      "geoId": "MM",
+      "countryterritoryCode": "MMR",
+      "popData2018": "53708395",
+      "continentExp": "Asia"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -106118,6 +107834,19 @@
       "countryterritoryCode": "MMR",
       "popData2018": "53708395",
       "continentExp": "Asia"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Namibia",
+      "geoId": "NA",
+      "countryterritoryCode": "NAM",
+      "popData2018": "2448255",
+      "continentExp": "Africa"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -106651,6 +108380,19 @@
       "countryterritoryCode": "NAM",
       "popData2018": "2448255",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1",
+      "deaths": "0",
+      "countriesAndTerritories": "Nepal",
+      "geoId": "NP",
+      "countryterritoryCode": "NPL",
+      "popData2018": "28087871",
+      "continentExp": "Asia"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -107990,6 +109732,19 @@
       "countryterritoryCode": "NPL",
       "popData2018": "28087871",
       "continentExp": "Asia"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "806",
+      "deaths": "112",
+      "countriesAndTerritories": "Netherlands",
+      "geoId": "NL",
+      "countryterritoryCode": "NLD",
+      "popData2018": "17231017",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -109500,6 +111255,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "New_Caledonia",
+      "geoId": "NC",
+      "countryterritoryCode": "NCL",
+      "popData2018": "284060",
+      "continentExp": "Oceania"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -109952,6 +111720,19 @@
       "geoId": "NC",
       "countryterritoryCode": "NCL",
       "popData2018": "284060",
+      "continentExp": "Oceania"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "3",
+      "deaths": "1",
+      "countriesAndTerritories": "New_Zealand",
+      "geoId": "NZ",
+      "countryterritoryCode": "NZL",
+      "popData2018": "4885500",
       "continentExp": "Oceania"
     }, 
     { 
@@ -111346,6 +113127,19 @@
       "continentExp": "Oceania"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1",
+      "deaths": "1",
+      "countriesAndTerritories": "Nicaragua",
+      "geoId": "NI",
+      "countryterritoryCode": "NIC",
+      "popData2018": "6465513",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -111827,6 +113621,19 @@
       "continentExp": "America"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "10",
+      "deaths": "0",
+      "countriesAndTerritories": "Niger",
+      "geoId": "NE",
+      "countryterritoryCode": "NER",
+      "popData2018": "22442948",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -112279,6 +114086,19 @@
       "geoId": "NE",
       "countryterritoryCode": "NER",
       "popData2018": "22442948",
+      "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "114",
+      "deaths": "1",
+      "countriesAndTerritories": "Nigeria",
+      "geoId": "NG",
+      "countryterritoryCode": "NGA",
+      "popData2018": "195874740",
       "continentExp": "Africa"
     }, 
     { 
@@ -113645,6 +115465,19 @@
       "countryterritoryCode": "NGA",
       "popData2018": "195874740",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "26",
+      "deaths": "1",
+      "countriesAndTerritories": "North_Macedonia",
+      "geoId": "MK",
+      "countryterritoryCode": "MKD",
+      "popData2018": "2082958",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -115038,6 +116871,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Northern_Mariana_Islands",
+      "geoId": "MP",
+      "countryterritoryCode": "MNP",
+      "popData2018": "56882",
+      "continentExp": "Oceania"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -115361,6 +117207,19 @@
       "countryterritoryCode": "MNP",
       "popData2018": "56882",
       "continentExp": "Oceania"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "63",
+      "deaths": "11",
+      "countriesAndTerritories": "Norway",
+      "geoId": "NO",
+      "countryterritoryCode": "NOR",
+      "popData2018": "5314336",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -116871,6 +118730,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "74",
+      "deaths": "1",
+      "countriesAndTerritories": "Oman",
+      "geoId": "OM",
+      "countryterritoryCode": "OMN",
+      "popData2018": "4829483",
+      "continentExp": "Asia"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -118298,6 +120170,19 @@
       "geoId": "OM",
       "countryterritoryCode": "OMN",
       "popData2018": "4829483",
+      "continentExp": "Asia"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "785",
+      "deaths": "16",
+      "countriesAndTerritories": "Pakistan",
+      "geoId": "PK",
+      "countryterritoryCode": "PAK",
+      "popData2018": "212215030",
       "continentExp": "Asia"
     }, 
     { 
@@ -119744,6 +121629,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "4",
+      "deaths": "0",
+      "countriesAndTerritories": "Palestine",
+      "geoId": "PS",
+      "countryterritoryCode": "PSE",
+      "popData2018": "4569087",
+      "continentExp": "Asia"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -120355,6 +122253,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "172",
+      "deaths": "8",
+      "countriesAndTerritories": "Panama",
+      "geoId": "PA",
+      "countryterritoryCode": "PAN",
+      "popData2018": "4176873",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -120953,6 +122864,19 @@
       "continentExp": "America"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Papua_New_Guinea",
+      "geoId": "PG",
+      "countryterritoryCode": "PNG",
+      "popData2018": "8606316",
+      "continentExp": "Oceania"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -121406,6 +123330,19 @@
       "countryterritoryCode": "PNG",
       "popData2018": "8606316",
       "continentExp": "Oceania"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "3",
+      "deaths": "0",
+      "countriesAndTerritories": "Paraguay",
+      "geoId": "PY",
+      "countryterritoryCode": "PRY",
+      "popData2018": "6956071",
+      "continentExp": "America"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -121977,6 +123914,19 @@
       "geoId": "PY",
       "countryterritoryCode": "PRY",
       "popData2018": "6956071",
+      "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "734",
+      "deaths": "62",
+      "countriesAndTerritories": "Peru",
+      "geoId": "PE",
+      "countryterritoryCode": "PER",
+      "popData2018": "31989256",
       "continentExp": "America"
     }, 
     { 
@@ -122602,6 +124552,19 @@
       "countryterritoryCode": "PER",
       "popData2018": "31989256",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "211",
+      "deaths": "15",
+      "countriesAndTerritories": "Philippines",
+      "geoId": "PH",
+      "countryterritoryCode": "PHL",
+      "popData2018": "106651922",
+      "continentExp": "Asia"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -124060,6 +126023,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "381",
+      "deaths": "40",
+      "countriesAndTerritories": "Poland",
+      "geoId": "PL",
+      "countryterritoryCode": "POL",
+      "popData2018": "37978548",
+      "continentExp": "Europe"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -124707,6 +126683,19 @@
       "geoId": "PL",
       "countryterritoryCode": "POL",
       "popData2018": "37978548",
+      "continentExp": "Europe"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "444",
+      "deaths": "34",
+      "countriesAndTerritories": "Portugal",
+      "geoId": "PT",
+      "countryterritoryCode": "PRT",
+      "popData2018": "10281762",
       "continentExp": "Europe"
     }, 
     { 
@@ -125399,6 +127388,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Puerto_Rico",
+      "geoId": "PR",
+      "countryterritoryCode": "PRI",
+      "popData2018": "3195153",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -125761,6 +127763,19 @@
       "countryterritoryCode": "PRI",
       "popData2018": "3195153",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "761",
+      "deaths": "0",
+      "countriesAndTerritories": "Qatar",
+      "geoId": "QA",
+      "countryterritoryCode": "QAT",
+      "popData2018": "2781677",
+      "continentExp": "Asia"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -127217,6 +129232,19 @@
       "countryterritoryCode": "QAT",
       "popData2018": "2781677",
       "continentExp": "Asia"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "321",
+      "deaths": "25",
+      "countriesAndTerritories": "Romania",
+      "geoId": "RO",
+      "countryterritoryCode": "ROU",
+      "popData2018": "19473936",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -128698,6 +130726,19 @@
       "geoId": "RO",
       "countryterritoryCode": "ROU",
       "popData2018": "19473936",
+      "continentExp": "Europe"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "5849",
+      "deaths": "60",
+      "countriesAndTerritories": "Russia",
+      "geoId": "RU",
+      "countryterritoryCode": "RUS",
+      "popData2018": "144478050",
       "continentExp": "Europe"
     }, 
     { 
@@ -130209,6 +132250,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "22",
+      "deaths": "0",
+      "countriesAndTerritories": "Rwanda",
+      "geoId": "RW",
+      "countryterritoryCode": "RWA",
+      "popData2018": "12301939",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -130742,6 +132796,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Saint_Kitts_and_Nevis",
+      "geoId": "KN",
+      "countryterritoryCode": "KNA",
+      "popData2018": "52441",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -131129,6 +133196,19 @@
       "geoId": "KN",
       "countryterritoryCode": "KNA",
       "popData2018": "52441",
+      "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Saint_Lucia",
+      "geoId": "LC",
+      "countryterritoryCode": "LCA",
+      "popData2018": "181889",
       "continentExp": "America"
     }, 
     { 
@@ -131665,6 +133745,19 @@
       "continentExp": "America"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1",
+      "deaths": "0",
+      "countriesAndTerritories": "Saint_Vincent_and_the_Grenadines",
+      "geoId": "VC",
+      "countryterritoryCode": "VCT",
+      "popData2018": "110210",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -132079,6 +134172,19 @@
       "countryterritoryCode": "VCT",
       "popData2018": "110210",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "12",
+      "deaths": "0",
+      "countriesAndTerritories": "San_Marino",
+      "geoId": "SM",
+      "countryterritoryCode": "SMR",
+      "popData2018": "33785",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -133576,6 +135682,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Sao_Tome_and_Principe",
+      "geoId": "ST",
+      "countryterritoryCode": "STP",
+      "popData2018": "211028",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -133782,6 +135901,19 @@
       "countryterritoryCode": "STP",
       "popData2018": "211028",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1172",
+      "deaths": "6",
+      "countriesAndTerritories": "Saudi_Arabia",
+      "geoId": "SA",
+      "countryterritoryCode": "SAU",
+      "popData2018": "33699947",
+      "continentExp": "Asia"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -134434,6 +136566,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "66",
+      "deaths": "1",
+      "countriesAndTerritories": "Senegal",
+      "geoId": "SN",
+      "countryterritoryCode": "SEN",
+      "popData2018": "15854360",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -135030,6 +137175,19 @@
       "countryterritoryCode": "SEN",
       "popData2018": "15854360",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "207",
+      "deaths": "5",
+      "countriesAndTerritories": "Serbia",
+      "geoId": "RS",
+      "countryterritoryCode": "SRB",
+      "popData2018": "6982084",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -135630,6 +137788,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Seychelles",
+      "geoId": "SC",
+      "countryterritoryCode": "SYC",
+      "popData2018": "96762",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -136163,6 +138334,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "18",
+      "deaths": "2",
+      "countriesAndTerritories": "Sierra_Leone",
+      "geoId": "SL",
+      "countryterritoryCode": "SLE",
+      "popData2018": "7650154",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -136473,6 +138657,19 @@
       "countryterritoryCode": "SLE",
       "popData2018": "7650154",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Singapore",
+      "geoId": "SG",
+      "countryterritoryCode": "SGP",
+      "popData2018": "5638676",
+      "continentExp": "Asia"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -137983,6 +140180,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Sint_Maarten",
+      "geoId": "SX",
+      "countryterritoryCode": "SXM",
+      "popData2018": "41486",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -138371,6 +140581,19 @@
       "countryterritoryCode": "SXM",
       "popData2018": "41486",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "35",
+      "deaths": "2",
+      "countriesAndTerritories": "Slovakia",
+      "geoId": "SK",
+      "countryterritoryCode": "SVK",
+      "popData2018": "5447011",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -138994,6 +141217,19 @@
       "geoId": "SK",
       "countryterritoryCode": "SVK",
       "popData2018": "5447011",
+      "continentExp": "Europe"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "7",
+      "deaths": "1",
+      "countriesAndTerritories": "Slovenia",
+      "geoId": "SI",
+      "countryterritoryCode": "SVN",
+      "popData2018": "2067372",
       "continentExp": "Europe"
     }, 
     { 
@@ -139647,6 +141883,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "2",
+      "countriesAndTerritories": "Somalia",
+      "geoId": "SO",
+      "countryterritoryCode": "SOM",
+      "popData2018": "15008154",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -140151,6 +142400,19 @@
       "geoId": "SO",
       "countryterritoryCode": "SOM",
       "popData2018": "15008154",
+      "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "267",
+      "deaths": "4",
+      "countriesAndTerritories": "South_Africa",
+      "geoId": "ZA",
+      "countryterritoryCode": "ZAF",
+      "popData2018": "57779622",
       "continentExp": "Africa"
     }, 
     { 
@@ -140776,6 +143038,19 @@
       "countryterritoryCode": "ZAF",
       "popData2018": "57779622",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "10",
+      "deaths": "0",
+      "countriesAndTerritories": "South_Korea",
+      "geoId": "KR",
+      "countryterritoryCode": "KOR",
+      "popData2018": "51635256",
+      "continentExp": "Asia"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -142286,6 +144561,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1",
+      "deaths": "0",
+      "countriesAndTerritories": "South_Sudan",
+      "geoId": "SS",
+      "countryterritoryCode": "SSD",
+      "popData2018": "10975920",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -142531,6 +144819,19 @@
       "countryterritoryCode": "SSD",
       "popData2018": "10975920",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "6740",
+      "deaths": "367",
+      "countriesAndTerritories": "Spain",
+      "geoId": "ES",
+      "countryterritoryCode": "ESP",
+      "popData2018": "46723749",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -144041,6 +146342,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "52",
+      "deaths": "0",
+      "countriesAndTerritories": "Sri_Lanka",
+      "geoId": "LK",
+      "countryterritoryCode": "LKA",
+      "popData2018": "21670000",
+      "continentExp": "Asia"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -145432,6 +147746,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "12",
+      "deaths": "3",
+      "countriesAndTerritories": "Sudan",
+      "geoId": "SD",
+      "countryterritoryCode": "SDN",
+      "popData2018": "41801533",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -145978,6 +148305,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Suriname",
+      "geoId": "SR",
+      "countryterritoryCode": "SUR",
+      "popData2018": "575991",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -146444,6 +148784,19 @@
       "countryterritoryCode": "SUR",
       "popData2018": "575991",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "812",
+      "deaths": "131",
+      "countriesAndTerritories": "Sweden",
+      "geoId": "SE",
+      "countryterritoryCode": "SWE",
+      "popData2018": "10183175",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -147951,6 +150304,19 @@
       "geoId": "SE",
       "countryterritoryCode": "SWE",
       "popData2018": "10183175",
+      "continentExp": "Europe"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "181",
+      "deaths": "41",
+      "countriesAndTerritories": "Switzerland",
+      "geoId": "CH",
+      "countryterritoryCode": "CHE",
+      "popData2018": "8516543",
       "continentExp": "Europe"
     }, 
     { 
@@ -149462,6 +151828,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Syria",
+      "geoId": "SY",
+      "countryterritoryCode": "SYR",
+      "popData2018": "16906283",
+      "continentExp": "Asia"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -149888,6 +152267,19 @@
       "geoId": "SY",
       "countryterritoryCode": "SYR",
       "popData2018": "16906283",
+      "continentExp": "Asia"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1",
+      "deaths": "0",
+      "countriesAndTerritories": "Taiwan",
+      "geoId": "TW",
+      "countryterritoryCode": "TWN",
+      "popData2018": "23780452",
       "continentExp": "Asia"
     }, 
     { 
@@ -151373,6 +153765,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "15",
+      "deaths": "0",
+      "countriesAndTerritories": "Thailand",
+      "geoId": "TH",
+      "countryterritoryCode": "THA",
+      "popData2018": "69428524",
+      "continentExp": "Asia"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -152790,6 +155195,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1",
+      "deaths": "0",
+      "countriesAndTerritories": "Timor_Leste",
+      "geoId": "TL",
+      "countryterritoryCode": "TLS",
+      "popData2018": "1267972",
+      "continentExp": "Asia"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -153230,6 +155648,19 @@
       "countryterritoryCode": "TLS",
       "popData2018": "1267972",
       "continentExp": "Asia"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "2",
+      "deaths": "0",
+      "countriesAndTerritories": "Togo",
+      "geoId": "TG",
+      "countryterritoryCode": "TGO",
+      "popData2018": "7889094",
+      "continentExp": "Africa"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -153776,6 +156207,19 @@
       "countryterritoryCode": "TGO",
       "popData2018": "7889094",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Trinidad_and_Tobago",
+      "geoId": "TT",
+      "countryterritoryCode": "TTO",
+      "popData2018": "1389858",
+      "continentExp": "America"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -154335,6 +156779,19 @@
       "countryterritoryCode": "TTO",
       "popData2018": "1389858",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "4",
+      "deaths": "0",
+      "countriesAndTerritories": "Tunisia",
+      "geoId": "TN",
+      "countryterritoryCode": "TUN",
+      "popData2018": "11565204",
+      "continentExp": "Africa"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -154948,6 +157405,19 @@
       "continentExp": "Africa"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "3122",
+      "deaths": "109",
+      "countriesAndTerritories": "Turkey",
+      "geoId": "TR",
+      "countryterritoryCode": "TUR",
+      "popData2018": "82319724",
+      "continentExp": "Asia"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -155494,6 +157964,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Turks_and_Caicos_islands",
+      "geoId": "TC",
+      "countryterritoryCode": "TCA",
+      "popData2018": "31458",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -155895,6 +158378,19 @@
       "countryterritoryCode": "TCA",
       "popData2018": "31458",
       "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "1",
+      "deaths": "0",
+      "countriesAndTerritories": "Uganda",
+      "geoId": "UG",
+      "countryterritoryCode": "UGA",
+      "popData2018": "42723139",
+      "continentExp": "Africa"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -156337,6 +158833,19 @@
       "countryterritoryCode": "UGA",
       "popData2018": "42723139",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "478",
+      "deaths": "8",
+      "countriesAndTerritories": "Ukraine",
+      "geoId": "UA",
+      "countryterritoryCode": "UKR",
+      "popData2018": "44622516",
+      "continentExp": "Europe"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -156883,6 +159392,19 @@
       "countryterritoryCode": "UKR",
       "popData2018": "44622516",
       "continentExp": "Europe"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "525",
+      "deaths": "8",
+      "countriesAndTerritories": "United_Arab_Emirates",
+      "geoId": "AE",
+      "countryterritoryCode": "ARE",
+      "popData2018": "9630959",
+      "continentExp": "Asia"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -159836,6 +162358,19 @@
       "continentExp": "Europe"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "15",
+      "deaths": "0",
+      "countriesAndTerritories": "United_Republic_of_Tanzania",
+      "geoId": "TZ",
+      "countryterritoryCode": "TZA",
+      "popData2018": "56318348",
+      "continentExp": "Africa"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -160341,6 +162876,19 @@
       "countryterritoryCode": "TZA",
       "popData2018": "56318348",
       "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "21352",
+      "deaths": "1054",
+      "countriesAndTerritories": "United_States_of_America",
+      "geoId": "US",
+      "countryterritoryCode": "USA",
+      "popData2018": "327167434",
+      "continentExp": "America"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -161851,6 +164399,19 @@
       "continentExp": "America"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "United_States_Virgin_Islands",
+      "geoId": "VI",
+      "countryterritoryCode": "VIR",
+      "popData2018": "106977",
+      "continentExp": "America"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -162251,6 +164812,19 @@
       "geoId": "VI",
       "countryterritoryCode": "VIR",
       "popData2018": "106977",
+      "continentExp": "America"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "6",
+      "deaths": "0",
+      "countriesAndTerritories": "Uruguay",
+      "geoId": "UY",
+      "countryterritoryCode": "URY",
+      "popData2018": "3449299",
       "continentExp": "America"
     }, 
     { 
@@ -162787,6 +165361,19 @@
       "continentExp": "America"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "58",
+      "deaths": "1",
+      "countriesAndTerritories": "Uzbekistan",
+      "geoId": "UZ",
+      "countryterritoryCode": "UZB",
+      "popData2018": "32955400",
+      "continentExp": "Asia"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -163305,6 +165892,19 @@
       "countryterritoryCode": "UZB",
       "popData2018": "32955400",
       "continentExp": "Asia"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "20",
+      "deaths": "0",
+      "countriesAndTerritories": "Venezuela",
+      "geoId": "VE",
+      "countryterritoryCode": "VEN",
+      "popData2018": "28870195",
+      "continentExp": "America"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -163840,11 +166440,24 @@
       "continentExp": "America"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "2",
+      "deaths": "0",
+      "countriesAndTerritories": "Vietnam",
+      "geoId": "VN",
+      "countryterritoryCode": "VNM",
+      "popData2018": "95540395",
+      "continentExp": "Asia"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
       "year": "2020",
-      "cases": "0",
+      "cases": "2",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -163935,7 +166548,7 @@
       "day": "17",
       "month": "4",
       "year": "2020",
-      "cases": "1",
+      "cases": "0",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -163948,7 +166561,7 @@
       "day": "16",
       "month": "4",
       "year": "2020",
-      "cases": "1",
+      "cases": "0",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -163987,7 +166600,7 @@
       "day": "13",
       "month": "4",
       "year": "2020",
-      "cases": "4",
+      "cases": "2",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164000,7 +166613,7 @@
       "day": "12",
       "month": "4",
       "year": "2020",
-      "cases": "1",
+      "cases": "4",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164013,7 +166626,7 @@
       "day": "11",
       "month": "4",
       "year": "2020",
-      "cases": "2",
+      "cases": "1",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164026,7 +166639,7 @@
       "day": "10",
       "month": "4",
       "year": "2020",
-      "cases": "4",
+      "cases": "2",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164039,7 +166652,7 @@
       "day": "9",
       "month": "4",
       "year": "2020",
-      "cases": "0",
+      "cases": "4",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164052,7 +166665,7 @@
       "day": "8",
       "month": "4",
       "year": "2020",
-      "cases": "6",
+      "cases": "0",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164065,7 +166678,7 @@
       "day": "7",
       "month": "4",
       "year": "2020",
-      "cases": "4",
+      "cases": "6",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164078,7 +166691,7 @@
       "day": "6",
       "month": "4",
       "year": "2020",
-      "cases": "1",
+      "cases": "4",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164104,7 +166717,7 @@
       "day": "4",
       "month": "4",
       "year": "2020",
-      "cases": "0",
+      "cases": "4",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164117,7 +166730,7 @@
       "day": "3",
       "month": "4",
       "year": "2020",
-      "cases": "4",
+      "cases": "3",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164130,7 +166743,7 @@
       "day": "2",
       "month": "4",
       "year": "2020",
-      "cases": "6",
+      "cases": "21",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164143,7 +166756,7 @@
       "day": "1",
       "month": "4",
       "year": "2020",
-      "cases": "0",
+      "cases": "6",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164156,7 +166769,7 @@
       "day": "31",
       "month": "3",
       "year": "2020",
-      "cases": "1",
+      "cases": "3",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164169,7 +166782,7 @@
       "day": "30",
       "month": "3",
       "year": "2020",
-      "cases": "5",
+      "cases": "15",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164182,7 +166795,7 @@
       "day": "29",
       "month": "3",
       "year": "2020",
-      "cases": "54",
+      "cases": "17",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164195,7 +166808,7 @@
       "day": "28",
       "month": "3",
       "year": "2020",
-      "cases": "16",
+      "cases": "8",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164208,7 +166821,7 @@
       "day": "27",
       "month": "3",
       "year": "2020",
-      "cases": "5",
+      "cases": "10",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164221,7 +166834,7 @@
       "day": "26",
       "month": "3",
       "year": "2020",
-      "cases": "14",
+      "cases": "16",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164234,7 +166847,7 @@
       "day": "25",
       "month": "3",
       "year": "2020",
-      "cases": "11",
+      "cases": "5",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164247,7 +166860,7 @@
       "day": "24",
       "month": "3",
       "year": "2020",
-      "cases": "5",
+      "cases": "11",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164260,7 +166873,7 @@
       "day": "23",
       "month": "3",
       "year": "2020",
-      "cases": "24",
+      "cases": "26",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164286,7 +166899,7 @@
       "day": "21",
       "month": "3",
       "year": "2020",
-      "cases": "2",
+      "cases": "1",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164299,7 +166912,7 @@
       "day": "20",
       "month": "3",
       "year": "2020",
-      "cases": "9",
+      "cases": "11",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164312,7 +166925,7 @@
       "day": "19",
       "month": "3",
       "year": "2020",
-      "cases": "15",
+      "cases": "8",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164325,7 +166938,7 @@
       "day": "18",
       "month": "3",
       "year": "2020",
-      "cases": "0",
+      "cases": "7",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164364,7 +166977,7 @@
       "day": "15",
       "month": "3",
       "year": "2020",
-      "cases": "4",
+      "cases": "0",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164377,7 +166990,7 @@
       "day": "14",
       "month": "3",
       "year": "2020",
-      "cases": "5",
+      "cases": "9",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164403,7 +167016,7 @@
       "day": "12",
       "month": "3",
       "year": "2020",
-      "cases": "4",
+      "cases": "1",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -164429,7 +167042,7 @@
       "day": "10",
       "month": "3",
       "year": "2020",
-      "cases": "1",
+      "cases": "4",
       "deaths": "0",
       "countriesAndTerritories": "Vietnam",
       "geoId": "VN",
@@ -165296,6 +167909,19 @@
       "continentExp": "Asia"
     }, 
     { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "0",
+      "countriesAndTerritories": "Yemen",
+      "geoId": "YE",
+      "countryterritoryCode": "YEM",
+      "popData2018": "28498687",
+      "continentExp": "Asia"
+    }, 
+    { 
       "dateRep": "24/04/2020",
       "day": "24",
       "month": "4",
@@ -165489,6 +168115,19 @@
       "countryterritoryCode": "YEM",
       "popData2018": "28498687",
       "continentExp": "Asia"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "8",
+      "deaths": "0",
+      "countriesAndTerritories": "Zambia",
+      "geoId": "ZM",
+      "countryterritoryCode": "ZMB",
+      "popData2018": "17351822",
+      "continentExp": "Africa"
     }, 
     { 
       "dateRep": "24/04/2020",
@@ -165969,6 +168608,19 @@
       "geoId": "ZM",
       "countryterritoryCode": "ZMB",
       "popData2018": "17351822",
+      "continentExp": "Africa"
+    }, 
+    { 
+      "dateRep": "25/04/2020",
+      "day": "25",
+      "month": "4",
+      "year": "2020",
+      "cases": "0",
+      "deaths": "1",
+      "countriesAndTerritories": "Zimbabwe",
+      "geoId": "ZW",
+      "countryterritoryCode": "ZWE",
+      "popData2018": "14439018",
       "continentExp": "Africa"
     }, 
     { 
