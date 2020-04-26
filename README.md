@@ -9,7 +9,7 @@ The raw number of new cases and deaths reported each day can be erratic, making 
 Within the smoothed data, the analysis tries to identify key dates:
 * Start date: when 50 cases have been reported
 * Peak cases: when the number of new cases being reported peaks
-* End date: added symmetrically around the peak cases, mirroring start date
+* End date: mirrors the time between start date and peak cases, extended for dilation
 * Day zero: when 50 deaths have been reported
 * Peak deaths: when the number of new deaths being reported peaks
 
