@@ -28,11 +28,9 @@ import datetime
 import math
 import matplotlib.pyplot as plt
 
-json_data = None        # string containing json data downloaded from web site
-
 def average(lst): 
     """
-    calculate average value for a list of numbers
+    calculate average for a list of numbers
     """
     return sum(lst) / len(lst) 
 
@@ -41,46 +39,68 @@ def num(x, width=8):
     format a number for display
     """
     if x is None : return width * ' '
-    s = width * ' ' + f"{int(x):,}"
+    n = int(round(x,0))
+    if n == 0 and x > 0 :
+        s = width * ' ' + '< 0.5'
+    else :
+        s = width * ' ' + f"{n:,}"
     return s[-width:] 
 
+region_name = {}       # list of region names from geoId
 
-region_codes = {}
-
-def load_region() :
+def load_names() :
     """
-    load list of region codes and names
+    load region codes and names
     """
-    global region_codes
+    global region_name
     f = open('region.json', 'r' )
     for r in json.load(f) :
-        region_codes[r.get('Code')] = r.get('Name')
+        region_name[r.get('Code')] = r.get('Name')
     f.close()
     return
 
-load_region()
+json_data = None        # string with json data downloaded from web site
+region = {}             # dictionary of geoIds available in the data
+
+def prep_data() :
+    """
+    load download file into string, extract regions and return 
+    """
+    load_names()
+    global json_data
+    # clean up any problems in the download file and load string into buffer
+    n=0
+    s = ''
+    f = open('download.json', 'r' )
+    while True :
+        line = f.readline()
+        if line == '' : break   # end of file
+        n += 1
+        # ignore BOM if there is one and remove invalid lines
+        if n==1 : line ="{"
+        if line[0].isdigit() or line[0:7] == 'dateRep' : continue
+        s += line
+    f.close()
+    json_data = s
+    # print(f"{n} lines read from download file")
+    # build dictionary of the regions available
+    for r in json.loads(json_data).get('records') :
+        id = r.get('geoId')
+        if id not in region.keys() :
+            region[id] = None
+    # cross check the region codes with the name lookup
+    for id in region.keys() :
+        if region_name.get(id) is None :
+            print(f"No region name for code {id}")
+    return
+
+prep_data()
 
 def load(geoId='UK') :
     """
-    load data from download file, decorate and return 
+    load data and return 
     """
     global json_data
-    # clean up any problems in the download file and load string into buffer
-    if json_data is None :
-        n=0
-        s = ''
-        f = open('download.json', 'r' )
-        while True :
-            line = f.readline()
-            if line == '' : break   # end of file
-            n += 1
-            # ignore BOM if there is one and remove invalid lines
-            if n==1 : line ="{"
-            if line[0].isdigit() or line[0:7] == 'dateRep' : continue
-            s += line
-        f.close()
-        json_data = s
-    # print(f"{n} lines read from download file")
     # get the records for the region
     data = [r for r in json.loads(json_data).get('records') if r.get('geoId') == geoId]
     # convert data for each record
@@ -107,12 +127,12 @@ class Region :
     def __init__(self, geoId='UK', smooth=9, growth_days=38, lag=4, spread=7, dilation=2, d_cases=0, figwidth=12, debug=0) :
         # check parameters
         self.debug = debug
-        global region_codes
-        if region_codes.get(geoId) is None :
-            print(f"Region code was not recognised: {region_codes}\n")
+        global region_name
+        if region_name.get(geoId) is None :
+            print(f"Region not recognised: {geoId}\n")
             return
         self.geoId = geoId
-        self.name = region_codes.get(geoId)
+        self.name = region_name.get(geoId)
         if self.debug > 0 : print(f"Region {self.geoId} = {self.name}")
         if smooth % 2 == 0 : smooth += 1      # make sure the average is balanced around the centre point
         self.smooth = smooth                  # number of raw data points to average over to reduce anomalies
@@ -122,10 +142,12 @@ class Region :
         self.dilation_deaths = dilation        # controls distribution symmetry
         self.dilation_cases = dilation if d_cases == 0 else d_cases
         self.figsize = (figwidth, figwidth * 9 / 16)     # size of charts
-        # load dat
+        # load data
         self.data = load(geoId)
         # check we have some data to work on
-        if len(self.data) == 0 : return
+        if len(self.data) == 0 :
+            print(f"no records available for geoId {self.geoId}")
+            return
         self.count = len(self.data)
         self.latest = self.data[-1].get('dateRep')                                          # date when last data was provided
         self.total_cases = self.data[-1].get('cases_to_date')                               # total number of cases reported
@@ -276,13 +298,15 @@ class Region :
             print(f"> peak deaths: {int(peak):,} on {self.s_peak_deaths:%Y-%m-%d} {self.s_peak_death_days+1} days")
         # build predictions using bell distribution / sigmoid population curves
         self.build_bell()
+        # cache region in case we need to refer to it later...
+        region[self.geoId] = self
         return
 
     def report(self) :
         """
         report key statistics from the data to date
         """
-        print(f"{self.name} ({self.geoId}) to end of {self.latest:%Y-%m-%d}:")
+        print(f"{self.name} data to end of {self.latest:%Y-%m-%d}:")
         print(f"  {self.total_cases:,} cases, {self.total_deaths:,} deaths")
         print(f"  {self.case_rate:,} cases per million, {self.death_rate:,} deaths per million (2018 population = {self.population:,})")
         print()
