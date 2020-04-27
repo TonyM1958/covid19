@@ -29,7 +29,6 @@ import math
 import matplotlib.pyplot as plt
 
 json_data = None        # string containing json data downloaded from web site
-region_codes = ['UK', 'FR', 'IT', 'DE', 'ES', 'US', 'CN', 'JP', 'NZ', 'RU', 'AU', 'BE', 'IE']
 
 def average(lst): 
     """
@@ -44,6 +43,22 @@ def num(x, width=8):
     if x is None : return width * ' '
     s = width * ' ' + f"{int(x):,}"
     return s[-width:] 
+
+
+region_codes = {}
+
+def load_region() :
+    """
+    load list of region codes and names
+    """
+    global region_codes
+    f = open('region.json', 'r' )
+    for r in json.load(f) :
+        region_codes[r.get('Code')] = r.get('Name')
+    f.close()
+    return
+
+load_region()
 
 def load(geoId='UK') :
     """
@@ -92,8 +107,13 @@ class Region :
     def __init__(self, geoId='UK', smooth=9, growth_days=38, lag=4, spread=7, dilation=2, d_cases=0, figwidth=12, debug=0) :
         # check parameters
         self.debug = debug
-        if geoId not in region_codes :
-            print(f"Region Codes: {region_codes}\n")
+        global region_codes
+        if region_codes.get(geoId) is None :
+            print(f"Region code was not recognised: {region_codes}\n")
+            return
+        self.geoId = geoId
+        self.name = region_codes.get(geoId)
+        if self.debug > 0 : print(f"Region {self.geoId} = {self.name}")
         if smooth % 2 == 0 : smooth += 1      # make sure the average is balanced around the centre point
         self.smooth = smooth                  # number of raw data points to average over to reduce anomalies
         self.growth_days = growth_days        # assumed minimum days from start to peak cases
@@ -107,7 +127,6 @@ class Region :
         # check we have some data to work on
         if len(self.data) == 0 : return
         self.count = len(self.data)
-        self.geoId = self.data[-1].get('geoId')                                             # 2 letter ISO country code
         self.latest = self.data[-1].get('dateRep')                                          # date when last data was provided
         self.total_cases = self.data[-1].get('cases_to_date')                               # total number of cases reported
         self.total_deaths = self.data[-1].get('deaths_to_date')                             # total number of deaths reported
@@ -225,35 +244,37 @@ class Region :
             print(f"> peak cases: {int(peak):,} on {self.s_peak_cases:%Y-%m-%d} {self.s_peak_case_days+1} days")
         # calculate symmetrical cycle time as start to peak time
         self.cycle = 2 * (self.s_peak_case_days - self.s_start_days)
-        # calculate nominal end time from cycle time and decay time with dilation
+        # calculate notional end day from cycle time, factored for dilation effect
         t_decay = 1
         if self.dilation_cases > 1 :
             if self.dilation_cases < 2 : t_decay = self.dilation_cases
             else : t_decay = 2
         self.s_end_days = self.s_start_days + int(self.cycle * (1 + t_decay) / 2)
         self.s_end = self.latest + datetime.timedelta(self.s_end_days)
+        # find peak deaths, starting just before peak cases to avoid early false peaks
         peak = 0
         for i in range(self.s_peak_case_days - self.lag, self.s_latest_days) :
-            # find smoothed peak deaths day
-            if i > self.s_end_days : break
+            if i > self.s_end_days : break      # avoid false reporting / second peaks  i.e. china
             if self.data[i].get('s_deaths') is None : continue
             if self.data[i].get('s_deaths') > peak :
                 peak = self.data[i].get('s_deaths')
                 self.s_peak_deaths = self.data[i].get('dateRep')
                 self.s_peak_death_days = i
-        # check if peak deaths was found. Predict using lag if not
+        # check if peak deaths was found. Estimate day using lag if not
         if self.s_peak_death_days is None :
+            # not found, use lag
             self.s_peak_death_days = self.s_peak_case_days + self.lag
             self.s_peak_deaths = self.s_peak_cases + datetime.timedelta(self.lag)
         elif self.s_peak_death_days >= self.s_peak_case_days and self.s_peak_death_days >= self.s_latest_days and self.s_peak_death_days - self.s_peak_case_days < self.lag:
+            # avoid false peak when it is the latest data point and falls inside the estimated lag. Push out to lag
             self.s_peak_death_days = self.s_peak_case_days + self.lag
             self.s_peak_deaths = self.s_peak_cases + datetime.timedelta(self.lag)
         else :
-            # update lag with actual
+            # found peak, update lag with actual
             self.lag = self.s_peak_death_days - self.s_peak_case_days
         if self.debug > 0 :
             print(f"> peak deaths: {int(peak):,} on {self.s_peak_deaths:%Y-%m-%d} {self.s_peak_death_days+1} days")
-        # build predictions using bell population curves
+        # build predictions using bell distribution / sigmoid population curves
         self.build_bell()
         return
 
@@ -261,9 +282,9 @@ class Region :
         """
         report key statistics from the data to date
         """
-        print(f"{self.geoId} confirmed data up to end of {self.latest:%Y-%m-%d}:")
-        print(f"  {self.total_cases:,} confirmed cases, {self.total_deaths:,} deaths")
-        print(f"  {self.case_rate:,} cases per million, {self.death_rate:,} deaths per million (population = {self.population:,})")
+        print(f"{self.name} ({self.geoId}) to end of {self.latest:%Y-%m-%d}:")
+        print(f"  {self.total_cases:,} cases, {self.total_deaths:,} deaths")
+        print(f"  {self.case_rate:,} cases per million, {self.death_rate:,} deaths per million (2018 population = {self.population:,})")
         print()
         print(f"Timeline: (-ve days are past, +ve days are predicted)")
         # Add 1 to zero based indexes
@@ -280,26 +301,26 @@ class Region :
         print(f"  Spread:      Peak infection rate {self.s_r0_peak} ({self.s_r0_peak_date:%Y-%m-%d}, compared to {self.spread} days earlier)")
         print(f"               Latest infection rate {self.s_r0_latest} ({self.s_r0_latest_date:%Y-%m-%d}, compared to {self.spread} days earlier)")
         print(f"  Growth:      {self.growth_days} days (Start -> Peak Cases) ")
+        print(f"               L = {int(self.L_cases):,}, r = {round(self.r_cases,2)}, dilation = {self.dilation_cases} for cases")
         if self.s_total_deaths >= 50 :
             print(f"  Lag:         {self.lag} days (Peak Cases -> Peak Deaths) ")
-            print(f"  Prediction:  Cases L = {int(self.L_cases):,} r = {round(self.r_cases,2)}, dilation = {self.dilation_cases}")
-            print(f"               Deaths L = {int(self.L_deaths):,} r = {round(self.r_deaths,2)}, dilation = {self.dilation_deaths}")
-            print()
-            if self.s_end_days < 0 :
-                d = self.s_end_days
-                cases = int(self.data[d].get('cases_to_date'))
-                cases_rate = int(round(cases * 1000000 / self.population, 0))
-                deaths = int(self.data[d].get('deaths_to_date'))
-                death_rate = int(round(deaths * 1000000 / self.population, 0))
-                print(f"Outcome: {cases:,} cases, {deaths:,} deaths at end of {self.data[d].get('dateRep'):%Y-%m-%d}")
-                print(f"  {cases_rate:,} cases per million, {death_rate:,} deaths per million (population = {self.population:,})")
-            else :
-                cases = int(self.sigmoid_cases[-1])
-                cases_rate = int(round(cases * 1000000 / self.population, 0))
-                deaths = int(self.sigmoid_deaths[-1])
-                death_rate = int(round(deaths * 1000000 / self.population, 0))
-                print(f"Outcome: {cases:,} cases, {deaths:,} deaths at end of {self.s_end:%Y-%m-%d}")
-                print(f"  {cases_rate:,} cases per million, {death_rate:,} deaths per million (population = {self.population:,})")
+            print(f"               L = {int(self.L_deaths):,}, r = {round(self.r_deaths,2)}, dilation = {self.dilation_deaths} for deaths")
+        print()
+        if self.s_end_days < 0 :
+            d = self.s_end_days
+            cases = int(self.data[d].get('cases_to_date'))
+            cases_rate = int(round(cases * 1000000 / self.population, 0))
+            deaths = int(self.data[d].get('deaths_to_date'))
+            death_rate = int(round(deaths * 1000000 / self.population, 0))
+            print(f"Outcome: {cases:,} cases, {deaths:,} deaths at end of {self.data[d].get('dateRep'):%Y-%m-%d}")
+            print(f"  {cases_rate:,} cases per million, {death_rate:,} deaths per million (2018 population = {self.population:,})")
+        else :
+            cases = int(self.sigmoid_cases[-1])
+            cases_rate = int(round(cases * 1000000 / self.population, 0))
+            deaths = int(self.sigmoid_deaths[-1])
+            death_rate = int(round(deaths * 1000000 / self.population, 0))
+            print(f"Outcome: {cases:,} cases, {deaths:,} deaths at end of {self.s_end:%Y-%m-%d}")
+            print(f"  {cases_rate:,} cases per million, {death_rate:,} deaths per million (2018 population = {self.population:,})")
         print()
         return
     
@@ -332,17 +353,17 @@ class Region :
             plt.figure(figsize=self.figsize)
             if ylog==1 :
                 plt.yscale('log')
-                plt.title(f"{self.geoId} (logarithmic)\nNew Cases (green=raw, blue=smoothed)\nNew Deaths (orange=raw, red=smoothed)")
+                plt.title(f"{self.name} - logarithmic Y axis\nNew Cases (green=raw, blue=smoothed)\nNew Deaths (orange=raw, red=smoothed)")
             else :
-                plt.title(f"{self.geoId} (linear)\nNew Cases (green=raw, blue=smoothed)\nNew Deaths (orange=raw, red=smoothed)")
+                plt.title(f"{self.name} - linear Y axis\nNew Cases (green=raw, blue=smoothed)\nNew Deaths (orange=raw, red=smoothed)")
             plt.plot(dates, [r.get('s_cases') for r in self.data[days:]], color='blue', linestyle='solid')
             plt.plot(dates, [r.get('s_deaths') for r in self.data[days:]], color='red', linestyle='solid')
             plt.plot(dates, [r.get('cases') for r in self.data[days:]], color='green', linestyle='dotted')
             plt.plot(dates, [r.get('deaths') for r in self.data[days:]], color='orange', linestyle='dotted')
             plt.axvline(self.s_start, color='grey', linestyle='dashed', linewidth=2, label='start')
+            plt.plot([self.s_start + datetime.timedelta(d) for d in range(0, len(self.bell_cases))], self.bell_cases, color='grey', linestyle='dashed')
             if self.s_total_deaths >= 50 : 
                 plt.axvline(self.s_day0, color='tan', linestyle='dashed', linewidth=2, label='day0')
-                plt.plot([self.s_start + datetime.timedelta(d) for d in range(0, len(self.bell_cases))], self.bell_cases, color='grey', linestyle='dashed')
                 plt.plot([self.s_start + datetime.timedelta(d) for d in range(0, len(self.bell_deaths))], self.bell_deaths, color='grey', linestyle='dashed')
                 plt.axvline(self.s_peak_deaths, color='tan', linestyle='dashed', linewidth=2, label='peak')
             plt.axvline(self.s_peak_cases, color='grey', linestyle='dashed', linewidth=2, label='peak')
@@ -355,15 +376,15 @@ class Region :
         # plot infection rate
         if infection == 1 :
             plt.figure(figsize=self.figsize)
-            plt.title(f"{self.geoId}\nInfection Rate, based on number of new cases compared to {self.spread} days earlier")
+            plt.title(f"{self.name} \nInfection Rate, based on number of new cases compared to {self.spread} days earlier")
             plt.plot(dates, [r.get('s_r0') for r in self.data[days:]], color='brown', linestyle='solid')
             plt.axhline(y=1, color='green', linestyle='dashed', linewidth=2, label='1')
             if self.s_r0_peak > clip : plt.ylim([0, clip])
             else : plt.ylim([0, 4 * (int(self.s_r0_peak / 4) + 1)])
+            plt.xticks([self.s_start + datetime.timedelta(d) for d in range(0, len(self.bell_cases),7)], rotation=90)
+            plt.axvline(self.latest, color='green', linestyle='dashed', linewidth=2, label='now')
+            plt.axvline(self.s_start, color='grey', linestyle='dashed', linewidth=2, label='start')
             if self.s_total_deaths >= 50 : 
-                plt.xticks([self.s_start + datetime.timedelta(d) for d in range(0, len(self.bell_cases),7)], rotation=90)
-                plt.axvline(self.latest, color='green', linestyle='dashed', linewidth=2, label='now')
-                plt.axvline(self.s_start, color='grey', linestyle='dashed', linewidth=2, label='start')
                 plt.axvline(self.s_day0, color='tan', linestyle='dashed', linewidth=2, label='day0')
                 plt.axvline(self.s_peak_deaths, color='tan', linestyle='dashed', linewidth=2, label='peak')
             plt.axvline(self.s_peak_cases, color='grey', linestyle='dashed', linewidth=2, label='peak')
@@ -378,20 +399,20 @@ class Region :
             plt.figure(figsize=self.figsize)
             if ylog==1 :
                 plt.yscale('log')
-                plt.title(f"{self.geoId} (logarithmic)\nTotal Cases (green=raw, blue=smoothed)\nTotal Deaths (orange=raw, red=smoothed)")
+                plt.title(f"{self.name} - logarithmic Y axis\nTotal Cases (green=raw, blue=smoothed)\nTotal Deaths (orange=raw, red=smoothed)")
             else :
-                plt.title(f"{self.geoId} (linear)\nTotal Cases (green=raw, blue=smoothed)\nTotal Deaths (orange=raw, red=smoothed)")
+                plt.title(f"{self.geoId} - linear Y axis\nTotal Cases (green=raw, blue=smoothed)\nTotal Deaths (orange=raw, red=smoothed)")
             plt.plot(dates, [r.get('s_cases_to_date') for r in self.data[days:]], color='blue', linestyle='solid')
             plt.plot(dates, [r.get('s_deaths_to_date') for r in self.data[days:]], color='red', linestyle='solid')
             plt.plot(dates, [r.get('cases_to_date') for r in self.data[days:]], color='green', linestyle='dotted')
             plt.plot(dates, [r.get('deaths_to_date') for r in self.data[days:]], color='orange', linestyle='dotted')
             plt.axvline(self.latest, color='green', linestyle='dashed', linewidth=2, label='now')
             plt.axvline(self.s_start, color='grey', linestyle='dashed', linewidth=2, label='start')
+            plt.plot([self.s_start + datetime.timedelta(d) for d in range(0, len(self.sigmoid_cases))], self.sigmoid_cases, color='grey', linestyle='dashed')
+            plt.xticks([self.s_start + datetime.timedelta(d) for d in range(0, len(self.bell_cases),7)], rotation=90)
             if self.s_total_deaths >= 50 : 
                 plt.axvline(self.s_day0, color='tan', linestyle='dashed', linewidth=2, label='day0')
-                plt.plot([self.s_start + datetime.timedelta(d) for d in range(0, len(self.sigmoid_cases))], self.sigmoid_cases, color='grey', linestyle='dashed')
                 plt.plot([self.s_start + datetime.timedelta(d) for d in range(0, len(self.sigmoid_deaths))], self.sigmoid_deaths, color='grey', linestyle='dashed')
-                plt.xticks([self.s_start + datetime.timedelta(d) for d in range(0, len(self.bell_cases),7)], rotation=90)
                 plt.axvline(self.s_peak_deaths, color='tan', linestyle='dashed', linewidth=2, label='peak')
             plt.axvline(self.s_peak_cases, color='grey', linestyle='dashed', linewidth=2, label='peak')
             plt.axvline(self.s_end, color='grey', linestyle='dashed', linewidth=2, label='end')
@@ -518,8 +539,6 @@ class Region :
         self.r_cases = None             # r factor for cases
         self.L_deaths = None            # scale factor for deaths
         self.r_deaths = None            # r factor for deaths
-        if self.s_total_deaths < 50 :
-            return
         if self.s_peak_case_days < self.s_latest_days : d = self.s_peak_case_days
         else : d = self.s_latest_days
         self.fit_cases(d)
@@ -556,7 +575,6 @@ class Region :
         """
         use the bell curves to predict future cases / deaths
         """
-        if self.s_total_deaths < 50 : return
         if self.s_end_days < 1 : return
         if days == 0 : days = int(self.smooth/2) + 1
         if days < 1 : return
