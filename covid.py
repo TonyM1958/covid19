@@ -46,27 +46,13 @@ def num(x, width=8):
         s = width * ' ' + f"{n:,}"
     return s[-width:] 
 
-region_name = {}       # list of region names from geoId
-
-def load_names() :
-    """
-    load region codes and names
-    """
-    global region_name
-    f = open('region.json', 'r' )
-    for r in json.load(f) :
-        region_name[r.get('Code')] = r.get('Name')
-    f.close()
-    return
-
 json_data = None        # string with json data downloaded from web site
-region = {}             # dictionary of geoIds available in the data
+region_name = {}        # dictionary of geoIds available in the data
 
 def prep_data() :
     """
-    load download file into string, extract regions and return 
+    load json data file and build dictionary of region names 
     """
-    load_names()
     global json_data
     # clean up any problems in the download file and load string into buffer
     n=0
@@ -82,16 +68,13 @@ def prep_data() :
         s += line
     f.close()
     json_data = s
-    # print(f"{n} lines read from download file")
+    print(f"{n:,} lines read from download file")
     # build dictionary of the regions available
     for r in json.loads(json_data).get('records') :
         id = r.get('geoId')
-        if id not in region.keys() :
-            region[id] = None
-    # cross check the region codes with the name lookup
-    for id in region.keys() :
-        if region_name.get(id) is None :
-            print(f"No region name for code {id}")
+        if id not in region_name.keys() :
+            region_name[id] = r.get('countriesAndTerritories').replace('_', ' ')
+    print(f"{len(region_name.keys())} regions found")
     return
 
 prep_data()
@@ -298,8 +281,6 @@ class Region :
             print(f"> peak deaths: {int(peak):,} on {self.s_peak_deaths:%Y-%m-%d} {self.s_peak_death_days+1} days")
         # build predictions using bell distribution / sigmoid population curves
         self.build_bell()
-        # cache region in case we need to refer to it later...
-        region[self.geoId] = self
         return
 
     def report(self) :
