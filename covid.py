@@ -1,7 +1,7 @@
 ##################################################################################################
 """
 Module:   Covid data analysis
-Date:     19 April 2020
+Date:     28 April 2020
 Author:   Tony Matthews
 """
 ##################################################################################################
@@ -49,12 +49,48 @@ def num(x, width=8):
 json_data = None        # string with json data downloaded from web site
 region_name = {}        # dictionary of geoIds available in the data
 
-def prep_data() :
+# global settings
+ylog_setting = 1        # global default Y axis setting
+days_setting = 14       # number of days data to show
+predict_setting = 10    # number of days prediction to show
+ylog_setting = 1        # log or linear Y axis
+daily_setting = 1       # plot daily new cases / new deaths
+infection_setting = 1   # plot infection rate
+totals_setting = 0      # plot cumulative cases / deaths
+smooth_setting = 9      # number of days to use when smoothing data
+growth_setting = 40     # number of days when virus spread before peak
+lag_setting = 4         # days lag between peak cases and peak deaths
+spread_setting = 7      # number of days to use look back when calculating infection rate
+dilation_setting = 2    # dilation to apply to deaths
+d_cases_setting = 0     # dilation to apply to cases
+figwidth_setting = 12   # width for plots
+debug_setting = 0       # debug setting
+
+def data_load(days=None, predict=None, ylog=None, daily=None, infection=None, totals=None, smooth=None, growth_days=None, lag=None
+    , spread=None, dilation=None, d_cases=None, figwidth=None, find=None, debug=0) :
     """
     load json data file and build dictionary of region names 
     """
-    global json_data
+    # configure any global settings
+    global days_setting, predict_setting, ylog_setting, daily_setting, infection_setting, totals_setting
+    global smooth_setting, growth_setting, lag_setting, spread_setting, dilation_setting, d_cases_setting
+    global figwidth_setting, debug_setting
+    if days is not None : days_setting = days
+    if predict is not None : predict_setting = predict
+    if ylog is not None : ylog_setting = ylog
+    if daily is not None : daily_setting = daily
+    if infection is not None : infection_setting = infection
+    if totals is not None : totals_setting = totals
+    if smooth is not None : smooth_setting = smooth
+    if growth_days is not None : growth_setting = growth_days
+    if lag is not None : lag_setting = lag
+    if spread is not None : spread_setting = spread
+    if dilation is not None : dilation_setting = dilation
+    if d_cases is not None : d_cases_setting = d_cases
+    if figwidth is not None : figwidth_setting = figwidth
+    if debug is not None : debug_setting = debug
     # clean up any problems in the download file and load string into buffer
+    global json_data
     n=0
     s = ''
     f = open('download.json', 'r' )
@@ -68,16 +104,23 @@ def prep_data() :
         s += line
     f.close()
     json_data = s
-    print(f"{n:,} lines read from download file")
+    if debug > 0 : print(f"{n:,} lines read from download.json")
     # build dictionary of the regions available
     for r in json.loads(json_data).get('records') :
         id = r.get('geoId')
         if id not in region_name.keys() :
             region_name[id] = r.get('countriesAndTerritories').replace('_', ' ')
-    print(f"{len(region_name.keys())} regions found")
+    print(f"{len(region_name.keys())} region(s) found")
+    # find region?
+    if find is not None :
+        n = 0
+        if debug > 0 : print()
+        for id in region_name.keys() : 
+            if find.lower() in region_name[id].lower() :
+                print(f"{id} : {region_name[id]}")
+                n += 1
+        print(f"\n{n} region(s) containing '{find}' found in download.json")
     return
-
-prep_data()
 
 def load(geoId='UK') :
     """
@@ -105,11 +148,12 @@ def load(geoId='UK') :
 
 class Region :
     """
-    Holds the data about a region
+    Load the data about a region
     """    
-    def __init__(self, geoId='UK', smooth=9, growth_days=38, lag=4, spread=7, dilation=2, d_cases=0, figwidth=12, debug=0) :
-        # check parameters
-        self.debug = debug
+    def __init__(self, geoId='UK', smooth=None, growth_days=None, lag=None, spread=None, dilation=None, d_cases=0, figwidth=None, debug=None) :
+        # process parameters
+        global smooth_setting, growth_setting, lag_setting, spread_setting, dilation_setting, d_cases_setting, figwidth_setting, debug_setting
+        self.debug = debug if debug is not None else debug_setting
         global region_name
         if region_name.get(geoId) is None :
             print(f"Region not recognised: {geoId}\n")
@@ -117,14 +161,17 @@ class Region :
         self.geoId = geoId
         self.name = region_name.get(geoId)
         if self.debug > 0 : print(f"Region {self.geoId} = {self.name}")
-        if smooth % 2 == 0 : smooth += 1      # make sure the average is balanced around the centre point
-        self.smooth = smooth                  # number of raw data points to average over to reduce anomalies
-        self.growth_days = growth_days        # assumed minimum days from start to peak cases
-        self.lag = lag                        # assumed minimum days between peak cases and peak deaths
-        self.spread = spread                  # number of days to use when working out infection rate
-        self.dilation_deaths = dilation        # controls distribution symmetry
-        self.dilation_cases = dilation if d_cases == 0 else d_cases
-        self.figsize = (figwidth, figwidth * 9 / 16)     # size of charts
+        self.smooth = smooth if smooth is not None else smooth_setting
+        if self.smooth % 2 == 0 : self.smooth += 1      # make sure the average is balanced around the centre point
+        self.growth_days = growth_days if growth_days is not None else growth_setting
+        self.lag = lag if lag is not None else lag_setting
+        self.spread = spread if spread is not None else spread_setting
+        self.dilation_deaths = dilation if dilation is not None else dilation_setting
+        self.dilation_cases = d_cases if d_cases != 0 else dilation
+        if self.dilation_cases is None :
+            self.dilation_cases = d_cases_setting if d_cases_setting != 0 else dilation_setting
+        self.figwidth = figwidth if figwidth is not None else figwidth_setting
+        self.figsize = (self.figwidth, self.figwidth * 9 / 16)     # size of charts
         # load data
         self.data = load(geoId)
         # check we have some data to work on
@@ -279,8 +326,8 @@ class Region :
             self.lag = self.s_peak_death_days - self.s_peak_case_days
         if self.debug > 0 :
             print(f"> peak deaths: {int(peak):,} on {self.s_peak_deaths:%Y-%m-%d} {self.s_peak_death_days+1} days")
-        # build predictions using bell distribution / sigmoid population curves
-        self.build_bell()
+        # build prediction curves using bell distribution / sigmoid population curves
+        self.build_curves()
         return
 
     def report(self) :
@@ -329,15 +376,14 @@ class Region :
         print()
         return
     
-    def show(self, days=7) :
+    def show(self, days=days_setting) :
         """
         show records for last number of days
         """
-        days = -days
         print()
         print(f"              Raw ----------     Total --------     Smoothed ------   Total ---------")
         print(f"Date          Cases   Deaths     Cases   Deaths     Cases   Deaths     Cases   Deaths")
-        for r in self.data[days:] :
+        for r in self.data[-1 * days:] :
             print(f"{r.get('dateRep'):%Y-%m-%d} {num(r.get('cases'))} {num(r.get('deaths'))} " + \
                   f" {num(r.get('cases_to_date'))} {num(r.get('deaths_to_date'))} " + \
                   f" {num(r.get('s_cases'))} {num(r.get('s_deaths'))} " + \
@@ -345,22 +391,21 @@ class Region :
         print()
         return
 
-    def plot(self, days=0, ylog=0, daily=1, infection=1, totals=0, clip=12) :
+    def plot(self, ylog=ylog_setting, daily=daily_setting, infection=infection_setting, totals=totals_setting, clip=12) :
         """
         plot the graph of a property against the day reported
         """
-        if days == 0 : days = self.s_start_days
-        else : days = -days
+        days = self.s_start_days
         dates = [r.get('dateRep') for r in self.data[days:]]
-        date_range = [self.s_start + datetime.timedelta(d) for d in range(0, max(len(self.data[self.s_start_days:]), len(self.bell_cases)),7)]
+        date_range = [self.s_start + datetime.timedelta(d) for d in range(0, max(len(self.data[days:]), len(self.bell_cases)),7)]
         # plot daily data
         if daily == 1 :
             plt.figure(figsize=self.figsize)
             if ylog==1 :
                 plt.yscale('log')
-                plt.title(f"{self.name} - logarithmic Y axis\nNew Cases (green=raw, blue=smoothed)\nNew Deaths (orange=raw, red=smoothed)")
+                plt.title(f"{self.name} (log Y axis)\nNew Cases (green=raw, blue=smoothed)\nNew Deaths (orange=raw, red=smoothed)")
             else :
-                plt.title(f"{self.name} - linear Y axis\nNew Cases (green=raw, blue=smoothed)\nNew Deaths (orange=raw, red=smoothed)")
+                plt.title(f"{self.name}\nNew Cases (green=raw, blue=smoothed)\nNew Deaths (orange=raw, red=smoothed)")
             plt.plot(dates, [r.get('s_cases') for r in self.data[days:]], color='blue', linestyle='solid')
             plt.plot(dates, [r.get('s_deaths') for r in self.data[days:]], color='red', linestyle='solid')
             plt.plot(dates, [r.get('cases') for r in self.data[days:]], color='green', linestyle='dotted')
@@ -404,9 +449,9 @@ class Region :
             plt.figure(figsize=self.figsize)
             if ylog==1 :
                 plt.yscale('log')
-                plt.title(f"{self.name} - logarithmic Y axis\nTotal Cases (green=raw, blue=smoothed)\nTotal Deaths (orange=raw, red=smoothed)")
+                plt.title(f"{self.name} (log Y axis)\nTotal Cases (green=raw, blue=smoothed)\nTotal Deaths (orange=raw, red=smoothed)")
             else :
-                plt.title(f"{self.geoId} - linear Y axis\nTotal Cases (green=raw, blue=smoothed)\nTotal Deaths (orange=raw, red=smoothed)")
+                plt.title(f"{self.geoId}\nTotal Cases (green=raw, blue=smoothed)\nTotal Deaths (orange=raw, red=smoothed)")
             plt.plot(dates, [r.get('s_cases_to_date') for r in self.data[days:]], color='blue', linestyle='solid')
             plt.plot(dates, [r.get('s_deaths_to_date') for r in self.data[days:]], color='red', linestyle='solid')
             plt.plot(dates, [r.get('cases_to_date') for r in self.data[days:]], color='green', linestyle='dotted')
@@ -530,7 +575,7 @@ class Region :
         if tries >= 20 : print(f"** fit_deaths was not solved")
         return
 
-    def build_bell(self) :
+    def build_curves(self) :
         """
         Build a bell distribution curve model for the smoothed number of new cases / deaths.
         This is the derrivative of the sigmoid population function A = L / (1 + exp(-rt))
@@ -576,17 +621,17 @@ class Region :
             self.sigmoid_deaths.append(deaths_to_date)
         return
 
-    def prediction(self, days=0, start=0) :
+    def prediction(self, predict=predict_setting, start=0) :
         """
         use the bell curves to predict future cases / deaths
         """
         if self.s_end_days < 1 : return
-        if days == 0 : days = int(self.smooth/2) + 1
-        if days < 1 : return
+        if predict == 0 : predict = int(self.smooth/2) + 1
+        if predict < 1 : return
         print()
         print(f"              Prediction ---    Total -------")
         print(f"Date          Cases   Deaths    Cases  Deaths")
-        for d in range(start, days) :
+        for d in range(start, predict) :
             i = self.s_latest_days - self.s_start_days + d
             if i >= len(self.bell_cases) : break
             print(f"{self.s_latest + datetime.timedelta(d):%Y-%m-%d}" + \
@@ -595,9 +640,9 @@ class Region :
         print()
         return
 
-    def analyse(self, days=14, predict=10, ylog=0, daily=1, infection=1, totals=0) :
+    def analyse(self, days=days_setting, predict=predict_setting, ylog=ylog_setting, daily=daily_setting, infection=infection_setting, totals=totals_setting) :
         self.report()
         self.plot(ylog=ylog, daily=daily, infection=infection, totals=totals)
         self.show(days=days)
-        self.prediction(days=predict)
+        self.prediction(predict=predict)
         return
