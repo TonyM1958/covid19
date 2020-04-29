@@ -61,15 +61,15 @@ smooth_setting = 9      # number of days to use when smoothing data
 growth_setting = 40     # number of days when virus spread before peak
 lag_setting = 4         # days lag between peak cases and peak deaths
 spread_setting = 7      # number of days to use look back when calculating infection rate
-dilation_setting = 2    # dilation to apply to deaths
+dilation_setting = 1    # dilation to apply to deaths (1 = Normal, 2 = slower fall, 0.8 = faster fall)
 d_cases_setting = 0     # dilation to apply to cases
 figwidth_setting = 12   # width for plots
 debug_setting = 0       # debug setting
 
-def data_load(days=None, predict=None, ylog=None, daily=None, infection=None, totals=None, smooth=None, growth_days=None, lag=None
+def data_load(fn, days=None, predict=None, ylog=None, daily=None, infection=None, totals=None, smooth=None, growth_days=None, lag=None
     , spread=None, dilation=None, d_cases=None, figwidth=None, find=None, debug=0) :
     """
-    load json data file and build dictionary of region names 
+    load json data file fn and build dictionary of region names 
     """
     # configure any global settings
     global days_setting, predict_setting, ylog_setting, daily_setting, infection_setting, totals_setting
@@ -89,11 +89,11 @@ def data_load(days=None, predict=None, ylog=None, daily=None, infection=None, to
     if d_cases is not None : d_cases_setting = d_cases
     if figwidth is not None : figwidth_setting = figwidth
     if debug is not None : debug_setting = debug
-    # clean up any problems in the download file and load string into buffer
+    # clean up any problems in the download file and load buffer
     global json_data
     n=0
     s = ''
-    f = open('download.json', 'r' )
+    f = open(fn, 'r' )
     while True :
         line = f.readline()
         if line == '' : break   # end of file
@@ -104,13 +104,13 @@ def data_load(days=None, predict=None, ylog=None, daily=None, infection=None, to
         s += line
     f.close()
     json_data = s
-    if debug > 0 : print(f"{n:,} lines read from download.json")
-    # build dictionary of the regions available
+    if debug > 0 : print(f"{n:,} lines read from {fn}")
+    # build dictionary of the region names
     for r in json.loads(json_data).get('records') :
         id = r.get('geoId')
         if id not in region_name.keys() :
             region_name[id] = r.get('countriesAndTerritories').replace('_', ' ')
-    print(f"{len(region_name.keys())} region(s) found")
+    print(f"{len(region_name.keys())} region(s) found in {fn}")
     # find region?
     if find is not None :
         n = 0
@@ -119,7 +119,7 @@ def data_load(days=None, predict=None, ylog=None, daily=None, infection=None, to
             if find.lower() in region_name[id].lower() :
                 print(f"{id} : {region_name[id]}")
                 n += 1
-        print(f"\n{n} region(s) containing '{find}' found in download.json")
+        print(f"\n{n} region(s) containing '{find}' found in {fn}")
     return
 
 def load(geoId='UK') :
@@ -381,13 +381,13 @@ class Region :
         show records for last number of days
         """
         print()
-        print(f"              Raw ----------     Total --------     Smoothed ------   Total ---------")
-        print(f"Date          Cases   Deaths     Cases   Deaths     Cases   Deaths     Cases   Deaths")
+        print(f"              Raw ----------       Total --------     Smoothed ------      Total ---------")
+        print(f"Date          Cases   Deaths       Cases   Deaths     Cases   Deaths       Cases   Deaths")
         for r in self.data[-1 * days:] :
             print(f"{r.get('dateRep'):%Y-%m-%d} {num(r.get('cases'))} {num(r.get('deaths'))} " + \
-                  f" {num(r.get('cases_to_date'))} {num(r.get('deaths_to_date'))} " + \
+                  f" {num(r.get('cases_to_date'), 10)} {num(r.get('deaths_to_date'))} " + \
                   f" {num(r.get('s_cases'))} {num(r.get('s_deaths'))} " + \
-                  f" {num(r.get('s_cases_to_date'))} {num(r.get('s_deaths_to_date'))} ")
+                  f" {num(r.get('s_cases_to_date'), 10)} {num(r.get('s_deaths_to_date'))} ")
         print()
         return
 
@@ -629,14 +629,14 @@ class Region :
         if predict == 0 : predict = int(self.smooth/2) + 1
         if predict < 1 : return
         print()
-        print(f"              Prediction ---    Total -------")
-        print(f"Date          Cases   Deaths    Cases  Deaths")
+        print(f"              Prediction ---      Total -------")
+        print(f"Date          Cases   Deaths      Cases  Deaths")
         for d in range(start, predict) :
             i = self.s_latest_days - self.s_start_days + d
             if i >= len(self.bell_cases) : break
             print(f"{self.s_latest + datetime.timedelta(d):%Y-%m-%d}" + \
                   f" {num(self.bell_cases[i])} {num(self.bell_deaths[i])}" + \
-                  f" {num(self.sigmoid_cases[i])} {num(self.sigmoid_deaths[i])}")
+                  f" {num(self.sigmoid_cases[i], 10)} {num(self.sigmoid_deaths[i])}")
         print()
         return
 
