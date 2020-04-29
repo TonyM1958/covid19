@@ -122,7 +122,7 @@ def data_load(fn, days=None, predict=None, ylog=None, daily=None, infection=None
         print(f"\n{n} region(s) containing '{find}' found in {fn}")
     return
 
-def load(geoId='UK') :
+def load(geoId='UK', scale_deaths=None) :
     """
     load data and return 
     """
@@ -173,7 +173,7 @@ class Region :
         self.figwidth = figwidth if figwidth is not None else figwidth_setting
         self.figsize = (self.figwidth, self.figwidth * 9 / 16)     # size of charts
         # load data
-        self.data = load(geoId)
+        self.data = load(self.geoId)
         # check we have some data to work on
         if len(self.data) == 0 :
             print(f"no records available for geoId {self.geoId}")
