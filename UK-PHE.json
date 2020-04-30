@@ -1,6 +1,19 @@
 {
   "records": [
-  { 
+    { 
+      "dateRep": "01/05/2020",
+      "day": "01",
+      "month": "5",
+      "year": "2020",
+      "cases": "6032",
+      "deaths": "644",
+      "countriesAndTerritories": "United_Kingdom",
+      "geoId": "UK",
+      "countryterritoryCode": "GBR",
+      "popData2018": "66488991",
+      "continentExp": "Europe"
+    },
+    { 
       "dateRep": "30/04/2020",
       "day": "30",
       "month": "4",
