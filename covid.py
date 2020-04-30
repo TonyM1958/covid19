@@ -633,10 +633,12 @@ class Region :
         print(f"Date          Cases   Deaths      Cases  Deaths")
         for d in range(start, predict) :
             i = self.s_latest_days - self.s_start_days + d
+            date = self.s_latest + datetime.timedelta(d)
+            marker = '  <-- latest raw data' if date == self.latest else ''
             if i >= len(self.bell_cases) : break
-            print(f"{self.s_latest + datetime.timedelta(d):%Y-%m-%d}" + \
+            print(f"{date:%Y-%m-%d}" + \
                   f" {num(self.bell_cases[i])} {num(self.bell_deaths[i])}" + \
-                  f" {num(self.sigmoid_cases[i], 10)} {num(self.sigmoid_deaths[i])}")
+                  f" {num(self.sigmoid_cases[i], 10)} {num(self.sigmoid_deaths[i])}{marker}")
         print()
         return
 
