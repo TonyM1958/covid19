@@ -54,22 +54,22 @@ ylog_setting = 1        # global default Y axis setting
 days_setting = 14       # number of days data to show
 predict_setting = 10    # number of days prediction to show
 ylog_setting = 1        # log or linear Y axis
-daily_setting = 1       # plot daily new cases / new deaths
-infection_setting = 1   # plot infection rate
-totals_setting = 0      # plot cumulative cases / deaths
-smooth_setting = 9      # number of days to use when smoothing data
+daily_setting = 1       # plot daily new cases / new deaths. 0 = no, 1 = yes, 2 = linear, 3 = log
+infection_setting = 1   # plot infection rate. 0 = no, 1 = yes
+totals_setting = 0      # plot cumulative cases / deaths. 0 = no, 1 = yes, 2 = linear, 3 = log
+smooth_setting = 7      # number of days to use when smoothing data
 growth_setting = 40     # number of days when virus spread before peak
 lag_setting = 4         # days lag between peak cases and peak deaths
 spread_setting = 7      # number of days to use look back when calculating infection rate
 dilation_setting = 1    # dilation to apply to deaths (1 = Normal, 2 = slower fall, 0.8 = faster fall)
 d_cases_setting = 0     # dilation to apply to cases
 figwidth_setting = 12   # width for plots
-debug_setting = 0       # debug setting
+debug_setting = 0       # debug setting: 0 = silent, 1 = info, 2 = details
 
-def data_load(fn, days=None, predict=None, ylog=None, daily=None, infection=None, totals=None, smooth=None, growth_days=None, lag=None
-    , spread=None, dilation=None, d_cases=None, figwidth=None, find=None, debug=0) :
+def setting(days=None, predict=None, ylog=None, daily=None, infection=None, totals=None, smooth=None, growth_days=None, lag=None
+    , spread=None, dilation=None, d_cases=None, figwidth=None, debug=0) :
     """
-    load json data file fn and build dictionary of region names 
+    configure global settings 
     """
     # configure any global settings
     global days_setting, predict_setting, ylog_setting, daily_setting, infection_setting, totals_setting
@@ -89,8 +89,15 @@ def data_load(fn, days=None, predict=None, ylog=None, daily=None, infection=None
     if d_cases is not None : d_cases_setting = d_cases
     if figwidth is not None : figwidth_setting = figwidth
     if debug is not None : debug_setting = debug
+    return
+
+def data_load(fn, find=None, debug=None) :
+    """
+    load json data file fn and build dictionary of region names 
+    """
     # clean up any problems in the download file and load buffer
-    global json_data
+    global json_data, region_name, debug_setting
+    if debug is None : debug = debug_setting
     n=0
     s = ''
     f = open(fn, 'r' )
@@ -104,15 +111,16 @@ def data_load(fn, days=None, predict=None, ylog=None, daily=None, infection=None
         s += line
     f.close()
     json_data = s
-    if debug > 0 : print(f"{n:,} lines read from {fn}")
+    if debug > 1 : print(f"{n:,} lines read from {fn}")
     # build dictionary of the region names
+    region_name = {}
     for r in json.loads(json_data).get('records') :
         id = r.get('geoId')
         if id not in region_name.keys() :
             region_name[id] = r.get('countriesAndTerritories').replace('_', ' ')
-    print(f"{len(region_name.keys())} region(s) found in {fn}")
+    if debug > 0 : print(f"{len(region_name.keys())} region(s) found in {fn}")
     # find region?
-    if find is not None :
+    if find is not None and len(region_name) > 0 :
         n = 0
         if debug > 0 : print()
         for id in region_name.keys() : 
@@ -122,11 +130,15 @@ def data_load(fn, days=None, predict=None, ylog=None, daily=None, infection=None
         print(f"\n{n} region(s) containing '{find}' found in {fn}")
     return
 
-def load(geoId='UK', scale_deaths=None) :
+def region_load(fn=None, geoId=None, debug=None) :
     """
-    load data and return 
+    load json data for a region. fn and geoId are optional 
     """
-    global json_data
+    global json_data, region_name, debug_setting
+    if debug is None : debug = debug_setting
+    if fn is not None : data_load(fn, debug=debug)
+    if geoId is None and len(region_name) > 0 : geoId = list(region_name.keys())[0]
+    if geoId is None or region_name.get(geoId) is None : return
     # get the records for the region
     data = [r for r in json.loads(json_data).get('records') if r.get('geoId') == geoId]
     # convert data for each record
@@ -150,17 +162,10 @@ class Region :
     """
     Load the data about a region
     """    
-    def __init__(self, geoId='UK', smooth=None, growth_days=None, lag=None, spread=None, dilation=None, d_cases=0, figwidth=None, debug=None) :
+    def __init__(self, fn=None, geoId=None, smooth=None, growth_days=None, lag=None, spread=None, dilation=None, d_cases=0, figwidth=None, debug=None) :
         # process parameters
         global smooth_setting, growth_setting, lag_setting, spread_setting, dilation_setting, d_cases_setting, figwidth_setting, debug_setting
         self.debug = debug if debug is not None else debug_setting
-        global region_name
-        if region_name.get(geoId) is None :
-            print(f"Region not recognised: {geoId}\n")
-            return
-        self.geoId = geoId
-        self.name = region_name.get(geoId)
-        if self.debug > 0 : print(f"Region {self.geoId} = {self.name}")
         self.smooth = smooth if smooth is not None else smooth_setting
         if self.smooth % 2 == 0 : self.smooth += 1      # make sure the average is balanced around the centre point
         self.growth_days = growth_days if growth_days is not None else growth_setting
@@ -173,7 +178,15 @@ class Region :
         self.figwidth = figwidth if figwidth is not None else figwidth_setting
         self.figsize = (self.figwidth, self.figwidth * 9 / 16)     # size of charts
         # load data
-        self.data = load(self.geoId)
+        global region_name
+        self.data = region_load(fn, geoId, self.debug)
+        if geoId is None and len(region_name) > 0 : geoId = list(region_name.keys())[0]
+        if geoId is None or region_name.get(geoId) is None :
+            print(f"Region not recognised: '{geoId}'\n")
+            return
+        self.geoId = geoId
+        self.name = region_name.get(geoId)
+        if self.debug > 0 : print(f"Region {self.geoId} = {self.name}")
         # check we have some data to work on
         if len(self.data) == 0 :
             print(f"no records available for geoId {self.geoId}")
@@ -305,8 +318,8 @@ class Region :
         self.s_end = self.latest + datetime.timedelta(self.s_end_days)
         # find peak deaths, starting just before peak cases to avoid early false peaks
         peak = 0
-        for i in range(self.s_peak_case_days - self.lag, self.s_latest_days) :
-            if i > self.s_end_days : break      # avoid false reporting / second peaks  i.e. china
+        for i in range(self.s_peak_case_days - self.lag, self.s_latest_days + 1) :
+            if i > self.s_end_days : break      # avoid shifting to second peaks  i.e. china
             if self.data[i].get('s_deaths') is None : continue
             if self.data[i].get('s_deaths') > peak :
                 peak = self.data[i].get('s_deaths')
@@ -399,9 +412,9 @@ class Region :
         dates = [r.get('dateRep') for r in self.data[days:]]
         date_range = [self.s_start + datetime.timedelta(d) for d in range(0, max(len(self.data[days:]), len(self.bell_cases)),7)]
         # plot daily data
-        if daily == 1 :
+        if daily > 0 :
             plt.figure(figsize=self.figsize)
-            if ylog==1 :
+            if daily == 3 or (ylog==1 and daily==1):
                 plt.yscale('log')
                 plt.title(f"{self.name} (log Y axis)\nNew Cases (green=raw, blue=smoothed)\nNew Deaths (orange=raw, red=smoothed)")
             else :
@@ -424,7 +437,7 @@ class Region :
             plt.show()
             print()
         # plot infection rate
-        if infection == 1 :
+        if infection > 0 :
             plt.figure(figsize=self.figsize)
             plt.title(f"{self.name} \nInfection Rate, based on number of new cases compared to {self.spread} days earlier")
             plt.plot(dates, [r.get('s_r0') for r in self.data[days:]], color='brown', linestyle='solid')
@@ -445,9 +458,9 @@ class Region :
             plt.show()
             print()
         # plot totals
-        if totals == 1 :
+        if totals > 0 :
             plt.figure(figsize=self.figsize)
-            if ylog==1 :
+            if totals==3 or (ylog==1 and totals==1):
                 plt.yscale('log')
                 plt.title(f"{self.name} (log Y axis)\nTotal Cases (green=raw, blue=smoothed)\nTotal Deaths (orange=raw, red=smoothed)")
             else :
