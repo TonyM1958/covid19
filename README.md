@@ -43,6 +43,6 @@ Peak dates need to be used with care: the analysis assumes a minimum growth peri
 
 Following the peak in new cases / deaths, there is a trend for the numbers to flatten rather than drop off (could this be an effect of the lock down constraining but not stopping the infection?). This can result in the predictions being lower than the actual data. To allow for this, the prediction has a 'dilation' parameter that sets the symmetry of the distribution curve. When > 1, this stretches the distribution model time axis following the peak, slowing the drop off. Conversely, if < 1, it compresses the time axis following the peak, accelerating the drop off. Dilation is set to adjust the trajectory of the prediction where raw data has been reported but has not fed through into the smoothed data.
 
-Increases in test capacity can mean the number of confirmed cases increases after the peak infection. This may be seen, for example, in the recent UK data.
+Increases in test capacity can mean the number of confirmed cases increases after the peak infection. This may be seen, for example, in the recent UK data. This may also lead to a higher calculated infection rate.
 
 As new data is added daily, the modelling is re-fitted and the predictions are updated.
