@@ -485,9 +485,9 @@ class Region :
                 plt.yscale('log')
                 plt.title(f"{self.name} (log Y axis)\nTotal Cases (green=raw, blue=smoothed)\nTotal Deaths (orange=raw, red=smoothed)")
             elif totals==4 :
-                plt.title(f"{self.geoId}\nTotal Deaths (orange=raw, red=smoothed)")
+                plt.title(f"{self.name}\nTotal Deaths (orange=raw, red=smoothed)")
             else :
-                plt.title(f"{self.geoId}\nTotal Cases (green=raw, blue=smoothed)\nTotal Deaths (orange=raw, red=smoothed)")
+                plt.title(f"{self.name}\nTotal Cases (green=raw, blue=smoothed)\nTotal Deaths (orange=raw, red=smoothed)")
             if totals != 4 :
                 plt.plot(dates, [r.get('s_cases_to_date') for r in self.data[days:]], color='blue', linestyle='solid')
                 plt.plot(dates, [r.get('cases_to_date') for r in self.data[days:]], color='green', linestyle='dotted')
