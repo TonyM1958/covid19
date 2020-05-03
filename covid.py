@@ -282,7 +282,7 @@ class Region :
             self.s_total_deaths += self.data[i]['s_deaths']
             self.data[i]['s_cases_to_date'] = self.s_total_cases
             self.data[i]['s_deaths_to_date'] = self.s_total_deaths
-            if (i - self.spread) > 0 and self.data[i].get('s_cases') is not None and self.data[i - self.spread].get('s_cases') is not None and self.s_total_cases >= 500 and self.data[i - self.spread].get('s_cases') != 0:
+            if i >= self.spread and self.s_total_cases >= 500 and self.data[i].get('s_cases') is not None and self.data[i - self.spread].get('s_cases') is not None and self.data[i - self.spread].get('s_cases') != 0:
                 # calculate infection rate
                 self.data[i]['s_r0'] = self.data[i].get('s_cases') / self.data[i - self.spread].get('s_cases')
                 self.s_r0_latest = self.data[i].get('s_r0')
@@ -668,9 +668,9 @@ class Region :
         # apply scale factors to bell distributions and calculate sigmoid functions
         cases_to_date = 0
         deaths_to_date = 0
-        for d in range(0, self.s_end_days - self.s_start_days) :
-            self.bell_cases.append(cases[d] * cases_rescale)
-            self.bell_deaths.append(deaths[d] * deaths_rescale)
+        for i in range(0, self.s_end_days - self.s_start_days) :
+            self.bell_cases.append(cases[i] * cases_rescale)
+            self.bell_deaths.append(deaths[i] * deaths_rescale)
             cases_to_date += self.bell_cases[-1]
             deaths_to_date += self.bell_deaths[-1]
             self.sigmoid_cases.append(cases_to_date)
@@ -680,9 +680,9 @@ class Region :
         self.X_deaths = self.sigmoid_L(deaths_to_date, self.r_deaths, self.s_end_days, 1)
         # work out infection rate curve for cases:
         self.infection = []
-        for d in range(0, len(self.sigmoid_cases)) :
-            if d >= self.spread and self.bell_cases[d - self.spread] != 0 :
-                self.infection.append(self.bell_cases[d] / self.bell_cases[d - self.spread])
+        for i in range(0, len(self.sigmoid_cases)) :
+            if i >= self.spread and self.bell_cases[i - self.spread] != 0 :
+                self.infection.append(self.bell_cases[i] / self.bell_cases[i - self.spread])
             else :
                 self.infection.append(None)
         return
