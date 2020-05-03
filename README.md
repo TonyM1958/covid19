@@ -38,7 +38,7 @@ A number of date markers are also added:
 * Grey dotted lines: the Start, peak cases and end dates, left to right
 * Brown dotted lines: Day Zero and peak deaths
 
-The infection rate chart is based on the smoothed number of new cases being reported compared to 7 days earlier. An infection rate of 1 is shown as a green horizontal line for reference. The dotted line shows the 'natural' infection rate, derrived from bell distribution curve for the number of new cases.
+The infection rate chart is based on the smoothed number of new cases being reported compared to 7 days earlier. An infection rate of 1 is shown as a green horizontal line for reference. The dotted line shows the 'natural' infection rate derrived from the bell distribution of new cases.
 
 ## Observations
 Peak dates need to be used with care: the analysis assumes a minimum growth period and a lag if the peak is found at the end of the smoothed data. Where these minumum periods have elapsed, the latest smoothed data point will be assumed to be the peak. However, this can mean that the peak moves forward each day where the number of new cases or deaths continues to increase. The analysis reports the growth and lag periods observed in the smoothed data.
