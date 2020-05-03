@@ -1,7 +1,7 @@
 # covid19
 Analysis of public data on the spread of covid-19:
-* <a href="eu.ipynb" target="_blank">view Euope results using github viewer</a>
-* [view World results using github viewer](world.ipynb)
+* <a target="_blank" href="eu.ipynb">view Euope results using github viewer</a>
+* <a target="_blank" href="world.ipynb">view World results using github viewer</a>
 
 ## Process
 The analysis takes daily data from the [European Centre for Disease Prevention and Control (ECDC)](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide), updated for the previous day around 11 am UK time. A further update to UK data is made around 5pm when daily figures are published.
