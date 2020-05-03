@@ -1,6 +1,6 @@
 # covid19
 Analysis of public data on the spread of covid-19:
-* <a href="eu.ipynb", target="_blank">view Euope results using github viewer</a>
+* <a href="eu.ipynb" target="_blank">view Euope results using github viewer</a>
 * [view World results using github viewer](world.ipynb)
 
 ## Process
