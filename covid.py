@@ -284,7 +284,7 @@ class Region :
             self.data[i]['s_deaths_to_date'] = self.s_total_deaths
             if (i - self.spread) > 0 and self.data[i].get('s_cases') is not None and self.data[i - self.spread].get('s_cases') is not None and self.s_total_cases >= 500 and self.data[i - self.spread].get('s_cases') != 0:
                 # calculate infection rate
-                self.data[i]['s_r0'] = round(self.data[i].get('s_cases') / self.data[i - self.spread].get('s_cases'),1)
+                self.data[i]['s_r0'] = self.data[i].get('s_cases') / self.data[i - self.spread].get('s_cases')
                 self.s_r0_latest = self.data[i].get('s_r0')
                 self.s_r0_latest_days = i - self.count
                 self.s_r0_latest_date = self.data[i].get('dateRep')
@@ -362,6 +362,11 @@ class Region :
         print(f"  {self.case_rate:,} cases per million, {self.death_rate:,} deaths per million (2018 population = {self.population:,})")
         print()
         print(f"Timeline: (-ve days are past, +ve days are predicted)")
+        if self.s_end_days >= 0 :
+            position = (self.s_latest_days - self.s_start_days) / (self.s_end_days - self.s_start_days)
+            print(f"  Now:         {round(position,2):2.0%} through outbreak")
+        else :
+            print(f"  Now:         past end of first outbreak")
         # Add 1 to zero based indexes
         print(f"  Start:       {self.s_start:%Y-%m-%d} ({self.s_start_days+1:3} days, when 50 or more cases were reported)")
         print(f"  Peak Cases:  {self.s_peak_cases:%Y-%m-%d} ({self.s_peak_case_days+1:3} days, {num(self.data[self.s_peak_case_days].get('s_cases'),0)} cases)")
@@ -376,8 +381,8 @@ class Region :
         print(f"Parameters:")
         print(f"  Totals:      {self.data[self.s_latest_days].get('cases_to_date'):,} cases and {self.data[self.s_latest_days].get('deaths_to_date'):,} deaths at end of {self.s_latest:%Y-%m-%d}")
         print(f"  Smoothed:    {int(self.s_total_cases):,} cases and {int(self.s_total_deaths):,} deaths at end of {self.s_latest:%Y-%m-%d} ({self.smooth} points)")
-        print(f"  Spread:      Peak infection rate {self.s_r0_peak} ({self.s_r0_peak_date:%Y-%m-%d}, compared to {self.spread} days earlier)")
-        print(f"               Latest infection rate {self.s_r0_latest} ({self.s_r0_latest_date:%Y-%m-%d}, compared to {self.spread} days earlier)")
+        print(f"  Spread:      Peak infection rate {round(self.s_r0_peak,1)} ({self.s_r0_peak_date:%Y-%m-%d}, compared to {self.spread} days earlier)")
+        print(f"               Latest infection rate {round(self.s_r0_latest,1)} ({self.s_r0_latest_date:%Y-%m-%d}, compared to {self.spread} days earlier)")
         print(f"  Growth:      {self.growth_days} days (Start -> Peak Cases) ")
         print(f"               L = {int(self.L_cases):,}, r = {round(self.r_cases,2)}, dilation = {self.dilation_cases} for cases")
         if self.s_total_deaths >= 50 :
@@ -394,11 +399,12 @@ class Region :
             print(f"  {cases_rate:,} cases per million, {death_rate:,} deaths per million (2018 population = {self.population:,})")
         else :
             total_cases = int(self.sigmoid_cases[-1])
-            cases_rate = int(round(total_cases * 1000000 / self.population, 0))
+            cases_rate = int(round(self.X_cases * 1000000 / self.population, 0))
             total_deaths = int(self.sigmoid_deaths[-1])
-            death_rate = int(round(total_deaths * 1000000 / self.population, 0))
+            death_rate = int(round(self.X_deaths * 1000000 / self.population, 0))
             print(f"Outcome: {total_cases:,} total cases, {total_deaths:,} total deaths by end of {self.s_end:%Y-%m-%d}")
-            print(f"  includes {total_cases / self.X_cases:5.1%} of predicted cases and {total_deaths / self.X_deaths:5.1%} of predicted deaths")
+            print(f"  {self.total_cases / self.X_cases:5.1%} of predicted cases and {self.total_deaths / self.X_deaths:5.1%} of predicted deaths reported to date")
+            print(f"  {total_cases / self.X_cases:5.1%} of predicted cases and {total_deaths / self.X_deaths:5.1%} of predicted deaths reported by end date")
             print(f"  {cases_rate:,} cases per million, {death_rate:,} deaths per million (2018 population = {self.population:,})")
         print()
         return
@@ -460,8 +466,9 @@ class Region :
         # plot infection rate
         if infection > 0 :
             plt.figure(figsize=self.figsize)
-            plt.title(f"{self.name} \nInfection Rate, based on number of new cases compared to {self.spread} days earlier")
+            plt.title(f"{self.name} \nInfection Rate, based on number of new cases compared to {self.spread} days earlier\n(dotted line shows the predicted infection rate)")
             plt.plot(dates, [r.get('s_r0') for r in self.data[days:]], color='brown', linestyle='solid')
+            plt.plot([self.s_start + datetime.timedelta(d) for d in range(0, len(self.infection))], self.infection, color='grey', linestyle='dashed')
             plt.axhline(y=1, color='green', linestyle='dashed', linewidth=2, label='1')
             if self.s_r0_peak > clip : plt.ylim([0, clip])
             else : plt.ylim([0, 4 * (int(self.s_r0_peak / 4) + 1)])
@@ -671,6 +678,13 @@ class Region :
         # work out implied scale factors for sigmoid functions
         self.X_cases = self.sigmoid_L(cases_to_date, self.r_cases, self.s_end_days, 0)
         self.X_deaths = self.sigmoid_L(deaths_to_date, self.r_deaths, self.s_end_days, 1)
+        # work out infection rate curve for cases:
+        self.infection = []
+        for d in range(0, len(self.sigmoid_cases)) :
+            if d >= self.spread and self.bell_cases[d - self.spread] != 0 :
+                self.infection.append(self.bell_cases[d] / self.bell_cases[d - self.spread])
+            else :
+                self.infection.append(None)
         return
 
     def prediction(self, predict=None, start=0) :

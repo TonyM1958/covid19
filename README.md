@@ -2,7 +2,7 @@
 Analysis of public data on the spread of covid-19: [view results using github viewer](covid.ipynb)
 
 ## Process
-The analysis takes daily data from the [European Centre for Disease Prevention and Control (ECDC)](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide), updated for the previous day around 12 noon UK time. A further update to UK data is made around 5pm when daily figures are published.
+The analysis takes daily data from the [European Centre for Disease Prevention and Control (ECDC)](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide), updated for the previous day around 11 am UK time. A further update to UK data is made around 5pm when daily figures are published.
 
 The raw number of new cases and deaths reported each day can be erratic, making it difficult to detect the peak correctly. To allow for this, the analysis generates a smoothed data set that is the daily average for a sliding window. The window used is 7 days i.e. a specific days average looks across 3 days before, the current day and 3 days after.
 
@@ -36,13 +36,11 @@ A number of date markers are also added:
 * Grey dotted lines: the Start, peak cases and end dates, left to right
 * Brown dotted lines: Day Zero and peak deaths
 
-A second chart shows the infection rate based on the smoothed number of new cases being reported compared to 7 days earlier. An infection rate of 1 is shown as a green horizontal line for reference.
+The infection rate chart is based on the smoothed number of new cases being reported compared to 7 days earlier. An infection rate of 1 is shown as a green horizontal line for reference. The dotted line shows the 'natural' infection rate, derrived from bell distribution curve for the number of new cases.
 
 ## Observations
 Peak dates need to be used with care: the analysis assumes a minimum growth period and a lag if the peak is found at the end of the smoothed data. Where these minumum periods have elapsed, the latest smoothed data point will be assumed to be the peak. However, this can mean that the peak moves forward each day where the number of new cases or deaths continues to increase. The analysis reports the growth and lag periods observed in the smoothed data.
 
 Following the peak in new cases / deaths, there is a trend for the numbers to flatten rather than drop off (could this be an effect of the lock down constraining but not stopping the infection?). This can result in the predictions being lower than the actual data. To allow for this, the prediction has a 'dilation' parameter that sets the symmetry of the distribution curve. When > 1, this stretches the distribution model time axis following the peak, slowing the drop off. Conversely, if < 1, it compresses the time axis following the peak, accelerating the drop off. Dilation is set to adjust the trajectory of the prediction where raw data has been reported but has not fed through into the smoothed data.
-
-Increases in test capacity can mean the number of confirmed cases increases after the peak infection. This may be seen, for example, in the recent UK data. This may also lead to a higher calculated infection rate.
 
 As new data is added daily, the modelling is re-fitted and the predictions are updated.
