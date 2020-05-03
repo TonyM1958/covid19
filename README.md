@@ -1,6 +1,6 @@
 # covid19
 Analysis of public data on the spread of covid-19:
-* [View Euope results using github viewer](eu.ipynb)
+* [View Europe results using github viewer](eu.ipynb)
 * [View World results using github viewer](world.ipynb)
 
 ## Process
