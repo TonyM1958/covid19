@@ -326,6 +326,7 @@ class Region :
             else : t_decay = 2
         self.s_end_days = self.s_start_days + int(self.cycle * (1 + t_decay) / 2)
         self.s_end = self.latest + datetime.timedelta(self.s_end_days)
+        self.position = (self.s_latest_days - self.s_start_days) / (self.s_end_days - self.s_start_days)
         # find peak deaths, starting just before peak cases to avoid early false peaks
         peak = 0
         for i in range(self.s_peak_case_days - self.lag, self.s_latest_days + 1) :
@@ -363,11 +364,10 @@ class Region :
         print()
         print(f"Timeline: (-ve days are past, +ve days are predicted)")
         if self.s_end_days >= 0 :
-            position = (self.s_latest_days - self.s_start_days) / (self.s_end_days - self.s_start_days)
-            print(f"  Now:         {round(position,2):2.0%} through outbreak")
+            print(f"  Now:         {round(self.position,2):2.0%} through outbreak")
         else :
             print(f"  Now:         past end of first outbreak")
-        # Add 1 to zero based indexes
+        # Add 1 to zero based indexes for relative day number
         print(f"  Start:       {self.s_start:%Y-%m-%d} ({self.s_start_days+1:3} days, when 50 or more cases were reported)")
         print(f"  Peak Cases:  {self.s_peak_cases:%Y-%m-%d} ({self.s_peak_case_days+1:3} days, {num(self.data[self.s_peak_case_days].get('s_cases'),0)} cases)")
         print(f"  End:         {self.s_end:%Y-%m-%d} ({self.s_end_days+1:3} days, {self.s_end_days - self.s_peak_case_days} days after peak cases)")

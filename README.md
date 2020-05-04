@@ -38,11 +38,11 @@ A number of date markers are also added:
 * Grey dotted lines: the Start, peak cases and end dates, left to right
 * Brown dotted lines: Day Zero and peak deaths
 
-The infection rate chart is based on the smoothed number of new cases being reported compared to 7 days earlier. An infection rate of 1 is shown as a green horizontal line for reference. The dotted line shows the 'natural' infection rate derrived from the bell distribution of new cases.
+The infection rate chart is based on the smoothed number of new cases being reported compared to 7 days earlier. An infection rate of 1 is shown as a green horizontal line for reference. The dotted line shows the predicted infection rate derrived from the bell distribution of new cases.
 
 ## Observations
 Peak dates need to be used with care: the analysis assumes a minimum growth period and a lag if the peak is found at the end of the smoothed data. Where these minumum periods have elapsed, the latest smoothed data point will be assumed to be the peak. However, this can mean that the peak moves forward each day where the number of new cases or deaths continues to increase. The analysis reports the growth and lag periods observed in the smoothed data.
 
-Following the peak in new cases / deaths, there is a trend for the numbers to flatten rather than drop off (could this be an effect of the lock down constraining but not stopping the infection?). This can result in the predictions being lower than the actual data. To allow for this, the prediction has a 'dilation' parameter that sets the symmetry of the distribution curve. When > 1, this stretches the distribution model time axis following the peak, slowing the drop off. Conversely, if < 1, it compresses the time axis following the peak, accelerating the drop off. Dilation is set to adjust the trajectory of the prediction where raw data has been reported but has not fed through into the smoothed data.
+Following the peak in new cases / deaths, there is a trend for the numbers to flatten rather than drop off (could this be an effect of lock down constraining but not stopping the infection?). This can result in the predictions being lower than the actual data. To allow for this, the prediction has a 'dilation' parameter that adjusts the symmetry of the distribution curve. When > 1, this stretches the distribution model time axis following the peak, slowing the drop off. Conversely, if < 1, it compresses the time axis following the peak, accelerating the drop off. Dilation is set to adjust the trajectory of the prediction where raw data has been reported but has not fed through into the smoothed data.
 
 As new data is added daily, the modelling is re-fitted and the predictions are updated.
