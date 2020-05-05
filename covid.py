@@ -384,10 +384,10 @@ class Region :
         print(f"  Spread:      Peak infection rate {round(self.s_r0_peak,1)} ({self.s_r0_peak_date:%Y-%m-%d}, compared to {self.spread} days earlier)")
         print(f"               Latest infection rate {round(self.s_r0_latest,1)} ({self.s_r0_latest_date:%Y-%m-%d}, compared to {self.spread} days earlier)")
         print(f"  Growth:      {self.growth_days} days (Start -> Peak Cases) ")
-        print(f"               L = {int(self.L_cases):,}, r = {round(self.r_cases,2)}, dilation = {self.dilation_cases} for cases")
+        print(f"               X = {int(self.X_cases):,}, r = {round(self.r_cases,2)}, L = {int(self.L_cases):,}, dilation = {self.dilation_cases} for cases")
         if self.s_total_deaths >= 50 :
             print(f"  Lag:         {self.lag} days (Peak Cases -> Peak Deaths) ")
-            print(f"               L = {int(self.L_deaths):,}, r = {round(self.r_deaths,2)}, dilation = {self.dilation_deaths} for deaths")
+            print(f"               X = {int(self.X_deaths):,}, r = {round(self.r_deaths,2)}, L = {int(self.L_deaths):,}, dilation = {self.dilation_deaths} for deaths")
         print()
         if self.s_end_days < 0 :
             d = self.s_end_days
