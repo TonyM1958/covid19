@@ -443,6 +443,7 @@ class Region :
             plt.figure(figsize=self.figsize)
             if daily == 3 or (ylog==1 and daily==1):
                 plt.yscale('log')
+                plt.ylim([1, self.L_cases])
                 plt.title(f"{self.name} (log Y axis)\nNew Cases (green=raw, blue=smoothed)\nNew Deaths (orange=raw, red=smoothed)")
             else :
                 plt.title(f"{self.name}\nNew Cases (green=raw, blue=smoothed)\nNew Deaths (orange=raw, red=smoothed)")
@@ -490,6 +491,7 @@ class Region :
             plt.figure(figsize=self.figsize)
             if totals==3 or (ylog==1 and totals==1):
                 plt.yscale('log')
+                plt.ylim([1, self.X_cases])
                 plt.title(f"{self.name} (log Y axis)\nTotal Cases (green=raw, blue=smoothed)\nTotal Deaths (orange=raw, red=smoothed)")
             elif totals==4 :
                 plt.title(f"{self.name}\nTotal Deaths (orange=raw, red=smoothed)")
@@ -653,7 +655,7 @@ class Region :
         cases_to_date = 0
         deaths = []
         deaths_to_date = 0
-        for d in range(self.s_start_days, self.s_end_days) :
+        for d in range(self.s_start_days, max(self.s_end_days, self.s_latest_days)) :
             cases.append(self.bell_A(self.L_cases, self.r_cases, d, 0))
             deaths.append(self.bell_A(self.L_deaths, self.r_deaths, d, 1))
             if d <= self.s_latest_days :
@@ -668,7 +670,7 @@ class Region :
         # apply scale factors to bell distributions and calculate sigmoid functions
         cases_to_date = 0
         deaths_to_date = 0
-        for i in range(0, self.s_end_days - self.s_start_days) :
+        for i in range(0, len(cases)) :
             self.bell_cases.append(cases[i] * cases_rescale)
             self.bell_deaths.append(deaths[i] * deaths_rescale)
             cases_to_date += self.bell_cases[-1]
@@ -699,8 +701,8 @@ class Region :
         print()
         print(f"              Prediction ---      Total -------")
         print(f"Date          Cases   Deaths      Cases  Deaths")
-        for d in range(start, predict) :
-            i = self.s_latest_days - self.s_start_days + d
+        for d in range(0, predict) :
+            i = self.s_latest_days - self.s_start_days + d + start
             date = self.s_latest + datetime.timedelta(d)
             marker = '  <-- latest raw data' if date == self.latest else ''
             if i >= len(self.bell_cases) : break
