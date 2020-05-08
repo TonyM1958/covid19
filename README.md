@@ -6,7 +6,7 @@ Analysis of public data on the spread of covid-19:
 ## Process
 The analysis takes daily data from the [European Centre for Disease Prevention and Control (ECDC)](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide), updated for the previous day around 11 am UK time. A further update to UK data is made around 5pm when daily figures are published.
 
-The raw number of new cases and deaths reported each day can be erratic, making it difficult to detect the peak correctly. To allow for this, the analysis generates a smoothed data set that is the daily average for a sliding window. The window used is 7 days i.e. a specific days average looks across 3 days before, the current day and 3 days after.
+The raw number of new cases and deaths reported each day can be erratic, making it difficult to detect the peak correctly. To allow for this, the analysis generates a smoothed data set using the daily central moving average. The average is calculated over 7 days with 3 days before, the current day and 3 days after.
 
 Within the smoothed data, the analysis tries to identify key dates:
 * Start date: when 50 cases have been reported
