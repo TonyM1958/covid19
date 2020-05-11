@@ -467,12 +467,17 @@ class Region :
         # plot infection rate
         if infection > 0 :
             plt.figure(figsize=self.figsize)
-            plt.title(f"{self.name} \nInfection Rate, based on number of new cases compared to {self.spread} days earlier\n(dotted line shows the predicted infection rate)")
+            if ylog == 1 and infection != 2:
+                plt.title(f"{self.name} (log Y axis) \nInfection Rate, based on number of new cases compared to {self.spread} days earlier\n(dotted line shows the predicted infection rate)")
+                plt.yscale('log')
+                plt.ylim([0.1,10])
+            else :
+                plt.title(f"{self.name}\nInfection Rate, based on number of new cases compared to {self.spread} days earlier\n(dotted line shows the predicted infection rate)")
+                if self.s_infection_peak > clip : plt.ylim([0, clip])
+                else : plt.ylim([0, 4 * (int(self.s_infection_peak / 4) + 1)])
             plt.plot(dates, [r.get('s_infection') for r in self.data[days:]], color='brown', linestyle='solid')
             plt.plot([self.s_start + datetime.timedelta(d) for d in range(0, len(self.infection))], self.infection, color='grey', linestyle='dashed')
             plt.axhline(y=1, color='green', linestyle='dashed', linewidth=2, label='1')
-            if self.s_infection_peak > clip : plt.ylim([0, clip])
-            else : plt.ylim([0, 4 * (int(self.s_infection_peak / 4) + 1)])
             plt.xticks([self.s_start + datetime.timedelta(d) for d in range(0, len(self.bell_cases),7)], rotation=90)
             plt.axvline(self.latest, color='green', linestyle='dashed', linewidth=2, label='now')
             plt.axvline(self.s_start, color='grey', linestyle='dashed', linewidth=2, label='start')
