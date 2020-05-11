@@ -21,10 +21,10 @@ From this, key metrics are created:
 * Spread: the infection rate, based on comparing the number of new cases with the number 7 days earlier
 
 The processing fits a [sigmoid curve / logistic distribution](https://en.wikipedia.org/wiki/Logistic_distribution) to the data. This produces a bell distribution for the new cases / deaths and an S-curve for the cumulative number of cases / deaths. These curves are used to extrapolate the potential progress of the infection. The parameters / characteristics of the models are:
-* X = the sigmoid curve scale factor i.e. the maximum value of the function
+* X = the sigmoid curve scale factor i.e. the maximum value of the function f(t) = L/(1 + exp(-rt/d))
 * r = the exponential factor for the sigmoid curve and bell distribution e.g. exp(-rt/d)
-* L = the bell distribution scale factor
-* c = consistency, 100% - the cumulative error between the smoothed data and bell distribution curve
+* L = the bell distribution scale factor f(t) = L * exp(-rt/d) / (1 + exp(-rt/d)) ^ 2
+* c = consistency between the smoothed data and bell distribution. 100% is a perfect fit
 
 The 'end day' is a notional date when the majority of cases / deaths from the current outbreak might be expected. The outcome includes a % of the maximum value of the functions at the end date, typically, 95% to 99% i.e. 95% of the total number of cases / deaths for an outbreak are expected to have occured by the end date.
 
