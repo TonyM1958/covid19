@@ -263,17 +263,17 @@ class Region :
         self.s_peak_deaths = None       # date for peak deaths in smoothed data
         self.s_end_days = None          # index for end of epidemic in smoothed data (if reached)
         self.s_end = None               # date for end of epidemic in smoothed data
-        self.s_r0_peak = 0              # peak value for R0
-        self.s_r0_peak_date = None      # date when R0 peaks
-        self.s_r0_peak_days = None      # index for day when R0 peaks
-        self.s_r0_latest = 0            # latest value for R0
-        self.s_r0_latest_date = None    # date of latest R0
-        self.s_r0_latest_days = None    # index for latest R0
+        self.s_infection_peak = 0              # peak value for infection rate
+        self.s_infection_peak_date = None      # date when infection rate peaks
+        self.s_infection_peak_days = None      # index for day when infection rate peaks
+        self.s_infection_latest = 0            # latest value for infection rate
+        self.s_infection_latest_date = None    # date of latest infection rate
+        self.s_infection_latest_days = None    # index for latest infection rate
         peak = 0
         for i in range(0,len(self.data)) :
             self.data[i]['s_cases_to_date'] = None
             self.data[i]['s_deaths_to_date'] = None
-            self.data[i]['s_r0'] = None
+            self.data[i]['s_infection'] = None
             if self.data[i].get('s_cases') is None : continue
             # rescale smoothed data and update
             self.data[i]['s_cases'] *= case_rescale
@@ -284,14 +284,14 @@ class Region :
             self.data[i]['s_deaths_to_date'] = self.s_total_deaths
             if i >= self.spread and self.s_total_cases >= 500 and self.data[i].get('s_cases') is not None and self.data[i - self.spread].get('s_cases') is not None and self.data[i - self.spread].get('s_cases') != 0:
                 # calculate infection rate
-                self.data[i]['s_r0'] = self.data[i].get('s_cases') / self.data[i - self.spread].get('s_cases')
-                self.s_r0_latest = self.data[i].get('s_r0')
-                self.s_r0_latest_days = i - self.count
-                self.s_r0_latest_date = self.data[i].get('dateRep')
-                if self.data[i].get('s_r0') > self.s_r0_peak :
-                    self.s_r0_peak = self.data[i].get('s_r0')
-                    self.s_r0_peak_days = i - self.count
-                    self.s_r0_peak_date = self.data[i].get('dateRep')
+                self.data[i]['s_infection'] = self.data[i].get('s_cases') / self.data[i - self.spread].get('s_cases')
+                self.s_infection_latest = self.data[i].get('s_infection')
+                self.s_infection_latest_days = i - self.count
+                self.s_infection_latest_date = self.data[i].get('dateRep')
+                if self.data[i].get('s_infection') > self.s_infection_peak :
+                    self.s_infection_peak = self.data[i].get('s_infection')
+                    self.s_infection_peak_days = i - self.count
+                    self.s_infection_peak_date = self.data[i].get('dateRep')
             # find smoothed start day
             if self.s_start_days is None and self.s_total_cases >= 50 :
                 self.s_start = self.data[i].get('dateRep')
@@ -381,13 +381,13 @@ class Region :
         print(f"Parameters:")
         print(f"  Totals:      {self.data[self.s_latest_days].get('cases_to_date'):,} cases and {self.data[self.s_latest_days].get('deaths_to_date'):,} deaths at end of {self.s_latest:%Y-%m-%d}")
         print(f"  Smoothed:    {int(self.s_total_cases):,} cases and {int(self.s_total_deaths):,} deaths at end of {self.s_latest:%Y-%m-%d} ({self.smooth} points)")
-        print(f"  Spread:      Peak infection rate {round(self.s_r0_peak,1)} ({self.s_r0_peak_date:%Y-%m-%d}, compared to {self.spread} days earlier)")
-        print(f"               Latest infection rate {round(self.s_r0_latest,1)} ({self.s_r0_latest_date:%Y-%m-%d}, compared to {self.spread} days earlier)")
+        print(f"  Spread:      Peak infection rate {round(self.s_infection_peak,1)} ({self.s_infection_peak_date:%Y-%m-%d}, compared to {self.spread} days earlier)")
+        print(f"               Latest infection rate {round(self.s_infection_latest,1)} ({self.s_infection_latest_date:%Y-%m-%d}, compared to {self.spread} days earlier)")
         print(f"  Growth:      {self.growth_days} days (Start -> Peak Cases) ")
-        print(f"               X = {int(self.X_cases):,}, r = {round(self.r_cases,2)}, L = {int(self.L_cases):,}, dilation = {self.dilation_cases} for cases")
+        print(f"               X = {int(self.X_cases):,}, r = {round(self.r_cases,2)}, L = {int(self.L_cases):,}, dilation = {self.dilation_cases}, c = {self.C_cases:5.1%} for cases")
         if self.s_total_deaths >= 50 :
             print(f"  Lag:         {self.lag} days (Peak Cases -> Peak Deaths) ")
-            print(f"               X = {int(self.X_deaths):,}, r = {round(self.r_deaths,2)}, L = {int(self.L_deaths):,}, dilation = {self.dilation_deaths} for deaths")
+            print(f"               X = {int(self.X_deaths):,}, r = {round(self.r_deaths,2)}, L = {int(self.L_deaths):,}, dilation = {self.dilation_deaths}, c = {self.C_deaths:5.1%} for deaths")
         print()
         if self.s_end_days < 0 :
             d = self.s_end_days
@@ -468,11 +468,11 @@ class Region :
         if infection > 0 :
             plt.figure(figsize=self.figsize)
             plt.title(f"{self.name} \nInfection Rate, based on number of new cases compared to {self.spread} days earlier\n(dotted line shows the predicted infection rate)")
-            plt.plot(dates, [r.get('s_r0') for r in self.data[days:]], color='brown', linestyle='solid')
+            plt.plot(dates, [r.get('s_infection') for r in self.data[days:]], color='brown', linestyle='solid')
             plt.plot([self.s_start + datetime.timedelta(d) for d in range(0, len(self.infection))], self.infection, color='grey', linestyle='dashed')
             plt.axhline(y=1, color='green', linestyle='dashed', linewidth=2, label='1')
-            if self.s_r0_peak > clip : plt.ylim([0, clip])
-            else : plt.ylim([0, 4 * (int(self.s_r0_peak / 4) + 1)])
+            if self.s_infection_peak > clip : plt.ylim([0, clip])
+            else : plt.ylim([0, 4 * (int(self.s_infection_peak / 4) + 1)])
             plt.xticks([self.s_start + datetime.timedelta(d) for d in range(0, len(self.bell_cases),7)], rotation=90)
             plt.axvline(self.latest, color='green', linestyle='dashed', linewidth=2, label='now')
             plt.axvline(self.s_start, color='grey', linestyle='dashed', linewidth=2, label='start')
@@ -551,7 +551,7 @@ class Region :
 
     def abs_error(self, L, r, offset) :
         """
-        calculate the average absolute error between the smoothed data and bell distribution for a given L and r:
+        calculate the absolute error between the smoothed data and bell distribution for a given L and r:
         """
         name = 's_cases' if offset == 0 else 's_deaths'
         n = 0
@@ -565,7 +565,7 @@ class Region :
                 n += 1
             d += 1
         if n == 0 : return None
-        else : return result / n
+        else : return result
 
     def bell_r(self, L, r, offset, tries=0) :
         """
@@ -680,6 +680,9 @@ class Region :
         # work out implied scale factors for sigmoid functions
         self.X_cases = self.sigmoid_L(cases_to_date, self.r_cases, self.s_end_days, 0)
         self.X_deaths = self.sigmoid_L(deaths_to_date, self.r_deaths, self.s_end_days, 1)
+        # work out consistency. error between smoothed data and prediction as percentage of 
+        self.C_cases = 1.0 - self.abs_error(self.L_cases, self.r_cases, 0) / self.s_total_cases if self.s_total_cases != 0 else None
+        self.C_deaths = 1.0 - self.abs_error(self.L_deaths, self.r_deaths, 1) / self.s_total_deaths if self.s_total_deaths !=0 else None
         # work out infection rate curve for cases:
         self.infection = []
         for i in range(0, len(self.sigmoid_cases)) :
@@ -704,7 +707,7 @@ class Region :
         for d in range(0, predict) :
             i = self.s_latest_days - self.s_start_days + d + start
             date = self.s_latest + datetime.timedelta(d)
-            marker = '  <-- latest raw data' if date == self.latest else ''
+            marker = f"  <-- latest raw data" if date == self.latest else ""
             if i >= len(self.bell_cases) : break
             print(f"{date:%Y-%m-%d}" + \
                   f" {num(self.bell_cases[i])} {num(self.bell_deaths[i])}" + \
