@@ -73,11 +73,12 @@ lag_setting = 4         # days lag between peak cases and peak deaths
 spread_setting = 7      # number of days to use look back when calculating infection rate
 dilation_setting = 1    # dilation to apply to deaths (1 = Normal, 2 = slower fall, 0.8 = faster fall)
 d_cases_setting = 0     # dilation to apply to cases
+clip_setting = 10       # max Y value displayed on infection rate plot
 figwidth_setting = 12   # width for plots
 debug_setting = 0       # debug setting: 0 = silent, 1 = info, 2 = details
 
 def setting(days=None, predict=None, ylog=None, daily=None, infection=None, totals=None, smooth=None, growth_days=None, lag=None
-    , spread=None, dilation=None, d_cases=None, figwidth=None, debug=0) :
+    , spread=None, dilation=None, d_cases=None, clip=None, figwidth=None, debug=0) :
     """
     configure global settings 
     """
@@ -97,6 +98,7 @@ def setting(days=None, predict=None, ylog=None, daily=None, infection=None, tota
     if spread is not None : spread_setting = spread
     if dilation is not None : dilation_setting = dilation
     if d_cases is not None : d_cases_setting = d_cases
+    if clip is not None : clip_setting = clip
     if figwidth is not None : figwidth_setting = figwidth
     if debug is not None : debug_setting = debug
     return
@@ -413,7 +415,7 @@ class Region :
         """
         show records for last number of days
         """
-        global days_setting
+        global days_setting, clip_setting
         if days is None : days = days_setting
         print()
         print(f"              Raw ----------       Total --------     Smoothed ------      Total ---------")
@@ -426,7 +428,7 @@ class Region :
         print()
         return
 
-    def plot(self, ylog=None, daily=None, infection=None, totals=None, clip=12) :
+    def plot(self, ylog=None, daily=None, infection=None, totals=None, clip=None) :
         """
         plot the graph of a property against the day reported
         """
@@ -435,6 +437,7 @@ class Region :
         if daily is None : daily = daily_setting
         if infection is None : infection = infection_setting
         if totals is None : totals = totals_setting
+        if clip is None : clip = clip_setting
         days = self.s_start_days
         dates = [r.get('dateRep') for r in self.data[days:]]
         date_range = [self.s_start + datetime.timedelta(d) for d in range(0, max(len(self.data[days:]), len(self.bell_cases)),7)]
