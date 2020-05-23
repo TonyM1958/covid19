@@ -51,10 +51,12 @@ Following the peak in new cases / deaths, there is a trend for the numbers to fl
 
 As new data is added daily, the modelling is re-fitted and the predictions are updated.
 
-Could there be a correlation between deaths per million population and health, using life expectancy as a proxy for this:
-* Spain 82.8
-* Italy 82.7
-* France 82.3
-* Ireland 81.6
-* UK 81.0
-* Belgium 81.0
+Could there be a simple corelation between deaths per million population and general health? Using life expectancy as a proxy:
+* Italy = 83.6 years
+* Spain = 83.4 years
+* France = 82.5 years
+* Ireland = 82.1 years
+* Belgium = 81.5 years
+* UK = 81.2 years
+
+(based on UNDP report 2019)
