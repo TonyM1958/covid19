@@ -51,4 +51,10 @@ Following the peak in new cases / deaths, there is a trend for the numbers to fl
 
 As new data is added daily, the modelling is re-fitted and the predictions are updated.
 
-Limited testing capacity caps the number of new cases added each day and also affects the calculated infection rate.
+Could there be a correlation between deaths per million population and health, using life expectancy as a proxy for this:
+* Spain 82.8
+* Italy 82.7
+* France 82.3
+* Ireland 81.6
+* UK 81.0
+* Belgium 81.0
