@@ -398,6 +398,8 @@ class Region :
             total_deaths = int(self.data[d].get('deaths_to_date'))
             death_rate = int(round(total_deaths * 1000000 / self.population, 0))
             print(f"Outcome: {total_cases:,} total cases, {total_deaths:,} total deaths at end of {self.data[d].get('dateRep'):%Y-%m-%d}")
+            print(f"  {cases_rate:,} cases per million ({cases_rate/1000000:5.2%}), {death_rate:,} deaths per million ({death_rate/1000000:5.3%})")
+            print(f"  ** first wave ended **")
         else :
             total_cases = int(self.sigmoid_cases[-1])
             cases_rate = int(round(self.X_cases * 1000000 / self.population, 0))
@@ -406,7 +408,7 @@ class Region :
             print(f"Outcome: {total_cases:,} total cases, {total_deaths:,} total deaths by end of {self.s_end:%Y-%m-%d}")
             print(f"  {self.total_cases / self.X_cases:5.1%} of predicted cases and {self.total_deaths / self.X_deaths:5.1%} of predicted deaths reported to date")
             print(f"  {total_cases / self.X_cases:5.1%} of predicted cases and {total_deaths / self.X_deaths:5.1%} of predicted deaths reported by end date")
-        print(f"  {cases_rate:,} cases per million ({cases_rate/1000000:5.2%}), {death_rate:,} deaths per million ({death_rate/1000000:5.3%})")
+            print(f"  {cases_rate:,} cases per million ({cases_rate/1000000:5.2%}), {death_rate:,} deaths per million ({death_rate/1000000:5.3%})")
         print()
         return
     
@@ -705,10 +707,11 @@ class Region :
         """
         global predict_setting
         if predict is None : predict = predict_setting
-        if self.s_end_days < 1 : return
+        if self.s_end_days < 1 : 
+            print(f"  ** first wave ended **")
+            return
         if predict == 0 : predict = int(self.smooth/2) + 1
         if predict < 1 : return
-        print()
         print(f"              Prediction ---      Total -------")
         print(f"Date          Cases   Deaths      Cases  Deaths")
         for d in range(0, predict) :
