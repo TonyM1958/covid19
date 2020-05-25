@@ -51,12 +51,14 @@ Following the peak in new cases / deaths, there is a trend for the numbers to fl
 
 As new data is added daily, the modelling is re-fitted and the predictions are updated.
 
-Could there be a simple corelation between deaths per million population and general health? Using life expectancy as a proxy:
-* Italy = 83.6 years
-* Spain = 83.4 years
-* France = 82.5 years
-* Ireland = 82.1 years
-* Belgium = 81.5 years
-* UK = 81.2 years
+There seem to be lots of conspiracy theories out there about who is affected. Might there just be a simple corelation between deaths per million population, general health and population density? Data for [life expectancy](https://data.worldbank.org/indicator/SP.DYN.LE00.IN) as a proxy for health and [population density](https://www.worldometers.info/population/countries-in-europe-by-population/) is:
 
-(based on UNDP report 2019)
+* Belgium: life expectancy = 82 years, density = 383 people / km2
+* UK:      life expectancy = 81 years, density = 281 people / km2
+* Germany: life expectancy = 81 years, density = 240 people / km2
+* Italy:   life expectancy = 83 years, density = 206 people / km2
+* France:  life expectancy = 83 years, density = 119 people / km2
+* Spain:   life expectancy = 83 years, density =  94 people / km2
+* Ireland: life expectancy = 83 years, density =  72 people / km2
+
+Given these factors, you could expect the death rate in the UK and Belgium to be higher other than European countries.
