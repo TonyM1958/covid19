@@ -158,7 +158,7 @@ def region_load(fn=None, geoId=None, debug=None, population=None, density=None) 
         r['dateRep'] = datetime.datetime.strptime(r.get('dateRep'), "%d/%m/%Y") + datetime.timedelta(-1)
         r['cases'] = int(r.get('cases'))
         r['deaths'] = int(r.get('deaths'))
-        r['popData2018'] = int(r.get('popData2018')) if population is None else population
+        r['population'] = int(r.get('popData2018')) if population is None else population
         r['density'] = density
     # sort records into ascending date order
     data = sorted(data, key = lambda r: r.get('dateRep'))
@@ -208,7 +208,7 @@ class Region :
         self.latest = self.data[-1].get('dateRep')                                          # date when last data was provided
         self.total_cases = self.data[-1].get('cases_to_date')                               # total number of cases reported
         self.total_deaths = self.data[-1].get('deaths_to_date')                             # total number of deaths reported
-        self.population = self.data[-1].get('popData2018')                                  # region population
+        self.population = self.data[-1].get('population')                                   # region population
         self.density = self.data[-1].get('density')                                         # region population density (people / km2)
         self.case_rate = int(round(self.total_cases * 1000000.0 / self.population, 0))      # cases per million population
         self.death_rate = int(round(self.total_deaths * 1000000.0 / self.population, 0))    # deaths per million population
