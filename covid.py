@@ -85,7 +85,7 @@ def setting(days=None, predict=None, ylog=None, daily=None, infection=None, tota
     # configure any global settings
     global days_setting, predict_setting, ylog_setting, daily_setting, infection_setting, totals_setting
     global smooth_setting, growth_setting, lag_setting, spread_setting, dilation_setting, d_cases_setting
-    global figwidth_setting, debug_setting
+    global clip_setting, figwidth_setting, debug_setting
     if days is not None : days_setting = days
     if predict is not None : predict_setting = predict
     if ylog is not None : ylog_setting = ylog
@@ -142,7 +142,7 @@ def data_load(fn, find=None, debug=None) :
         print(f"\n{n} region(s) containing '{find}' found in {fn}")
     return
 
-def region_load(fn=None, geoId=None, debug=None) :
+def region_load(fn=None, geoId=None, debug=None, population=None, density=None) :
     """
     load json data for a region. fn and geoId are optional 
     """
@@ -158,7 +158,8 @@ def region_load(fn=None, geoId=None, debug=None) :
         r['dateRep'] = datetime.datetime.strptime(r.get('dateRep'), "%d/%m/%Y") + datetime.timedelta(-1)
         r['cases'] = int(r.get('cases'))
         r['deaths'] = int(r.get('deaths'))
-        r['popData2018'] = int(r.get('popData2018'))
+        r['popData2018'] = int(r.get('popData2018')) if population is None else population
+        r['density'] = density
     # sort records into ascending date order
     data = sorted(data, key = lambda r: r.get('dateRep'))
     cases_to_date = 0
@@ -174,7 +175,7 @@ class Region :
     """
     Load the data about a region
     """    
-    def __init__(self, fn=None, geoId=None, smooth=None, growth_days=None, lag=None, spread=None, dilation=None, d_cases=0, figwidth=None, debug=None) :
+    def __init__(self, fn=None, geoId=None, smooth=None, growth_days=None, lag=None, spread=None, dilation=None, d_cases=0, population=None, density=None, figwidth=None, debug=None) :
         # process parameters
         global smooth_setting, growth_setting, lag_setting, spread_setting, dilation_setting, d_cases_setting, figwidth_setting, debug_setting
         self.debug = debug if debug is not None else debug_setting
@@ -191,7 +192,7 @@ class Region :
         self.figsize = (self.figwidth, self.figwidth * 9 / 16)     # size of charts
         # load data
         global region_name
-        self.data = region_load(fn, geoId, self.debug)
+        self.data = region_load(fn, geoId, self.debug, population, density)
         if geoId is None and len(region_name) > 0 : geoId = list(region_name.keys())[0]
         if geoId is None or region_name.get(geoId) is None :
             print(f"Region not recognised: '{geoId}'\n")
@@ -208,6 +209,7 @@ class Region :
         self.total_cases = self.data[-1].get('cases_to_date')                               # total number of cases reported
         self.total_deaths = self.data[-1].get('deaths_to_date')                             # total number of deaths reported
         self.population = self.data[-1].get('popData2018')                                  # region population
+        self.density = self.data[-1].get('density')                                         # region population density (people / km2)
         self.case_rate = int(round(self.total_cases * 1000000.0 / self.population, 0))      # cases per million population
         self.death_rate = int(round(self.total_deaths * 1000000.0 / self.population, 0))    # deaths per million population
         # scan through data to calculate attributes and smoothed data
@@ -399,6 +401,8 @@ class Region :
             death_rate = int(round(total_deaths * 1000000 / self.population, 0))
             print(f"Outcome: {total_cases:,} total cases, {total_deaths:,} total deaths at end of {self.data[d].get('dateRep'):%Y-%m-%d}")
             print(f"  {cases_rate:,} cases per million ({cases_rate/1000000:5.2%}), {death_rate:,} deaths per million ({death_rate/1000000:5.3%})")
+            if self.density is not None :
+                print(f"  {round(cases_rate / self.density, 1)} cases per km2, {round(death_rate / self.density, 1)} deaths per km2")
             print(f"  ** first wave ended **")
         else :
             total_cases = int(self.sigmoid_cases[-1])
@@ -409,6 +413,8 @@ class Region :
             print(f"  {self.total_cases / self.X_cases:5.1%} of predicted cases and {self.total_deaths / self.X_deaths:5.1%} of predicted deaths reported to date")
             print(f"  {total_cases / self.X_cases:5.1%} of predicted cases and {total_deaths / self.X_deaths:5.1%} of predicted deaths reported by end date")
             print(f"  {cases_rate:,} cases per million ({cases_rate/1000000:5.2%}), {death_rate:,} deaths per million ({death_rate/1000000:5.3%})")
+            if self.density is not None :
+                print(f"  {round(cases_rate / self.density, 1)} cases per km2, {round(death_rate / self.density, 1)} deaths per km2")
         print()
         return
     
