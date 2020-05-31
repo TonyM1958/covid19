@@ -402,7 +402,7 @@ class Region :
             print(f"Outcome: {total_cases:,} total cases, {total_deaths:,} total deaths at end of {self.data[d].get('dateRep'):%Y-%m-%d}")
             print(f"  {cases_rate:,} cases per million ({cases_rate/1000000:5.2%}), {death_rate:,} deaths per million ({death_rate/1000000:5.3%})")
             if self.density is not None :
-                print(f"  {round(cases_rate / self.density, 1)} cases per km2, {round(death_rate / self.density, 1)} deaths per km2")
+                print(f"  {round(cases_rate / self.density, 1)} cases km2, {round(death_rate / self.density, 1)} deaths km2")
             print(f"  ** first wave ended **")
         else :
             total_cases = int(self.sigmoid_cases[-1])
@@ -414,7 +414,7 @@ class Region :
             print(f"  {total_cases / self.X_cases:5.1%} of predicted cases and {total_deaths / self.X_deaths:5.1%} of predicted deaths reported by end date")
             print(f"  {cases_rate:,} cases per million ({cases_rate/1000000:5.2%}), {death_rate:,} deaths per million ({death_rate/1000000:5.3%})")
             if self.density is not None :
-                print(f"  {round(cases_rate / self.density, 1)} cases per km2, {round(death_rate / self.density, 1)} deaths per km2")
+                print(f"  {round(cases_rate / self.density, 1)} cases km2, {round(death_rate / self.density, 1)} deaths km2")
         print()
         return
     
