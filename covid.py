@@ -73,19 +73,20 @@ lag_setting = 4         # days lag between peak cases and peak deaths
 spread_setting = 7      # number of days to use look back when calculating infection rate
 dilation_setting = 1    # dilation to apply to deaths (1 = Normal, 2 = slower fall, 0.8 = faster fall)
 d_cases_setting = 0     # dilation to apply to cases
+d_clip_setting = 2      # clip setting for dilation applied to time
 clip_setting = 10       # max Y value displayed on infection rate plot
 figwidth_setting = 12   # width for plots
 debug_setting = 0       # debug setting: 0 = silent, 1 = info, 2 = details
 
 def setting(days=None, predict=None, ylog=None, daily=None, infection=None, totals=None, smooth=None, growth_days=None, lag=None
-    , spread=None, dilation=None, d_cases=None, clip=None, figwidth=None, debug=0) :
+    , spread=None, dilation=None, d_cases=None, d_clip=None, clip=None, figwidth=None, debug=0) :
     """
     configure global settings 
     """
     # configure any global settings
     global days_setting, predict_setting, ylog_setting, daily_setting, infection_setting, totals_setting
     global smooth_setting, growth_setting, lag_setting, spread_setting, dilation_setting, d_cases_setting
-    global clip_setting, figwidth_setting, debug_setting
+    global d_clip_setting, clip_setting, figwidth_setting, debug_setting
     if days is not None : days_setting = days
     if predict is not None : predict_setting = predict
     if ylog is not None : ylog_setting = ylog
@@ -98,6 +99,7 @@ def setting(days=None, predict=None, ylog=None, daily=None, infection=None, tota
     if spread is not None : spread_setting = spread
     if dilation is not None : dilation_setting = dilation
     if d_cases is not None : d_cases_setting = d_cases
+    if d_clip is not None : d_clip_setting = d_clip
     if clip is not None : clip_setting = clip
     if figwidth is not None : figwidth_setting = figwidth
     if debug is not None : debug_setting = debug
@@ -175,9 +177,9 @@ class Region :
     """
     Load the data about a region
     """    
-    def __init__(self, fn=None, geoId=None, smooth=None, growth_days=None, lag=None, spread=None, dilation=None, d_cases=0, population=None, density=None, figwidth=None, debug=None) :
+    def __init__(self, fn=None, geoId=None, smooth=None, growth_days=None, lag=None, spread=None, dilation=None, d_cases=0, d_clip=None, population=None, density=None, figwidth=None, debug=None) :
         # process parameters
-        global smooth_setting, growth_setting, lag_setting, spread_setting, dilation_setting, d_cases_setting, figwidth_setting, debug_setting
+        global smooth_setting, growth_setting, lag_setting, spread_setting, dilation_setting, d_cases_setting, d_clip_setting, figwidth_setting, debug_setting
         self.debug = debug if debug is not None else debug_setting
         self.smooth = smooth if smooth is not None else smooth_setting
         if self.smooth % 2 == 0 : self.smooth += 1      # make sure the average is balanced around the centre point
@@ -188,6 +190,7 @@ class Region :
         self.dilation_cases = d_cases if d_cases != 0 else dilation
         if self.dilation_cases is None :
             self.dilation_cases = d_cases_setting if d_cases_setting != 0 else dilation_setting
+        self.d_clip = d_clip if d_clip is not None else d_clip_setting
         self.figwidth = figwidth if figwidth is not None else figwidth_setting
         self.figsize = (self.figwidth, self.figwidth * 9 / 16)     # size of charts
         # load data
@@ -326,8 +329,8 @@ class Region :
         # calculate notional end day from cycle time, factored for dilation effect
         t_decay = 1
         if self.dilation_cases > 1 :
-            if self.dilation_cases < 2 : t_decay = self.dilation_cases
-            else : t_decay = 2
+            if self.dilation_cases < self.d_clip : t_decay = self.dilation_cases
+            else : t_decay = self.d_clip
         self.s_end_days = self.s_start_days + int(self.cycle * (1 + t_decay) / 2)
         self.s_end = self.latest + datetime.timedelta(self.s_end_days)
         self.position = (self.s_latest_days - self.s_start_days) / (self.s_end_days - self.s_start_days)
