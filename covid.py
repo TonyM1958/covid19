@@ -336,7 +336,7 @@ class Region :
         self.position = (self.s_latest_days - self.s_start_days) / (self.s_end_days - self.s_start_days)
         # find peak deaths, starting just before peak cases to avoid early false peaks
         peak = 0
-        for i in range(self.s_peak_case_days - self.lag, self.s_latest_days + 1) :
+        for i in range(self.s_start_days - self.lag, self.s_latest_days + 1) :
             if i > self.s_end_days : break      # avoid shifting to second peaks  i.e. china
             if self.data[i].get('s_deaths') is None : continue
             if self.data[i].get('s_deaths') > peak :
