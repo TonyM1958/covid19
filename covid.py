@@ -160,7 +160,7 @@ def region_load(fn=None, geoId=None, debug=None, population=None, density=None) 
         r['dateRep'] = datetime.datetime.strptime(r.get('dateRep'), "%d/%m/%Y") + datetime.timedelta(-1)
         r['cases'] = int(r.get('cases'))
         r['deaths'] = int(r.get('deaths'))
-        r['population'] = int(r.get('popData2018')) if population is None else population
+        r['population'] = int(r.get('popData2019')) if population is None else population
         r['density'] = density
     # sort records into ascending date order
     data = sorted(data, key = lambda r: r.get('dateRep'))
@@ -367,7 +367,7 @@ class Region :
         """
         print(f"{self.name} data to end of {self.latest:%Y-%m-%d}:")
         print(f"  {self.total_cases:,} cases, {self.total_deaths:,} deaths")
-        print(f"  {self.case_rate:,} cases per million, {self.death_rate:,} deaths per million (2018 population = {self.population:,})")
+        print(f"  {self.case_rate:,} cases per million, {self.death_rate:,} deaths per million (2019 population = {self.population:,})")
         print()
         print(f"Timeline: (-ve days are past, +ve days are predicted)")
         if self.s_end_days >= 0 :
