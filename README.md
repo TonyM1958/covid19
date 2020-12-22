@@ -4,9 +4,9 @@ Analysis of public data on the spread of covid-19:
 * [View World results using github viewer](world.ipynb)
 
 ## Process
-The analysis takes daily data from the [European Centre for Disease Prevention and Control (ECDC)](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide), updated for the previous day around 11 am UK time. A further update to UK data is made after daily figures are published on [www.gov.uk](https://www.gov.uk/guidance/coronavirus-covid-19-information-for-the-public).
+The analysis takes WEEKLY data from the [European Centre for Disease Prevention and Control (ECDC)](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide).
 
-The raw number of new cases and deaths reported each day can be erratic, making it difficult to detect the peak correctly. To allow for this, the analysis generates a smoothed data set using the daily central moving average. The average is calculated over 7 days with 3 days before, the current day and 3 days after.
+The raw number of new cases and deaths reported is averaged over 7 days when reported. The analysis generates daily average data, smoothed over 7 days with 3 days before, the current day and 3 days after.
 
 Within the smoothed data, the analysis tries to identify key dates:
 * Start date: when 50 cases have been reported
