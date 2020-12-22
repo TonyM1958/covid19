@@ -157,13 +157,32 @@ def region_load(fn=None, geoId=None, debug=None, population=None, density=None) 
     data = [r for r in json.loads(json_data).get('records') if r.get('geoId') == geoId]
     # convert data for each record
     for r in data :
-        r['dateRep'] = datetime.datetime.strptime(r.get('dateRep'), "%d/%m/%Y") + datetime.timedelta(-1)
-        r['cases'] = int(r.get('cases'))
-        r['deaths'] = int(r.get('deaths'))
+        r['dateRep'] = datetime.datetime.strptime(r.get('dateRep'), "%d/%m/%Y")
+        r['cases_weekly'] = int(r.get('cases_weekly'))
+        r['deaths_weekly'] = int(r.get('deaths_weekly'))
         r['population'] = int(r.get('popData2019')) if population is None else population
         r['density'] = density
-    # sort records into ascending date order
+    # ECDC reports data weekly instead of daily as of 17/12/2020. Add previous 6 missing days back in for each record
+    for i in range(0, len(data)) :
+        # track number of cases / deaths added in previous records
+        cases_added = 0
+        deaths_added = 0
+        for j in range(0,6):
+            r = {}
+            r['dateRep'] = data[i].get('dateRep') - datetime.timedelta(j+1)
+            r['cases'] = int(data[i].get('cases_weekly') / 7)
+            r['deaths'] = int(data[i].get('deaths_weekly') / 7)
+            r['population'] = data[i].get('popData2019')
+            r['density'] = data[i].get('density')
+            data.append(r)
+            cases_added += r['cases']
+            deaths_added += r['deaths']
+        # ensure weekly total is correct by subtracting what we added
+        data[i]['cases'] = data[i].get('cases_weekly') - cases_added
+        data[i]['deaths'] = data[i].get('deaths_weekly') - deaths_added
+    # sort records so they are all in ascending date order
     data = sorted(data, key = lambda r: r.get('dateRep'))
+    # calculate cumulative data
     cases_to_date = 0
     deaths_to_date = 0
     for r in data :
@@ -256,8 +275,8 @@ class Region :
                 self.s_total_cases += s_cases
                 self.s_total_deaths += s_deaths
         # rescale smoothed data to match actual totals and calculate parameters
-        case_rescale = self.data[self.s_latest_days].get('cases_to_date') / self.s_total_cases
-        death_rescale = self.data[self.s_latest_days].get('deaths_to_date') / self.s_total_deaths
+        case_rescale = self.data[self.s_latest_days].get('cases_to_date') / self.s_total_cases if self.s_total_cases > 0 else 1
+        death_rescale = self.data[self.s_latest_days].get('deaths_to_date') / self.s_total_deaths if self.s_total_deaths > 0 else 1
         self.s_total_cases = 0          # total of smoothed cases
         self.s_total_deaths = 0         # total of smoothed deaths
         self.s_start_days = None        # index for start day in smoothed data
@@ -681,9 +700,9 @@ class Region :
                 deaths_to_date += deaths[-1]
         # work out rescale factors
         d = self.s_end_days if self.s_end_days < self.s_latest_days else self.s_latest_days
-        cases_rescale = self.data[d].get('s_cases_to_date') / cases_to_date
+        cases_rescale = self.data[d].get('s_cases_to_date') / cases_to_date if cases_to_date > 0 else 1
         if self.debug > 0 : print(f"cases_rescale = {cases_rescale}")
-        deaths_rescale = self.data[d].get('s_deaths_to_date') / deaths_to_date
+        deaths_rescale = self.data[d].get('s_deaths_to_date') / deaths_to_date if deaths_to_date > 0 else 1
         if self.debug > 0 : print(f"deaths_rescale = {deaths_rescale}")
         # apply scale factors to bell distributions and calculate sigmoid functions
         cases_to_date = 0
