@@ -6,7 +6,7 @@ Analysis of public data on the spread of covid-19:
 ## Process
 The analysis takes WEEKLY data from the [European Centre for Disease Prevention and Control (ECDC)](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide).
 
-The raw number of new cases and deaths reported is averaged over 7 days when reported. The analysis generates daily average data, smoothed over 7 days with 3 days before, the current day and 3 days after.
+The number of new cases and deaths is averaged over 7 days when reported. The analysis generates daily average data, smoothed over 7 days with 3 days before, the current day and 3 days after.
 
 Within the smoothed data, the analysis tries to identify key dates:
 * Start date: when 50 cases have been reported
