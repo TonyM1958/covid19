@@ -67,7 +67,7 @@ ylog_setting = 1        # log or linear Y axis
 daily_setting = 1       # plot daily new cases / new deaths. 0 = no, 1 = yes, 2 = linear, 3 = log
 infection_setting = 1   # plot infection rate. 0 = no, 1 = yes
 totals_setting = 0      # plot cumulative cases / deaths. 0 = no, 1 = yes, 2 = linear, 3 = log, 4 = deaths only
-smooth_setting = 7      # number of days to use when smoothing data
+smooth_setting = 3      # number of days to use when smoothing data
 growth_setting = 40     # number of days when virus spread before peak
 lag_setting = 4         # days lag between peak cases and peak deaths
 spread_setting = 7      # number of days to use look back when calculating infection rate
