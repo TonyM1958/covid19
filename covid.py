@@ -120,7 +120,7 @@ def data_load(fn, find=None, debug=None) :
         if line == '' : break   # end of file
         n += 1
         # ignore BOM if there is one and remove invalid lines
-        if n==1 : line ="{"
+#        if n==1 : line ="{"
         if line[0].isdigit() or line[0:7] == 'dateRep' : continue
         s += line
     f.close()
@@ -128,10 +128,10 @@ def data_load(fn, find=None, debug=None) :
     if debug > 1 : print(f"{n:,} lines read from {fn}")
     # build dictionary of the region names
     region_name = {}
-    for r in json.loads(json_data).get('records') :
-        id = r.get('geoId')
+    for r in json.loads(json_data) :
+        id = r.get('country_code')
         if id not in region_name.keys() :
-            region_name[id] = r.get('countriesAndTerritories').replace('_', ' ')
+            region_name[id] = r.get('country').replace('_', ' ')
     if debug > 0 : print(f"{len(region_name.keys())} region(s) found in {fn}")
     # find region?
     if find is not None and len(region_name) > 0 :
@@ -153,16 +153,26 @@ def region_load(fn=None, geoId=None, debug=None, population=None, density=None) 
     if fn is not None : data_load(fn, debug=debug)
     if geoId is None and len(region_name) > 0 : geoId = list(region_name.keys())[0]
     if geoId is None or region_name.get(geoId) is None : return
-    # get the records for the region
-    data = [r for r in json.loads(json_data).get('records') if r.get('geoId') == geoId]
-    # convert data for each record
-    for r in data :
-        r['dateRep'] = datetime.datetime.strptime(r.get('dateRep'), "%d/%m/%Y")
-        r['cases_weekly'] = int(r.get('cases_weekly'))
-        r['deaths_weekly'] = int(r.get('deaths_weekly'))
-        r['population'] = int(r.get('popData2019')) if population is None else population
-        r['density'] = density
-    # ECDC reports data weekly instead of daily as of 17/12/2020. Add previous 6 missing days back in for each record
+    # build a dictionary of records by date for the region with number of weekly cases and deaths
+    r_by_date = {}
+    for r in [r for r in json.loads(json_data) if r.get('country_code') == geoId] :
+        if r.get('indicator') == 'cases' :
+            dateRep = datetime.datetime.strptime(r.get('year_week') + '-4', "%Y-%W-%w")
+            record = {}
+            record['dateRep'] = dateRep
+            record['region'] = r.get('country_code')
+            record['population'] = int(r.get('population'))
+            record['density'] = density
+            record['cases_weekly'] = int(r.get('weekly_count'))
+            record['deaths_weekly'] = 0
+            r_by_date[dateRep] = record
+        elif r.get('indicator') == 'deaths' :
+            dateRep = datetime.datetime.strptime(r.get('year_week') + '-4', "%Y-%W-%w")
+            r_by_date[dateRep]['deaths_weekly'] = int(r.get('weekly_count'))
+    # convert dictionary to list
+    data = []
+    for r in r_by_date.values() : data.append(r)
+    # data is now reported weekly, expand into daily records
     for i in range(0, len(data)) :
         # track number of cases / deaths added in previous records
         cases_added = 0
@@ -172,15 +182,15 @@ def region_load(fn=None, geoId=None, debug=None, population=None, density=None) 
             r['dateRep'] = data[i].get('dateRep') - datetime.timedelta(j+1)
             r['cases'] = int(data[i].get('cases_weekly') / 7)
             r['deaths'] = int(data[i].get('deaths_weekly') / 7)
-            r['population'] = data[i].get('popData2019')
+            r['population'] = data[i].get('population')
             r['density'] = data[i].get('density')
             data.append(r)
             cases_added += r['cases']
             deaths_added += r['deaths']
-        # ensure weekly total is correct by subtracting what we added
+        # ensure total is correct by subtracting what we added for 6 days from weekly total
         data[i]['cases'] = data[i].get('cases_weekly') - cases_added
         data[i]['deaths'] = data[i].get('deaths_weekly') - deaths_added
-    # sort records so they are all in ascending date order
+    # sort records into ascending date order
     data = sorted(data, key = lambda r: r.get('dateRep'))
     # calculate cumulative data
     cases_to_date = 0
