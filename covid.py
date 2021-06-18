@@ -36,6 +36,11 @@ import datetime
 import math
 import matplotlib.pyplot as plt
 
+def int0(i):
+    if i is None :
+        return 0
+    return int(i)
+
 def average(lst): 
     """
     calculate average of a list (of numbers)
@@ -161,9 +166,9 @@ def region_load(fn=None, geoId=None, debug=None, population=None, density=None) 
             record = {}
             record['dateRep'] = dateRep
             record['region'] = r.get('country_code')
-            record['population'] = int(r.get('population'))
+            record['population'] = int0(r.get('population'))
             record['density'] = density
-            record['cases_weekly'] = int(r.get('weekly_count'))
+            record['cases_weekly'] = int0(r.get('weekly_count'))
             record['deaths_weekly'] = 0
             r_by_date[dateRep] = record
         elif r.get('indicator') == 'deaths' :
@@ -180,8 +185,8 @@ def region_load(fn=None, geoId=None, debug=None, population=None, density=None) 
         for j in range(0,6):
             r = {}
             r['dateRep'] = data[i].get('dateRep') - datetime.timedelta(j+1)
-            r['cases'] = int(data[i].get('cases_weekly') / 7)
-            r['deaths'] = int(data[i].get('deaths_weekly') / 7)
+            r['cases'] = int0(data[i].get('cases_weekly') / 7)
+            r['deaths'] = int0(data[i].get('deaths_weekly') / 7)
             r['population'] = data[i].get('population')
             r['density'] = data[i].get('density')
             data.append(r)
